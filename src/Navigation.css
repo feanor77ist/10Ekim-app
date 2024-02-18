@@ -1,0 +1,44 @@
+.navigation-bar {
+    padding-top: 50px;
+    flex: 1; /* Navigasyon çubuğunun esnekliği */
+    background-color: #333; /* Navigasyon çubuğunun arka plan rengi */
+    color: #D3D3D3;
+    font-family: 'Arial', sans-serif; /* Modern bir font */
+  }
+  
+  .navigation-bar ul {
+    cursor: pointer;
+    list-style-type: none; /* Liste işaretlerini kaldır */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navigation-bar li {
+    padding: 15px 20px; /* Daha fazla padding ile rahat bir dokunuş alanı */
+    transition: background-color 0.3s, color 0.3s; /* Yumuşak geçiş efekti */
+  }
+  
+  /* Hover Efekti */
+  .navigation-bar li:hover {
+    background-color: #484848; /* Koyu gri arka plan */
+    color: #FFD700; /* Altın sarısı font rengi */
+  }
+  
+  /* Alt Menü Stilleri (Varsa) */
+  .navigation-bar li ul {
+    background-color: #484848; /* Alt menü için arka plan rengi */
+    border: none;
+  }
+  
+  .navigation-bar li ul li:hover {
+    background-color: #565656; /* Alt menü öğeleri için hover rengi */
+  }
+
+  .navbar-icon {
+    padding: 5px 20px; 
+    width: 60px; /* Örnek genişlik */
+    height: auto; /* Yükseklik, orijinal boyut oranını korur */
+    border-radius: 50%;
+    /* Diğer stil özellikleri */
+  }
+  
