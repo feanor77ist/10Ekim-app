@@ -22,6 +22,7 @@ const Navigation = () => {
             </ul>
           )}
         </li>
+        <li>Duruşmalar </li>
         <li>Biz Bitti Demeden Bu Dava Bitmez!</li>
         <li>Anı Müzesi </li>
         <li>İnsanlığa Karşı Suç</li>

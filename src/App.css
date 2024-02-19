@@ -55,3 +55,35 @@
   margin-top: 20px;
   text-indent: 60px;
 }
+
+@media screen and (min-width: 1920px) {
+  .poetry-container {
+    font-size: medium;
+    bottom: 100px;    
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .poetry-container {
+    width: 150px;
+    font-size: x-small;
+    bottom: 300px; 
+  }
+  .stanza1 {
+    margin-bottom: 10px;
+    text-indent: -5px;
+  }
+  
+  .stanza2 {
+    margin-bottom: 10px;
+    text-indent: -30px;
+  }
+  
+  .stanza3 {
+    margin-bottom: 10px;
+    text-indent: -5px;
+  }
+  .stanza4 {
+    margin-top: 20px;
+  }
+}
