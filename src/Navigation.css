@@ -49,7 +49,7 @@
   padding: 15px 20px;
   transition: background-color 0.5s, color 0.5s; /* Yumuşak geçiş efekti */
   cursor: pointer;
-  font-family: 'Montserrat', serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* Hover Efekti */
