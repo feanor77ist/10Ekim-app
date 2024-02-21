@@ -57,7 +57,7 @@
   padding: 10px;
   box-sizing: border-box;
   color: white;
-  font-family: 'Merriweather';
+  font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   opacity: 0; /* Başlangıçta görünmez */
   transition: opacity 1s ease-in-out; /* Yumuşak geçiş efekti */
@@ -103,7 +103,6 @@
     width: 150px;
     font-size: xx-small;
     bottom: 20px; 
-    font-family: 'Times New Roman', Times, serif;
     font-style: italic;
   }
   .stanza1 {
