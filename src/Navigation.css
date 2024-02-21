@@ -144,6 +144,25 @@
 
   @media screen and (max-width: 768px) {
     .navigation-bar {
-      font-size: small;
+      font-size: x-small;
+      width: 150px;
+  }
+
+  .navigation-bar .dropdown-content {
+      font-size: x-small;
+      width: 100px;
+  }
+
+  .navigation-bar .dropdown-content li {
+    padding: 8px;
+  }
+
+  .navigation-bar li {
+    padding: 10px 10px;
+  }
+
+  .navbar-icon {
+    height: 80px;
+    width: 80px;
   }
   }

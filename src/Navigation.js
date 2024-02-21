@@ -1,8 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import mainpageIcon from './images/mainpage_icon.jpg';
 
 const Navigation = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
+
+  // Mobil cihazlarda dışarıya dokunulduğunda navigasyonu kapat
+  useEffect(() => {
+    const closeNav = (e) => {
+      // Navigasyon çubuğu ve ikon dışında bir yere dokunulduğunda kapat
+      if (!e.target.closest('.navigation-bar') && !e.target.closest('.navbar-icon')) {
+        setIsNavVisible(false);
+      }
+    };
+
+    if (window.innerWidth < 768) { // Basit bir mobil cihaz kontrolü
+      document.addEventListener('touchstart', closeNav);
+    }
+
+    return () => {
+      if (window.innerWidth < 768) {
+        document.removeEventListener('touchstart', closeNav);
+      }
+    };
+  }, []);
 
   return (
     <div>
@@ -10,7 +30,8 @@ const Navigation = () => {
         src={mainpageIcon} 
         alt="İkon" 
         className="navbar-icon" 
-        onMouseEnter={() => setIsNavVisible(true)}  
+        onMouseEnter={() => setIsNavVisible(true)}
+        onClick={() => setIsNavVisible(!isNavVisible)} // İkona tıklanıldığında navigasyonu aç/kapat
       />
       <div 
         className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}
@@ -24,7 +45,12 @@ const Navigation = () => {
               <li>Failler</li>
             </ul>
           </li>
-          <li>DURUŞMALAR</li>
+          <li class="dropdown">DURUŞMALAR
+            <ul class="dropdown-content">
+              <li>Sonlanan Dava</li>
+              <li>Güncel Dava</li>
+            </ul>
+          </li>
           <li>BİZ BİTTİ DEMEDEN BU DAVA BİTMEZ!</li>
           <li>İNSANLIĞA KARŞI SUÇ</li>
           <li>KAMU GÖREVLİLERİNİN SORUMLULUĞU</li>
