@@ -102,7 +102,7 @@
   .poetry-container {
     width: 150px;
     font-size: x-small;
-    bottom: 300px; 
+    bottom: 100px; 
   }
   .stanza1 {
     margin-bottom: 10px;
@@ -120,5 +120,10 @@
   }
   .stanza4 {
     margin-top: 20px;
+  }
+
+  .video-container video {
+    width: 100%;
+    object-fit: cover; /* Videoyu kaplayacak şekilde ayarla */
   }
 }
