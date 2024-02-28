@@ -153,7 +153,7 @@
     height: auto; /* Mobil cihazlarda yüksekliği otomatik yap */
     display:inline-flex;
     flex-direction: column; /* Yatay yerine dikey düzen */
-    margin-top: 35vh;
+    margin-top: 25vh;
     align-items: center; /* İçeriği yatay olarak ortala */
   }
 
