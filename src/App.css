@@ -122,7 +122,7 @@
 @media screen and (max-width: 768px) {
   .poetry-container {
     width: 150px;
-    font-size: xx-small;
+    font-size: 6px;
     bottom: 20px; 
     font-style: italic;
   }
