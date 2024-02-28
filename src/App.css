@@ -99,7 +99,6 @@
 
 .typewriter-container {
   display: flex;
-  height: 100vh; /* Konteynerin yüksekliğini tam ekran yap */
   text-align: center; /* Metni ortala */
   z-index: -1;
 }
@@ -152,11 +151,10 @@
 
   .typewriter-container {
     height: auto; /* Mobil cihazlarda yüksekliği otomatik yap */
-    margin-left: 100px;
-    padding: 80px; /* Etrafına biraz boşluk ekle */
+    margin-left: 190px;
     display: flex;
     flex-direction: column; /* Yatay yerine dikey düzen */
-    margin-top: 200px;
+    margin-top: 280px;
     align-items: center; /* İçeriği yatay olarak ortala */
   }
 
