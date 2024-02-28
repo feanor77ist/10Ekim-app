@@ -75,7 +75,7 @@
   z-index: 1; /* Üstte görünsün */
   transition: visibility 0.2s, opacity 0.5s ease, transform 0.5s ease; /* Yumuşak geçiş efekti */
   transform: translateX(-100%); /* Başlangıçta sola doğru kaydır */
-  font-weight: 400;
+  font-weight: 500;
   background: linear-gradient(to right, 
         #9d9b88 0%, 
         #a19e8c 5%, 
