@@ -10,7 +10,7 @@ const MyTypewriter = () => {
       }}
       onInit={(typewriter) => {
         typewriter
-            .pauseFor(2000)
+            .pauseFor(1000)
             .typeString('ANKARA\'DAYMIŞ <span style="background-color: #a8876e;">BARIŞ</span>')
             .pauseFor(2000)           
             .deleteChars(10)
