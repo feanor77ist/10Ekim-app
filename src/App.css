@@ -151,15 +151,14 @@
 
   .typewriter-container {
     height: auto; /* Mobil cihazlarda yüksekliği otomatik yap */
-    margin-left: 190px;
     display: flex;
     flex-direction: column; /* Yatay yerine dikey düzen */
-    margin-top: 280px;
+    justify-content: center; /* İçeriği dikey olarak ortala */
     align-items: center; /* İçeriği yatay olarak ortala */
   }
 
   .typewriter-text {
-    margin: 0; /* Marjları sıfırla */
+    margin: 80px; /* Marjları sıfırla */
     font-size: 24px; /* Font boyutunu küçült */
     /* Diğer stiller (font ailesi, ağırlığı, rengi) aynı kalabilir */
   }
