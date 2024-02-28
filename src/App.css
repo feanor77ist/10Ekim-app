@@ -151,7 +151,7 @@
 
   .typewriter-container {
     height: auto; /* Mobil cihazlarda yüksekliği otomatik yap */
-    display: flex;
+    display:inline-flex;
     flex-direction: column; /* Yatay yerine dikey düzen */
     justify-content: center; /* İçeriği dikey olarak ortala */
     align-items: center; /* İçeriği yatay olarak ortala */
