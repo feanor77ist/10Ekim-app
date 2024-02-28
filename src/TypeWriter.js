@@ -20,7 +20,9 @@ const MyTypewriter = () => {
             .deleteChars(5)
             .pauseFor(1000)
             .typeString('<span> </span><span style="background-color: #a8876e;">MIYDI</span> BARIŞ ?')
-            .pauseFor(2000)
+            .pauseFor(1000)
+            .typeString('<br><span style="font-style: italic; font-family: Montserrat, sans-serif; font-size: medium;">hasret ve saygıyla...</span>')
+            .pauseFor(1000)
             .start();
       }}
     />
