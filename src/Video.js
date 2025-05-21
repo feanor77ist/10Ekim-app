@@ -1,5 +1,5 @@
 import React from 'react';
-import videoSource from "./images/short.mp4";
+import videoSource from "./images/short2.mp4";
 
 // Video bileşeni
 const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay }, ref) => (

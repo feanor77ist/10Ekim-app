@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Ana Stil dosyası yolu
-import videoSource from "./images/short.mp4"
+import videoSource from "./images/short2.mp4"
 import Navigation from './Navigation';
 import './Navigation.css'; // NavBar Stil dosyası yolu
 import Video from './Video';
