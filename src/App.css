@@ -184,7 +184,8 @@
   }
 
   .typewriter-text {
-    margin: 80px; /* Marjları sıfırla */
+    margin-left: 40px;
+    margin-top: 80px;/* Marjları sıfırla */
     font-size: 24px; /* Font boyutunu küçült */
     /* Diğer stiller (font ailesi, ağırlığı, rengi) aynı kalabilir */
   }
