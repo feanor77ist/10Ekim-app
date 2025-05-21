@@ -25,22 +25,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('images/GrainBackground.gif'),
-                    radial-gradient(circle at 45% 40%,
-      rgba(255, 240, 220, 0.1) 0%,
-      rgba(250, 200, 180, 0.12) 20%,
-      rgba(180, 120, 130, 0.15) 40%,
-      rgba(100, 80, 110, 0.18) 60%,
-      rgba(30, 30, 40, 0.25) 80%,
-      rgba(10, 10, 20, 0.35) 100%
+
+  background-image: 
+    url('images/GrainBackground.gif'),
+    linear-gradient(
+      145deg,
+      rgba(250, 245, 230, 0.1) 0%,
+      rgba(220, 190, 200, 0.12) 25%,
+      rgba(140, 110, 130, 0.16) 50%,
+      rgba(40, 30, 40, 0.22) 100%
     );
-  background-size: cover, cover; /* Arka plan görselinin boyutunu ayarla */
-  background-blend-mode: overlay; /* Arka plan görselinin arkaplanını görsel olarak gölgele */
-  background-position: center center; /* Görselin ortalanmasını sağlar */
-  opacity: 0.6; 
+
+  background-size: contain;
+  background-position: center;
+  background-blend-mode: overlay;
+  opacity: 0.7;
+
+  filter: contrast(1.15) brightness(0.85) saturate(1.1);
   z-index: 1;
-  filter: contrast(1.2) brightness(0.5) saturate(1.25);
 }
+
 
 .video-overlay::after {
   content: '';
@@ -58,7 +62,7 @@
   bottom: 0; /* Alt kenara dayalı */
   padding: 10px;
   box-sizing: border-box;
-  color: #170101;
+  color: #fff;
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   opacity: 0; /* Başlangıçta görünmez */
@@ -188,18 +192,12 @@
   .video-overlay {
     background-image:
       url('images/GrainBackground.gif'),
-      radial-gradient(circle,
-        rgba(255, 240, 230, 0.6) 0%,
-        rgba(255, 225, 215, 0.65) 15%,
-        rgba(245, 210, 200, 0.68) 30%,
-        rgba(235, 200, 190, 0.7) 45%,
-        rgba(225, 190, 185, 0.72) 60%,
-        rgba(215, 175, 175, 0.75) 75%,
-        rgba(205, 160, 165, 0.78) 85%,
-        rgba(195, 145, 150, 0.8) 90%,
-        rgba(185, 130, 140, 0.82) 95%,
-        rgba(175, 120, 130, 0.85) 98%,
-        rgba(165, 110, 125, 0.88) 100%
+      linear-gradient(
+        145deg,
+        rgba(250, 245, 230, 0.1) 0%,
+        rgba(220, 190, 200, 0.12) 25%,
+        rgba(140, 110, 130, 0.16) 50%,
+        rgba(40, 30, 40, 0.22) 100%
       );
   }
 }
