@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import mainpageIcon from './images/mainpage_icon.jpg';
+import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
 import './Navigation.css';
 
 const menuItems = [
@@ -21,35 +22,31 @@ const Navigation = () => {
 
   useEffect(() => {
     const closeNav = (e) => {
-      if (!e.target.closest('.navigation-bar') && !e.target.closest('.navbar-icon')) {
+      if (!e.target.closest('.navigation-bar') && !e.target.closest('.menu-icon')) {
         setIsNavVisible(false);
       }
     };
-
-    if (window.innerWidth < 768) {
-      document.addEventListener('touchstart', closeNav);
-    }
-
-    return () => {
-      if (window.innerWidth < 768) {
-        document.removeEventListener('touchstart', closeNav);
-      }
-    };
+    document.addEventListener('click', closeNav);
+    return () => document.removeEventListener('click', closeNav);
   }, []);
 
   return (
-    <div>
+    <>
+      {/* Anasayfa yönlendirme ikonu */}
+      <a href="/" className="mainpage-icon-link">
+        <img src={mainpageIcon} alt="Anasayfa" className="mainpage-icon" />
+      </a>
+
+      {/* Menü açma ikonu */}
       <img
-        src={mainpageIcon}
-        alt="İkon"
-        className="navbar-icon"
-        onMouseEnter={() => setIsNavVisible(true)}
+        src={menuIcon}
+        alt="Menü"
+        className="menu-icon"
         onClick={() => setIsNavVisible(!isNavVisible)}
       />
-      <div
-        className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}
-        onMouseLeave={() => setIsNavVisible(false)}
-      >
+
+      {/* Sağdan kayan menü */}
+      <div className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}>
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
@@ -58,7 +55,7 @@ const Navigation = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -7,7 +7,6 @@ import Video from './Video';
 import Poetry from './Poetry';
 import useVideoControls from './useVideoControls';
 import MyTypewriter from './TypeWriter';
-import TwitterFeed from './TwitterFeed';
 
 // Uygulamanın ana bileşeni
 function App() {
@@ -30,7 +29,6 @@ function App() {
         ref={videoRef} 
       />
       <Poetry isVisible={showPoetry} />
-      <TwitterFeed />
     </div>
   );
 }

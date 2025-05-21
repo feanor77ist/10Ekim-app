@@ -1,121 +1,124 @@
-.navbar-icon {
+/* Menü ikonu (sağ üstte) */
+.menu-icon {
   position: fixed;
-  top: 30px;
-  left: 30px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  top: 10px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1002;
+  filter: brightness(1.2) saturate(1.4);
+  background-color: rgba(213, 126, 126, 0.5); /* #b32828 */
+  border-radius: 38px;
+  padding: 1px;
+}
+
+/* Ana sayfa ikonu (sol üstte) */
+.mainpage-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  z-index: 1002;
   transition: transform 0.3s ease;
 }
 
-.navbar-icon:hover {
-  transform: scale(1.05);
+.mainpage-icon:hover {
+  transform: scale(1.1);
 }
 
-/* Sidebar */
+/* Menü paneli */
 .navigation-bar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 260px;
-  height: 100%;
-  background: rgba(20, 20, 20, 0.85);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  padding: 80px 25px 25px 25px;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease-in-out;
-  z-index: 1000;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
+  right: 0;
+  width: 360px;
+  max-width: 90vw;
+  height: 100vh;
+
+  background-image: 
+    url('./images/GrainBackground.gif'),
+    url('./images/navbar-bg.png');
+  background-repeat: repeat, no-repeat;
+  background-position: center center, center center;
+  background-size: cover; 
+  background-blend-mode: multiply;
+  filter: saturate(1.2) contrast(0.8) brightness(0.8);
   opacity: 0.95;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1001;
+
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
+
+
+/* Menü açıkken görünür */
 .navigation-bar.visible {
   transform: translateX(0);
 }
 
+/* Menü içerik */
 .navigation-bar ul {
   list-style: none;
   padding: 0;
-  margin-top: 60px;
+  margin-top: 100px;
+  text-align: center;
 }
 
 .navigation-bar li {
-  padding: 12px 8px;
-  color: #e0e0e0;
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.navigation-bar li:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  padding-left: 10px;
-  margin-top: 8px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content li {
-  padding: 8px 0;
-  font-size: 14px;
-  color: #dddddd;
-  border: none;
-}
-
-.dropdown-content li:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-/* Mobil uyum */
-@media screen and (max-width: 768px) {
-  .navigation-bar {
-    width: 220px;
-    border-radius: 0;
-  }
-
-  .navigation-bar li {
-    font-size: 14px;
-    padding: 10px 6px;
-  }
-
-  .dropdown-content li {
-    font-size: 12px;
-  }
-
-  .navbar-icon {
-    width: 40px;
-    height: 40px;
-  }
+  font-family: 'EB Garamond', serif;
+  text-align: start;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 20px 0;
+  color: #f4f4f4;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .navigation-bar a {
-  color: #f0f0f0; /* Açık gri - daha estetik */
+  color: white;
   text-decoration: none;
-  font-size: 16px;
-  font-family: 'Helvetica Neue', sans-serif;
   transition: color 0.2s ease;
 }
 
 .navigation-bar a:hover {
-  color: #ffffff; /* Beyaz - üzerine gelince parlak görünüm */
+  color: #ffcc00;
+  transition: all 0.8s ease;
+}
+
+/* Mobil görünüm */
+@media screen and (max-width: 768px) {
+  .mainpage-icon {
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .menu-icon {
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .navigation-bar {
+    width: 85vw;
+  }
+
+  .navigation-bar li {
+    font-size: 22px;
+    margin: 18px 0;
+  }
 }
