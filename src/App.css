@@ -36,10 +36,10 @@
       rgba(40, 30, 40, 0.22) 100%
     );
 
-  background-size: contain;
+  background-size: initial;
   background-position: center;
-  background-blend-mode: overlay;
-  opacity: 0.7;
+  background-blend-mode: soft-light, multiply;
+  opacity: 0.6;
 
   filter: contrast(1.15) brightness(0.85) saturate(1.1);
   z-index: 1;
@@ -171,7 +171,7 @@
 
   .video-container video {
     background-color: black;
-    object-fit:unset; /* Videoyu kaplayacak şekilde ayarla */
+    object-fit: fill; /* Videoyu kaplayacak şekilde ayarla */
   }
 
   .typewriter-container {
@@ -199,7 +199,6 @@
         rgba(140, 110, 130, 0.16) 50%,
         rgba(40, 30, 40, 0.22) 100%
       );
-      background-size: cover;
   }
   
 }
