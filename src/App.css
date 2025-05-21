@@ -25,32 +25,34 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(https://cdn.shopify.com/s/files/1/0564/7617/2332/files/GrainBackround.gif?v=1667804647), 
-                    radial-gradient(circle, 
-                    rgba(80, 80, 80, 0.9) 0%, 
-                    rgba(78, 78, 78, 0.9) 5%, 
-                    rgba(76, 76, 76, 0.9) 10%, 
-                    rgba(74, 74, 74, 0.9) 15%, 
-                    rgba(72, 72, 72, 0.9) 20%, 
-                    rgba(70, 70, 70, 0.9) 25%, 
-                    rgba(68, 68, 68, 0.9) 30%, 
-                    rgba(66, 66, 66, 0.9) 35%, 
-                    rgba(64, 64, 64, 0.9) 40%, 
-                    rgba(62, 62, 62, 0.9) 45%, 
-                    rgba(60, 60, 60, 0.9) 50%, 
-                    rgba(58, 58, 58, 0.9) 55%, 
-                    rgba(56, 56, 56, 0.9) 60%, 
-                    rgba(54, 54, 54, 0.9) 65%, 
-                    rgba(52, 52, 52, 0.9) 70%, 
-                    rgba(50, 50, 50, 0.9) 75%, 
-                    rgba(48, 48, 48, 0.9) 80%, 
-                    rgba(46, 46, 46, 0.9) 85%, 
-                    rgba(44, 44, 44, 0.9) 90%, 
-                    rgba(42, 42, 42, 0.9) 95%, 
-                    rgba(40, 40, 40, 0.9) 100%);
-  background-blend-mode: multiply;
+  background-image: url('images/GrainBackground.gif'),
+                    radial-gradient(circle,
+  rgba(255, 248, 240, 0.5) 0%,
+  rgba(255, 245, 235, 0.52) 5%,
+  rgba(255, 243, 230, 0.54) 10%,
+  rgba(255, 241, 225, 0.56) 15%,
+  rgba(254, 239, 220, 0.58) 20%,
+  rgba(253, 237, 215, 0.6) 25%,
+  rgba(252, 235, 210, 0.62) 30%,
+  rgba(250, 230, 205, 0.64) 35%,
+  rgba(248, 225, 200, 0.66) 40%,
+  rgba(245, 220, 195, 0.68) 45%,
+  rgba(242, 215, 190, 0.7) 50%,
+  rgba(240, 210, 180, 0.72) 55%,
+  rgba(238, 200, 170, 0.73) 60%,
+  rgba(235, 190, 165, 0.75) 65%,
+  rgba(230, 180, 160, 0.76) 70%,
+  rgba(222, 170, 155, 0.78) 75%,
+  rgba(215, 160, 150, 0.8) 80%,
+  rgba(208, 150, 143, 0.82) 85%,
+  rgba(201, 140, 140, 0.83) 90%,
+  rgba(192, 130, 138, 0.84) 95%,
+  rgba(186, 123, 136, 0.85) 100%
+);
+  background-size: initial;
+  background-blend-mode: color-burn;
   background-position: center; /* Görselin ortalanmasını sağlar */
-  opacity: 0.6;
+  opacity: 0.7; 
   z-index: 1;
 }
 
@@ -61,7 +63,7 @@
   bottom: 0; /* Alt kenara dayalı */
   padding: 10px;
   box-sizing: border-box;
-  color: white;
+  color: #170101;
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   opacity: 0; /* Başlangıçta görünmez */
@@ -109,8 +111,32 @@
   font-size: 40px;
   font-family: "Protest Revolution", sans-serif;
   font-weight: 500;
-  color: #fdfdfd;
+  color: #fff;
+  text-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+.highlight-gradient {
+  position: relative;
+  padding: 4px 12px;
+  z-index: 1; /* metin üstte kalsın */
+}
+
+.highlight-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/brush.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 120% 200%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  opacity: 0.4;
+  z-index: -1; /* arka planda kalsın */
+}
+
 
 @media screen and (min-width: 1920px) {
   .poetry-container {

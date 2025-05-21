@@ -6,20 +6,21 @@ const MyTypewriter = () => {
     <Typewriter
       options={{
         loop: true,
-        delay: 25,
+        delay: 50,
+        html: true,
       }}
       onInit={(typewriter) => {
         typewriter
             .pauseFor(1000)
-            .typeString('ANKARA\'DAYMIŞ <span style="background-color: #a8876e;">BARIŞ</span>')
+            .typeString('ANKARA\'DAYMIŞ <span class="highlight-gradient">BARIŞ</span>')
             .pauseFor(2000)           
             .deleteChars(10)
             .pauseFor(1000)
-            .typeString('<span> </span><span style="background-color: #a8876e;">BARIŞ</span>')
+            .typeString('<span> </span><span class="highlight-gradient">BARIŞ</span>')
             .pauseFor(1000)
-            .deleteChars(5)
+            .deleteChars(6)
             .pauseFor(1000)
-            .typeString('<span> </span><span style="background-color: #a8876e;">MIYDI</span> BARIŞ ?')
+            .typeString('<span> </span><span class="highlight-gradient">MIYDI</span>BARIŞ ?')
             .pauseFor(1000)
             .typeString('<br><span style="font-style: italic; font-family: Montserrat, sans-serif; font-size: medium;">hasret ve saygıyla...</span>')
             .pauseFor(1000)

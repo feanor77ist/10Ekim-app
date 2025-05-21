@@ -1,38 +1,37 @@
+.navbar-icon {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.navbar-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Sidebar */
 .navigation-bar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 300px; /* Menü genişliği */
-  height: 100vh;
-  background: linear-gradient(to right, 
-        #9d9b88 0%, 
-        #a19e8c 5%, 
-        #a5a190 10%, 
-        #a9a494 15%, 
-        #ada798 20%, 
-        #b1aa9c 25%, 
-        #b5ada0 30%, 
-        #b9b0a4 35%, 
-        #bdb3a8 40%, 
-        #c1b6ac 45%, 
-        #c5b9b0 50%, 
-        #c9bcb4 55%, 
-        #cdbfb8 60%, 
-        #d1c2bc 65%, 
-        #d5c5c0 70%, 
-        #d9c8c4 75%, 
-        #ddcbc8 80%, 
-        #e1cec2 85%, 
-        #e5d1c6 90%, 
-        #e9d4ca 95%, 
-        #ede7ce 100%);
+  width: 260px;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 80px 25px 25px 25px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
   transform: translateX(-100%);
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease-in-out;
   z-index: 1000;
-  padding-top: 150px;
-  opacity: 0.8;
-  color: black;
-  font-weight: 500;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  opacity: 0.80;
 }
 
 .navigation-bar.visible {
@@ -40,131 +39,83 @@
 }
 
 .navigation-bar ul {
-  list-style-type: none; /* Liste işaretlerini kaldır */
+  list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: 60px;
 }
 
 .navigation-bar li {
-  padding: 15px 20px;
-  transition: background-color 0.5s, color 0.5s; /* Yumuşak geçiş efekti */
+  padding: 12px 8px;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover Efekti */
 .navigation-bar li:hover {
-  background-color: #a8876e;
-  color: #fdfdfd;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
-/* Dropdown Menüsü için Stiller */
-.navigation-bar .dropdown {
-  position: relative; /* Dropdown içeriği için referans noktası */
-  display: block; /* İçerik yan yana gelsin */
+.dropdown {
+  position: relative;
 }
 
-/* Dropdown içeriği başlangıçta gizli */
-.navigation-bar .dropdown-content {
-  visibility: hidden; /* Başlangıçta görünmez */
-  opacity: 0; /* Şeffaf */
-  position: absolute;
-  left: 100%; /* 'li' etiketinin sağ tarafına yerleştir */
-  top: 0; /* Üst kenara hizala */
-  width: 200px; /* Genişlik */
-  z-index: 1; /* Üstte görünsün */
-  transition: visibility 0.2s, opacity 0.5s ease, transform 0.5s ease; /* Yumuşak geçiş efekti */
-  transform: translateX(-100%); /* Başlangıçta sola doğru kaydır */
-  font-weight: 500;
-  background: linear-gradient(to right, 
-        #9d9b88 0%, 
-        #a19e8c 5%, 
-        #a5a190 10%, 
-        #a9a494 15%, 
-        #ada798 20%, 
-        #b1aa9c 25%, 
-        #b5ada0 30%, 
-        #b9b0a4 35%, 
-        #bdb3a8 40%, 
-        #c1b6ac 45%, 
-        #c5b9b0 50%, 
-        #c9bcb4 55%, 
-        #cdbfb8 60%, 
-        #d1c2bc 65%, 
-        #d5c5c0 70%, 
-        #d9c8c4 75%, 
-        #ddcbc8 80%, 
-        #e1cec2 85%, 
-        #e5d1c6 90%, 
-        #e9d4ca 95%, 
-        #ede7ce 100%);
+.dropdown-content {
+  display: none;
+  padding-left: 10px;
+  margin-top: 8px;
 }
 
-/* Hover durumunda dropdown içeriği görünür */
-.navigation-bar .dropdown:hover .dropdown-content {
-  visibility: visible; /* Görünür yap */
-  opacity: 1; /* Opak yap */
-  transform: translateX(0); /* Orijinal konumuna geri getir */
-}
-
-.navigation-bar .dropdown-content li {
-  padding: 10px;
-  color: black;
-  /* Diğer stil ayarları */
-}
-
-.navigation-bar .dropdown-content li:hover {
-  color: #fdfdfd;
-  /* Diğer stil ayarları */
-}
-
-.navigation-bar li ul li {
-  padding: 10px 20px;
-}
-
-.navbar-icon {
-  position: fixed;
+.dropdown:hover .dropdown-content {
   display: block;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 1001; /* İkonun navigasyon çubuğunun üstünde olması için */
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
 }
 
-  
-  @media screen and (min-width: 1920px) {
-    /* Büyük ekranlar için stil kuralları */
-    .navigation-bar {
-        font-size: large;
-    }
-  }
+.dropdown-content li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #dddddd;
+  border: none;
+}
 
-  @media screen and (max-width: 768px) {
-    .navigation-bar {
-      font-size: x-small;
-      width: 150px;
-  }
+.dropdown-content li:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
 
-  .navigation-bar .dropdown-content {
-      font-size: x-small;
-      width: 100px;
-  }
-
-  .navigation-bar .dropdown-content li {
-    padding: 8px;
+/* Mobil uyum */
+@media screen and (max-width: 768px) {
+  .navigation-bar {
+    width: 220px;
+    border-radius: 0;
   }
 
   .navigation-bar li {
-    padding: 10px 10px;
+    font-size: 14px;
+    padding: 10px 6px;
+  }
+
+  .dropdown-content li {
+    font-size: 12px;
   }
 
   .navbar-icon {
-    height: 80px;
-    width: 80px;
-    top: 10px;
-    left: 10px;
+    width: 40px;
+    height: 40px;
   }
-  }
+}
+
+.navigation-bar a {
+  color: #f0f0f0; /* Açık gri - daha estetik */
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+  transition: color 0.2s ease;
+}
+
+.navigation-bar a:hover {
+  color: #ffffff; /* Beyaz - üzerine gelince parlak görünüm */
+}

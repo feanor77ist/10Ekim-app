@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import mainpageIcon from './images/mainpage_icon.jpg';
+import './Navigation.css';
+
+const menuItems = [
+  { title: "Süreç", link: "/surec" },
+  { title: "Failler", link: "/failler" },
+  { title: "Kararlar", link: "/kararlar" },
+  { title: "Belgeler & Raporlar", link: "/belgeler-raporlar" },
+  { title: "Dilekçeler", link: "/dilekceler" },
+  { title: "Sorumlular", link: "/sorumlular" },
+  { title: "Haberler", link: "/haberler" },
+  { title: "Görseller", link: "/gorseller" },
+  { title: "Açıklamalar", link: "/aciklamalar" },
+  { title: "Duruşmalar", link: "/durusmalar" },
+  { title: "Linkler", link: "/linkler" },
+];
 
 const Navigation = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
 
-  // Mobil cihazlarda dışarıya dokunulduğunda navigasyonu kapat
   useEffect(() => {
     const closeNav = (e) => {
-      // Navigasyon çubuğu ve ikon dışında bir yere dokunulduğunda kapat
       if (!e.target.closest('.navigation-bar') && !e.target.closest('.navbar-icon')) {
         setIsNavVisible(false);
       }
     };
 
-    if (window.innerWidth < 768) { // Basit bir mobil cihaz kontrolü
+    if (window.innerWidth < 768) {
       document.addEventListener('touchstart', closeNav);
     }
 
@@ -26,36 +39,23 @@ const Navigation = () => {
 
   return (
     <div>
-      <img 
-        src={mainpageIcon} 
-        alt="İkon" 
-        className="navbar-icon" 
+      <img
+        src={mainpageIcon}
+        alt="İkon"
+        className="navbar-icon"
         onMouseEnter={() => setIsNavVisible(true)}
-        onClick={() => setIsNavVisible(!isNavVisible)} // İkona tıklanıldığında navigasyonu aç/kapat
+        onClick={() => setIsNavVisible(!isNavVisible)}
       />
-      <div 
+      <div
         className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}
-        onMouseLeave={() => setIsNavVisible(false)}>
+        onMouseLeave={() => setIsNavVisible(false)}
+      >
         <ul>
-          <li>ANKARA'DAYMIŞ BARIŞ</li>
-          <li class="dropdown">SORUŞTURMA
-            <ul class="dropdown-content">
-              <li>Gizlenen Bir Şeyler Var</li>
-              <li>İddianame: Pandoranın Kutusu</li>
-              <li>Failler</li>
-            </ul>
-          </li>
-          <li class="dropdown">DURUŞMALAR
-            <ul class="dropdown-content">
-              <li>Sonlanan Dava</li>
-              <li>Güncel Dava</li>
-            </ul>
-          </li>
-          <li>BİZ BİTTİ DEMEDEN BU DAVA BİTMEZ!</li>
-          <li>İNSANLIĞA KARŞI SUÇ</li>
-          <li>KAMU GÖREVLİLERİNİN SORUMLULUĞU</li>
-          <li>YAZI & MAKALE</li>
-          <li>ANI MÜZESİ</li>
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <a href={item.link}>{item.title}</a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
