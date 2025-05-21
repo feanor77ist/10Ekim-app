@@ -170,8 +170,9 @@
   }
 
   .video-container video {
-    background-color: black;
-    object-fit: fill; /* Videoyu kaplayacak şekilde ayarla */
+    width: 100%; /* Videoyu ekran boyutuna sığdır */
+    object-fit: cover; /* Videoyu kaplayacak şekilde ayarla */
+    animation: fadeInVideo 1s ease-in forwards; /* Videoyu arka planda tut */
   }
 
   .typewriter-container {
