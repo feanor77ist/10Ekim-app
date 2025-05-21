@@ -36,9 +36,9 @@
       rgba(40, 30, 40, 0.22) 100%
     );
 
-  background-size: initial;
+  background-size: cover, cover; /* Videoyu ekran boyutuna sığdır */
   background-position: center;
-  background-blend-mode: soft-light, multiply;
+  background-blend-mode: multiply;
   opacity: 0.6;
 
   filter: contrast(1.15) brightness(0.85) saturate(1.1);
@@ -201,5 +201,4 @@
         rgba(40, 30, 40, 0.22) 100%
       );
   }
-  
 }
