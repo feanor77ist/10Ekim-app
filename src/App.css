@@ -170,8 +170,8 @@
   }
 
   .video-container video {
-    width: 100%;
-    object-fit: cover; /* Videoyu kaplayacak şekilde ayarla */
+    background-color: black;
+    object-fit:unset; /* Videoyu kaplayacak şekilde ayarla */
   }
 
   .typewriter-container {
@@ -199,5 +199,7 @@
         rgba(140, 110, 130, 0.16) 50%,
         rgba(40, 30, 40, 0.22) 100%
       );
+      background-size: cover;
   }
+  
 }
