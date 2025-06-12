@@ -47,7 +47,7 @@ const useVideoControls = (setShowPoetry) => {
         clearTimeout(poetryTimerRef.current);
         poetryTimerRef.current = setTimeout(() => {
           setShowPoetry(true);
-        }, 6000);
+        }, 20000); //20 saniye sonra şiiri göster
       };
     
       // Komponent unmount olduğunda interval ve timeout'ları temizle

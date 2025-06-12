@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import mainpageIcon from './images/mainpage_icon.jpg';
+import mainpageIcon from './images/mainpage_icon3.png';
 import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
 import './Navigation.css';
+import { Link } from 'react-router-dom';
 
 const menuItems = [
-  { title: "Süreç", link: "/surec" },
-  { title: "Failler", link: "/failler" },
-  { title: "Kararlar", link: "/kararlar" },
-  { title: "Belgeler & Raporlar", link: "/belgeler-raporlar" },
-  { title: "Dilekçeler", link: "/dilekceler" },
-  { title: "Sorumlular", link: "/sorumlular" },
-  { title: "Haberler", link: "/haberler" },
-  { title: "Görseller", link: "/gorseller" },
-  { title: "Açıklamalar", link: "/aciklamalar" },
-  { title: "Duruşmalar", link: "/durusmalar" },
-  { title: "Linkler", link: "/linkler" },
+  { title: "SÜREÇ", link: "/surec" },
+  { title: "FAİLLER", link: "/failler" },
+  { title: "KARARLAR", link: "/kararlar" },
+  { title: "BELGELER & RAPORLAR", link: "/belgeler-raporlar" },
+  { title: "DİLEKÇELER", link: "/dilekceler" },
+  { title: "SORUMLULAR", link: "/sorumlular" },
+  { title: "HABERLER", link: "/haberler" },
+  { title: "GÖRSELLER", link: "/gorseller" },
+  { title: "AÇIKLAMALAR", link: "/aciklamalar" },
+  { title: "DURUŞMALAR", link: "/durusmalar" },
+  { title: "LİNKLER", link: "/linkler" },
 ];
 
 const Navigation = () => {
@@ -48,9 +49,15 @@ const Navigation = () => {
       {/* Sağdan kayan menü */}
       <div className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}>
         <ul>
+          <div className="navigation-header">10 EKİM HAFIZA ARŞİVİ</div>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.link}>{item.title}</a>
+              <Link
+                to={item.link}
+                onClick={() => setIsNavVisible(false)} // menüyü kapat
+              >
+                {item.title}
+              </Link>
             </li>
           ))}
         </ul>

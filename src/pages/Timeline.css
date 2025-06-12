@@ -1,0 +1,54 @@
+.timeline-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  z-index: 0;
+}
+
+.timeline-wrapper {
+  background-color: #2b2b2b; /* Saf siyah yerine koyu gri */
+  color: #e0e0e0;
+  z-index: 0;
+}
+
+.vertical-timeline-element-content {
+  background: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  opacity: 0.85;
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid #8e4a49;
+  margin-top: 50px;
+}
+
+.vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
+  border-right: 4px solid #8e4a49;
+}
+
+.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
+  border-left: 4px solid #8e4a49;
+}
+
+.vertical-timeline-element-date {
+  color: #bbbbbb;
+}
+
+.timeline-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image: url('../images/GrainBackground.gif');
+  background-size: 1% 1%, cover;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
