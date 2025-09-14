@@ -397,10 +397,12 @@
 
   .typewriter-container {
     height: auto;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     margin-top: 25vh;
     align-items: center;
+    width: 100%;
+    text-align: center;
   }
 
   .typewriter-text {

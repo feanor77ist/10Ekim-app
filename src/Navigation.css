@@ -167,8 +167,8 @@
 /* Mobil görünüm */
 @media screen and (max-width: 768px) {
   .mainpage-icon {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     top: 15px;
     left: 15px;
   }
@@ -185,6 +185,14 @@
     padding: 0;
     justify-content: flex-start;
     align-items: flex-start;
+    background-image: 
+      url('./images/GrainBackground.gif'),
+      url('./images/navbar-bg3.png');
+    background-repeat: repeat, no-repeat;
+    background-position: center center, center center;
+    background-size: 50% 50%, cover; 
+    background-blend-mode: overlay, multiply;
+    filter: saturate(1.1) contrast(0.95) brightness(0.7);
   }
 
    .navigation-bar ul {
