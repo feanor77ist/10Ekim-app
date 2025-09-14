@@ -11,6 +11,11 @@
   background-color: rgba(213, 126, 126, 0.5); /* #b32828 */
   border-radius: 50%;
   padding: 1px;
+  transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
 }
 
 /* Ana sayfa ikonu (sol üstte) */
@@ -41,11 +46,11 @@
 
   background-image: 
     url('./images/GrainBackground.gif'),
-    url('./images/navbar-bg2.png');
+    url('./images/navbar-bg3.png');
   background-repeat: repeat, no-repeat;
   background-position: center center, center center;
   background-size: 50% 50%, cover; 
-  background-blend-mode: overlay;
+  background-blend-mode: overlay, multiply;
   filter: saturate(1.1) contrast(0.95) brightness(0.7);
 
   display: flex;
@@ -91,23 +96,72 @@
 .navigation-bar a {
   color: white;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 
 .navigation-bar a:hover {
   color: #ffcc00;
-  transition: all 0.8s ease;
+  transition: all 0.3s ease;
 }
 
 .navigation-header {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px;
-  color: #cccccc;
-  letter-spacing: 2px;
+  color: #e8dcc0;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   text-align: left;
-  opacity: 0.6;
+  opacity: 0.8;
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Sosyal medya linkleri */
+.social-links {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 196, 168, 0.2);
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.social-link {
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(212, 196, 168, 0.1);
+  border: 1px solid rgba(212, 196, 168, 0.2);
+}
+
+.social-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(212, 196, 168, 0.2);
+  border-color: rgba(212, 196, 168, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0.8) saturate(0.9);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.social-link.twitter:hover .social-icon {
+  filter: brightness(1.1) saturate(1.5) hue-rotate(200deg);
+}
+
+.social-link.instagram:hover .social-icon {
+  filter: brightness(1.1) saturate(1.5) hue-rotate(320deg);
 }
 
 /* Mobil görünüm */
@@ -142,5 +196,26 @@
   .navigation-bar li {
     font-size: 20px;
     margin: 10px 0;
+  }
+
+  .navigation-header {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+  }
+
+  .social-links {
+    margin-top: 30px;
+    padding-top: 15px;
+    gap: 15px;
+  }
+
+  .social-link {
+    padding: 6px;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
   }
 }

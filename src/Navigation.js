@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import mainpageIcon from './images/mainpage_icon3.png';
+import mainpageIcon from './images/logo.png';
 import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
+import twitterIcon from './images/tw.jpg';
+import instagramIcon from './images/ig_icon.png';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
 
 const menuItems = [
+  { title: "HAFIZA ARŞİVİ", link: "/hafiza-arsivi" },
   { title: "SÜREÇ", link: "/surec" },
   { title: "FAİLLER", link: "/failler" },
   { title: "KARARLAR", link: "/kararlar" },
@@ -49,7 +52,7 @@ const Navigation = () => {
       {/* Sağdan kayan menü */}
       <div className={`navigation-bar ${isNavVisible ? 'visible' : ''}`}>
         <ul>
-          <div className="navigation-header">10 EKİM HAFIZA ARŞİVİ</div>
+          <div className="navigation-header">10 EKİM HAFIZA</div>
           {menuItems.map((item, index) => (
             <li key={index}>
               <Link
@@ -60,6 +63,28 @@ const Navigation = () => {
               </Link>
             </li>
           ))}
+          
+          {/* Sosyal medya linkleri */}
+          <div className="social-links">
+            <a 
+              href="https://twitter.com/10Ekimdavasi" 
+              title="Twitter"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link twitter"
+            >
+              <img src={twitterIcon} alt="Twitter" className="social-icon" />
+            </a>
+            <a 
+              href="https://instagram.com/10Ekimdavasi" 
+              title="Instagram"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link instagram"
+            >
+              <img src={instagramIcon} alt="Instagram" className="social-icon" />
+            </a>
+          </div>
         </ul>
       </div>
     </>
