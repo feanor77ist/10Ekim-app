@@ -147,6 +147,11 @@ const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, aud
             button.className = `audio-control ${!isPlaying ? 'audio-control-pulse' : ''} ${isPlaying && !isMuted ? 'audio-control-playing' : ''}`;
             button.title = !isPlaying ? "Sesi Başlat" : (isMuted ? "Sesi Aç" : "Sesi Kapat");
             
+            // Tooltip oluştur
+            const tooltip = document.createElement('div');
+            tooltip.className = 'audio-tooltip';
+            tooltip.textContent = !isPlaying ? "Sesi Başlat" : (isMuted ? "Sesi Aç" : "Sesi Kapat");
+            
             // İkon ekle
             if (!isPlaying) {
                 button.innerHTML = `
@@ -174,8 +179,46 @@ const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, aud
                 `;
             }
 
+            // Tooltip'i butona ekle
+            button.appendChild(tooltip);
+            
+            // Otomatik tooltip göster - sadece "Sesi Başlat" durumunda
+            if (!isPlaying) {
+                // 1 saniye sonra tooltip'i göster
+                setTimeout(() => {
+                    // Tooltip'in hala var olduğunu kontrol et
+                    if (tooltip && document.getElementById('audio-control-btn')) {
+                        tooltip.classList.add('show');
+                        tooltip.style.opacity = '1';
+                        tooltip.style.visibility = 'visible';
+                        // 3 saniye sonra gizle
+                        setTimeout(() => {
+                            if (tooltip) {
+                                tooltip.classList.remove('show');
+                                tooltip.style.opacity = '0';
+                                tooltip.style.visibility = 'hidden';
+                            }
+                        }, 3000);
+                    }
+                }, 1000);
+            }
+            
             // Click handler ekle
             button.onclick = toggleMute;
+            
+            // Hover olayları ekle
+            button.addEventListener('mouseenter', () => {
+                tooltip.style.opacity = '1';
+                tooltip.style.visibility = 'visible';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                const hasVisited = localStorage.getItem('audio-tooltip-shown');
+                if (hasVisited) {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                }
+            });
 
             // Body'ye ekle
             document.body.appendChild(button);
