@@ -36,6 +36,12 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Arka plan karartma overlay */}
+      <div 
+        className={`navigation-overlay ${isNavVisible ? 'visible' : ''}`}
+        onClick={() => setIsNavVisible(false)}
+      ></div>
+
       {/* Anasayfa yönlendirme ikonu */}
       <a href="/" className="mainpage-icon-link">
         <img src={mainpageIcon} alt="Anasayfa" className="mainpage-icon" />

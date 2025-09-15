@@ -276,22 +276,27 @@
   animation: none;
 }
 
-/* Mobilde alt yazıyı ortala ve kırık beyaz yap */
+/* Mobilde alt yazıyı ortala ve keskin beyaz yap */
 @media screen and (max-width: 768px) {
   .typewriter-text .typewriter-subtitle {
     text-align: center !important;
     display: block;
     width: 100%;
-    color: #f5f5f5 !important;
+    color: #d4af37 !important;
+    font-size: 0.6em !important;
+    font-weight: 400 !important;
     text-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.9),
-      0 1px 2px rgba(139, 69, 19, 0.4),
-      0 0 8px rgba(245, 245, 245, 0.3);
+      0 3px 6px rgba(0, 0, 0, 1),
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 1px 2px rgba(0, 0, 0, 0.6),
+      0 0 12px rgba(255, 255, 255, 0.5);
   }
   
   .typewriter-container .typewriter-subtitle {
     text-align: center !important;
-    color: #f5f5f5 !important;
+    color: #ffffff !important;
+    font-size: 0.6em !important;
+    font-weight: 400 !important;
   }
 }
 
