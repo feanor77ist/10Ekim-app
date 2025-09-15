@@ -276,27 +276,21 @@
   animation: none;
 }
 
-/* Mobilde alt yazıyı ortala ve keskin beyaz yap */
+/* Mobilde alt yazıyı düzelt */
 @media screen and (max-width: 768px) {
-  .typewriter-text .typewriter-subtitle {
+  .typewriter-subtitle {
     text-align: center !important;
-    display: block;
-    width: 100%;
-    color: #d4af37 !important;
-    font-size: 0.6em !important;
-    font-weight: 400 !important;
+    display: block !important;
+    width: 100% !important;
+    color: #e0e0e0 !important;
+    font-size: 0.5em !important;
+    font-weight: 300 !important;
+    margin-top: 12px !important;
+    line-height: 1.4 !important;
     text-shadow: 
-      0 3px 6px rgba(0, 0, 0, 1),
-      0 2px 4px rgba(0, 0, 0, 0.8),
-      0 1px 2px rgba(0, 0, 0, 0.6),
-      0 0 12px rgba(255, 255, 255, 0.5);
-  }
-  
-  .typewriter-container .typewriter-subtitle {
-    text-align: center !important;
-    color: #ffffff !important;
-    font-size: 0.6em !important;
-    font-weight: 400 !important;
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 1px 2px rgba(139, 69, 19, 0.4),
+      0 0 8px rgba(212, 196, 168, 0.3) !important;
   }
 }
 
@@ -392,7 +386,7 @@
   .poetry-container {
     width: 150px;
     font-size: 8px;
-    bottom: 20px; 
+    bottom: 80px; 
     font-style: italic;
   }
   .stanza1 {
@@ -490,19 +484,19 @@
 
 /* 🎵 Şık Ses Kontrol Butonu Efektleri */
 
-/* Pulse animasyonu - dikkat çekici */
+/* Pulse animasyonu - sade */
 .audio-control-pulse {
-  animation: audio-pulse 2s infinite;
+  animation: audio-pulse 3s infinite;
 }
 
 @keyframes audio-pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    transform: scale(1.02);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
   }
   100% {
     transform: scale(1);
@@ -510,28 +504,28 @@
   }
 }
 
-/* Ripple efekti */
+/* Ripple efekti - sade */
 .audio-control-ripple {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: audio-ripple 1.5s infinite;
+  animation: audio-ripple 2.5s infinite;
 }
 
 @keyframes audio-ripple {
   0% {
     width: 100%;
     height: 100%;
-    opacity: 1;
+    opacity: 0.8;
   }
   100% {
-    width: 200%;
-    height: 200%;
+    width: 150%;
+    height: 150%;
     opacity: 0;
   }
 }
