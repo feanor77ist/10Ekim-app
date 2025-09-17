@@ -145,7 +145,6 @@ const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, aud
             const button = document.createElement('div');
             button.id = 'audio-control-btn';
             button.className = `audio-control ${!isPlaying ? 'audio-control-pulse' : ''} ${isPlaying && !isMuted ? 'audio-control-playing' : ''}`;
-            button.title = !isPlaying ? "Sesi Başlat" : (isMuted ? "Sesi Aç" : "Sesi Kapat");
             
             // Tooltip oluştur
             const tooltip = document.createElement('div');
@@ -213,11 +212,10 @@ const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, aud
             });
             
             button.addEventListener('mouseleave', () => {
-                const hasVisited = localStorage.getItem('audio-tooltip-shown');
-                if (hasVisited) {
-                    tooltip.style.opacity = '0';
-                    tooltip.style.visibility = 'hidden';
-                }
+                // Hover kalkınca tooltip'i her zaman gizle
+                tooltip.classList.remove('show');
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
             });
 
             // Body'ye ekle
