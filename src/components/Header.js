@@ -5,6 +5,7 @@ import './Header.css';
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
   const timerRef = useRef(null);
+  const cycleTimerRef = useRef(null);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -17,24 +18,51 @@ const Header = () => {
     { title: "GÖRSELLER", link: "/gorseller", enabled: true }
   ];
 
+  // Döngüsel animasyon fonksiyonu
+  const startCyclingAnimation = () => {
+    const cycle = () => {
+      // 3 saniye görünür
+      setIsVisible(true);
+      cycleTimerRef.current = setTimeout(() => {
+        // 3 saniye kaybol
+        setIsVisible(false);
+        cycleTimerRef.current = setTimeout(() => {
+          // Tekrar döngüye başla
+          cycle();
+        }, 3000);
+      }, 3000);
+    };
+    
+    // İlk 3 saniye bekleyip döngüyü başlat
+    cycleTimerRef.current = setTimeout(() => {
+      cycle();
+    }, 3000);
+  };
+
+  const stopCyclingAnimation = () => {
+    if (cycleTimerRef.current) {
+      clearTimeout(cycleTimerRef.current);
+      cycleTimerRef.current = null;
+    }
+  };
+
   useEffect(() => {
     if (isHomePage) {
-      // Anasayfada video oynarken 3 saniye sonra header'ı göster
+      // Anasayfada video oynarken döngüsel animasyonu başlat
       const handleVideoPlay = () => {
-        // Timer'ı temizle
+        // Önceki timer'ları temizle
+        stopCyclingAnimation();
         if (timerRef.current) {
           clearTimeout(timerRef.current);
         }
         
-        // 3 saniye sonra header'ı göster
-        timerRef.current = setTimeout(() => {
-          console.log('Header gösteriliyor!');
-          setIsVisible(true);
-        }, 3000);
+        // Döngüsel animasyonu başlat
+        startCyclingAnimation();
       };
 
       const handleVideoPause = () => {
         setIsVisible(false);
+        stopCyclingAnimation();
         if (timerRef.current) {
           clearTimeout(timerRef.current);
           timerRef.current = null;
@@ -48,7 +76,7 @@ const Header = () => {
         video.addEventListener('pause', handleVideoPause);
         video.addEventListener('ended', handleVideoPause);
         
-        // Eğer video zaten oynuyorsa timer'ı başlat
+        // Eğer video zaten oynuyorsa döngüyü başlat
         if (!video.paused) {
           handleVideoPlay();
         }
@@ -57,19 +85,26 @@ const Header = () => {
           video.removeEventListener('play', handleVideoPlay);
           video.removeEventListener('pause', handleVideoPause);
           video.removeEventListener('ended', handleVideoPause);
+          stopCyclingAnimation();
           if (timerRef.current) {
             clearTimeout(timerRef.current);
           }
         };
       }
     } else {
-      // Diğer sayfalarda her zaman görünür
-      setIsVisible(true);
+      // Diğer sayfalarda döngüsel animasyonu başlat
+      stopCyclingAnimation();
+      startCyclingAnimation();
     }
+
+    // Cleanup
+    return () => {
+      stopCyclingAnimation();
+    };
   }, [isHomePage]);
 
   return (
-    <header className={`main-header ${isHomePage ? (isVisible ? 'header-visible' : 'header-hidden') : 'header-visible'}`}>
+    <header className={`main-header ${isVisible ? 'header-visible' : 'header-hidden'}`}>
       <div className="header-container">
         <div className="header-content">
           <nav className="header-navigation">

@@ -27,11 +27,13 @@
 .header-visible {
   transform: translateY(0);
   opacity: 1;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-hidden {
   transform: translateY(-100%);
   opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-container {
@@ -163,7 +165,7 @@
   
   .header-content {
     padding: 4px 0;
-    min-height: 35px;
+    min-height: 40px;
   }
   
   .header-navigation {
@@ -175,8 +177,12 @@
   }
   
   .header-nav-link {
-    padding: 5px 10px;
-    font-size: 11px;
+    padding: 5px 8px;
+    font-size: 10px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -199,12 +205,12 @@
   }
   
   .header-container {
-    padding: 0 15px;
+    padding: 0 8px;
   }
   
   .header-content {
-    padding: 3px 0;
-    min-height: 32px;
+    padding: 4px 0;
+    min-height: 45px;
   }
   
   .header-navigation {
@@ -213,14 +219,21 @@
   
   .header-nav-list {
     flex-wrap: wrap;
-    gap: 2px;
+    gap: 3px;
     justify-content: center;
+    max-width: 100%;
   }
   
   .header-nav-link {
-    padding: 4px 8px;
-    font-size: 10px;
+    padding: 6px 10px;
+    font-size: 11px;
     letter-spacing: 0.1px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
   }
 }
 
@@ -242,26 +255,57 @@
     );
   }
   
+  .header-container {
+    padding: 0 6px;
+  }
+  
   .header-content {
-    min-height: 32px;
-    padding: 3px 0;
+    min-height: 50px;
+    padding: 6px 0;
   }
   
   .header-nav-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
     width: 100%;
+    max-width: 100%;
   }
   
   .header-nav-link {
-    padding: 4px 3px;
-    font-size: 8px;
+    padding: 8px 6px;
+    font-size: 10px;
     letter-spacing: 0.1px;
     text-align: center;
-    min-height: 28px;
+    min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.0;
+    word-break: break-word;
+  }
+}
+
+/* Çok küçük ekranlar için ek optimizasyon */
+@media screen and (max-width: 360px) {
+  .header-container {
+    padding: 0 4px;
+  }
+  
+  .header-content {
+    min-height: 55px;
+    padding: 8px 0;
+  }
+  
+  .header-nav-list {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  
+  .header-nav-link {
+    padding: 8px 8px;
+    font-size: 11px;
+    min-height: 36px;
+    line-height: 1.1;
   }
 }

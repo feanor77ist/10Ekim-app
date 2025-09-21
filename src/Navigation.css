@@ -226,34 +226,34 @@
 /* Mobil görünüm */
 @media screen and (max-width: 768px) {
   .mainpage-icon {
-    width: 45px;
-    height: 45px;
-    top: 5px;
-    left: 10px;
+    width: 60px;
+    height: 60px;
+    top: 8px;
+    left: 12px;
   }
 
   .mainpage-icon-link {
-    width: 45px;
-    height: 45px;
-    top: 5px;
-    left: 10px;
+    width: 60px;
+    height: 60px;
+    top: 8px;
+    left: 12px;
   }
 
   .black-ribbon {
-    width: 25px;
-    height: 30px;
-    bottom: 15px;
-    right: -8px;
+    width: 30px;
+    height: 35px;
+    bottom: 20px;
+    right: -10px;
     opacity: 1;
     transform: rotate(-25deg);
     transition: all 0.3s ease;
   }
 
   .menu-icon {
-    width: 45px;
-    height: 45px;
-    top: 5px;
-    right: 10px;
+    width: 55px;
+    height: 55px;
+    top: 8px;
+    right: 12px;
   }
 
   .navigation-bar {
@@ -302,30 +302,30 @@
 /* Çok küçük ekranlar için ek düzenlemeler */
 @media screen and (max-width: 480px) {
   .mainpage-icon {
-    width: 40px;
-    height: 40px;
-    top: 3px;
-    left: 8px;
+    width: 50px;
+    height: 50px;
+    top: 5px;
+    left: 10px;
   }
 
   .mainpage-icon-link {
-    width: 40px;
-    height: 40px;
-    top: 3px;
-    left: 8px;
+    width: 50px;
+    height: 50px;
+    top: 5px;
+    left: 10px;
   }
 
   .black-ribbon {
-    width: 22px;
-    height: 28px;
-    bottom: 12px;
-    right: -6px;
+    width: 25px;
+    height: 30px;
+    bottom: 15px;
+    right: -8px;
   }
 
   .menu-icon {
-    width: 40px;
-    height: 40px;
-    top: 3px;
-    right: 8px;
+    width: 45px;
+    height: 45px;
+    top: 5px;
+    right: 10px;
   }
 }
