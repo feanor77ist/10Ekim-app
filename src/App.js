@@ -6,6 +6,7 @@ import './Navigation.css';
 
 import videoSource from "./images/short2.mp4";
 import Navigation from './Navigation';
+import Header from './components/Header';
 import Video from './Video';
 import Poetry from './Poetry';
 import useVideoControls from './useVideoControls';
@@ -22,6 +23,7 @@ function HomePage() {
 
   return (
     <div className="app-container">
+      <Header />
       <div className="flash-screen"></div>
       <div className="typewriter-container">
         <div className="typewriter-text">
@@ -58,7 +60,11 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/hafiza-arsivi" element={<MemoryArchive />} />
         <Route path="/surec" element={<Timeline />} />
+        <Route path="/kararlar" element={<div>Kararlar Sayfası</div>} />
+        <Route path="/belgeler-raporlar" element={<div>Belgeler & Raporlar Sayfası</div>} />
         <Route path="/haberler" element={<Haberler />} />
+        <Route path="/gorseller" element={<div>Görseller Sayfası</div>} />
+        <Route path="/yitirdiklerimiz" element={<div>Yitirdiklerimiz Sayfası</div>} />
         {/* Diğer sayfaları buraya ekleyebilirsin */}
       </Routes>
     </Router>

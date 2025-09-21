@@ -125,7 +125,7 @@ const MemoryArchive = () => {
   return (
     <div className="memory-archive">
       <div className="archive-header">
-        <h1>10 Ekim Hafıza Arşivi</h1>
+        <h1>10 Ekim Hafıza Meydanı</h1>
         <p>360° İnteraktif hafıza ve mücadele alanı</p>
       </div>
 

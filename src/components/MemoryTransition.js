@@ -88,7 +88,7 @@ const MemoryTransition = ({ isVisible, onComplete, onReturnHome }) => {
                 className="memory-button primary"
                 onClick={handleEnterArchive}
               >
-                <span className="button-text">HAFIZA ARŞİVİNE GİR</span>
+                <span className="button-text">HAFIZA MEYDANINA GİT</span>
               </button>
             </div>
             

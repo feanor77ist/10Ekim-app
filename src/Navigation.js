@@ -8,18 +8,18 @@ import './Navigation.css';
 import { Link } from 'react-router-dom';
 
 const menuItems = [
-  { title: "HAFIZA ARŞİVİ", link: "/hafiza-arsivi" },
-  { title: "SÜREÇ", link: "/surec" },
-  { title: "FAİLLER", link: "/failler" },
-  { title: "KARARLAR", link: "/kararlar" },
-  { title: "BELGELER & RAPORLAR", link: "/belgeler-raporlar" },
-  { title: "DİLEKÇELER", link: "/dilekceler" },
-  { title: "SORUMLULAR", link: "/sorumlular" },
-  { title: "HABERLER", link: "/haberler" },
-  { title: "GÖRSELLER", link: "/gorseller" },
-  { title: "AÇIKLAMALAR", link: "/aciklamalar" },
-  { title: "DURUŞMALAR", link: "/durusmalar" },
-  { title: "LİNKLER", link: "/linkler" },
+  { title: "HAFIZA", link: "/hafiza-arsivi", enabled: true },
+  { title: "SÜREÇ", link: "/surec", enabled: true },
+  { title: "FAİLLER", link: "/failler", enabled: false },
+  { title: "KARARLAR", link: "/kararlar", enabled: true },
+  { title: "BELGELER & RAPORLAR", link: "/belgeler-raporlar", enabled: true },
+  { title: "DİLEKÇELER", link: "/dilekceler", enabled: false },
+  { title: "SORUMLULAR", link: "/sorumlular", enabled: false },
+  { title: "HABERLER", link: "/haberler", enabled: true },
+  { title: "GÖRSELLER", link: "/gorseller", enabled: true },
+  { title: "AÇIKLAMALAR", link: "/aciklamalar", enabled: false },
+  { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
+  { title: "LİNKLER", link: "/linkler", enabled: false },
 ];
 
 const Navigation = () => {
@@ -114,13 +114,19 @@ const Navigation = () => {
         <ul>
           <div className="navigation-header">10 EKİM HAFIZA</div>
           {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link
-                to={item.link}
-                onClick={() => setIsNavVisible(false)} // menüyü kapat
-              >
-                {item.title}
-              </Link>
+            <li key={index} className={!item.enabled ? 'disabled' : ''}>
+              {item.enabled ? (
+                <Link
+                  to={item.link}
+                  onClick={() => setIsNavVisible(false)} // menüyü kapat
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <span className="disabled-link">
+                  {item.title}
+                </span>
+              )}
             </li>
           ))}
           
