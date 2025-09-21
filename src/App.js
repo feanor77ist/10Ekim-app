@@ -12,6 +12,7 @@ import useVideoControls from './useVideoControls';
 import MyTypewriter from './TypeWriter';
 import Timeline from './pages/Timeline'; // Timeline bileşenini ekliyoruz
 import MemoryArchive from './pages/MemoryArchive'; // Hafıza arşivi bileşenini ekliyoruz
+import Haberler from './pages/Haberler'; // Haberler sayfası bileşeni
 import MemoryTransition from './components/MemoryTransition'; // Sinematik geçiş bileşeni
 
 function HomePage() {
@@ -57,6 +58,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/hafiza-arsivi" element={<MemoryArchive />} />
         <Route path="/surec" element={<Timeline />} />
+        <Route path="/haberler" element={<Haberler />} />
         {/* Diğer sayfaları buraya ekleyebilirsin */}
       </Routes>
     </Router>
