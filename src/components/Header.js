@@ -4,7 +4,6 @@ import './Header.css';
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef(null);
   const cycleTimerRef = useRef(null);
@@ -20,17 +19,6 @@ const Header = () => {
     { title: "GÖRSELLER", link: "/gorseller", enabled: true }
   ];
 
-  // Mobil ekran kontrolü
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Header görünürlük animasyonu
   const startHeaderAnimation = () => {
