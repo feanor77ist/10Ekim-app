@@ -1,7 +1,6 @@
 .timeline-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 24px;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -16,6 +15,208 @@
   background-color: #2b2b2b; /* Saf siyah yerine koyu gri */
   color: #e0e0e0;
   z-index: 0;
+  padding: 50px 20px 0 20px;
+}
+
+/* Süreç Özeti Bölümü Stilleri */
+.process-summary {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  padding: 60px 20px 40px 20px;
+  margin-bottom: 40px;
+  position: relative;
+  border-bottom: 3px solid #8e4a49;
+}
+
+.process-summary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/GrainBackground.gif');
+  background-size: 1% 1%, cover;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.process-summary-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.process-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #8e4a49;
+  padding-bottom: 15px;
+}
+
+.process-description {
+  text-align: justify;
+  line-height: 1.8;
+  font-size: 18px;
+  color: #e8e8e8;
+}
+
+.process-description p {
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  text-indent: 20px;
+}
+
+.process-description p:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-intro {
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(142, 74, 73, 0.1);
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 1000px;
+}
+
+.timeline-intro p {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+  text-indent: 0;
+}
+
+.timeline-description {
+  background: rgba(142, 74, 73, 0.1);
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px auto;
+  text-align: center;
+  max-width: 1000px;
+}
+
+.timeline-description p {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.read-more-btn {
+  background: linear-gradient(135deg, #8e4a49 0%, #a55a59 100%);
+  color: #ffffff;
+  border: none !important;
+  outline: none !important;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(142, 74, 73, 0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+.read-more-btn:hover {
+  background: linear-gradient(135deg, #a55a59 0%, #8e4a49 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 74, 73, 0.4);
+  border: none !important;
+  outline: none !important;
+}
+
+.read-more-btn:active {
+  transform: translateY(0);
+  border: none !important;
+  outline: none !important;
+}
+
+.read-more-btn:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(142, 74, 73, 0.3);
+}
+
+.full-text-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  margin: 30px 0;
+  padding: 40px 20px;
+  border-radius: 15px;
+  border: 1px solid #8e4a49;
+  position: relative;
+}
+
+/* Full text section GrainBackground devre dışı bırakıldı */
+/* .full-text-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/GrainBackground.gif');
+  background-size: 1% 1%, cover;
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 15px;
+} */
+
+.full-text-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.full-text-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e8e8e8;
+  margin-bottom: 20px;
+  text-align: justify;
+  text-indent: 20px;
+}
+
+.full-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+.full-text-content h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: #8e4a49;
+  margin: 40px 0 20px 0;
+  text-align: center;
+  border-bottom: 2px solid #8e4a49;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.full-text-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #ffffff;
+  margin: 30px 0 15px 0;
+  text-align: left;
+  border-left: 4px solid #8e4a49;
+  padding-left: 15px;
+  letter-spacing: 0.5px;
 }
 
 .vertical-timeline-element-content {
@@ -26,7 +227,9 @@
   position: relative;
   padding: 20px;
   border-bottom: 1px solid #8e4a49;
-  margin-top: 50px;
+  margin-top: 0;
+  top: 0;
+  vertical-align: top;
 }
 
 .vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
@@ -39,9 +242,46 @@
 
 .vertical-timeline-element-date {
   color: #bbbbbb;
+  vertical-align: top;
+  position: relative;
+  top: 0;
 }
 
-.timeline-wrapper::before {
+.vertical-timeline-element {
+  vertical-align: top;
+}
+
+.vertical-timeline-element::before {
+  vertical-align: top;
+}
+
+.vertical-timeline-element-content-arrow {
+  vertical-align: top;
+}
+
+/* Ensure proper alignment of timeline elements */
+.vertical-timeline-element-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.vertical-timeline-element-date {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.2;
+}
+
+/* Fix alignment for right-side elements */
+.vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
+  margin-top: 0 !important;
+}
+
+.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content {
+  margin-top: 0 !important;
+}
+
+/* GrainBackground devre dışı bırakıldı */
+/* .timeline-wrapper::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -51,4 +291,167 @@
   opacity: 0.4;
   mix-blend-mode: overlay;
   pointer-events: none;
+} */
+
+/* First timeline element spacing */
+.vertical-timeline-element:first-child {
+  margin-top: 30px;
+}
+
+.vertical-timeline-element:first-child .vertical-timeline-element-content {
+  margin-top: 0 !important;
+}
+
+/* Mobile responsiveness - ensure alignment works on mobile */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    padding: 30px 15px 0 15px;
+  }
+  
+  .process-summary {
+    padding: 40px 15px 30px 15px;
+    margin-bottom: 30px;
+  }
+  
+  .process-title {
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .process-description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+   .process-description p {
+     margin-bottom: 15px;
+     text-indent: 15px;
+   }
+   
+   .timeline-intro {
+     margin: 20px auto;
+     padding: 15px;
+     max-width: calc(100% - 30px);
+   }
+   
+   .timeline-intro p {
+     font-size: 16px;
+   }
+   
+   .read-more-btn {
+     padding: 10px 20px;
+     font-size: 14px;
+     border: none !important;
+     outline: none !important;
+   }
+   
+   .full-text-section {
+     margin: 20px 0;
+     padding: 30px 15px;
+   }
+   
+   .full-text-content p {
+     font-size: 16px;
+     line-height: 1.6;
+     text-indent: 15px;
+   }
+   
+   .full-text-content h2 {
+     font-size: 24px;
+     margin: 30px 0 15px 0;
+   }
+   
+   .full-text-content h3 {
+     font-size: 18px;
+     margin: 25px 0 12px 0;
+     padding-left: 12px;
+   }
+  
+  .vertical-timeline-element-content {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .vertical-timeline-element-date {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .vertical-timeline-element {
+    margin-bottom: 20px;
+  }
+  
+  .vertical-timeline-element:first-child {
+    margin-top: 20px;
+  }
+}
+
+/* Sabit Daha Az Göster butonu */
+.fixed-close-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);
+  color: #ffffff;
+  border: 2px solid #8e4a49;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fixed-close-btn::before {
+  content: '×';
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.fixed-close-btn:hover {
+  background: linear-gradient(135deg, #8e4a49 0%, #a55a59 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 74, 73, 0.4);
+  border-color: #a55a59;
+}
+
+.fixed-close-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobil için sabit buton */
+@media (max-width: 768px) {
+  .fixed-close-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+  
+  .timeline-wrapper {
+    padding: 30px 15px 0 15px;
+  }
+  
+  .timeline-intro {
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .timeline-description {
+    padding: 15px;
+    margin: 20px auto;
+    max-width: calc(100% - 30px);
+  }
+  
+  .timeline-description p {
+    font-size: 16px;
+  }
 }

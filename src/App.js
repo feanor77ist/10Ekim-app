@@ -14,6 +14,7 @@ import MyTypewriter from './TypeWriter';
 import Timeline from './pages/Timeline'; // Timeline bileşenini ekliyoruz
 import MemoryArchive from './pages/MemoryArchive'; // Hafıza arşivi bileşenini ekliyoruz
 import Haberler from './pages/Haberler'; // Haberler sayfası bileşeni
+import Hakkinda from './pages/Hakkinda'; // Hakkında sayfası bileşeni
 import MemoryTransition from './components/MemoryTransition'; // Sinematik geçiş bileşeni
 
 function HomePage() {
@@ -60,6 +61,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/hafiza-arsivi" element={<MemoryArchive />} />
         <Route path="/surec" element={<Timeline />} />
+        <Route path="/hakkinda" element={<Hakkinda />} />
         <Route path="/kararlar" element={<div>Kararlar Sayfası</div>} />
         <Route path="/belgeler-raporlar" element={<div>Belgeler & Raporlar Sayfası</div>} />
         <Route path="/haberler" element={<Haberler />} />

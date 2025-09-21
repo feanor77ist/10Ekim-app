@@ -20,6 +20,7 @@ const menuItems = [
   { title: "AÇIKLAMALAR", link: "/aciklamalar", enabled: false },
   { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
   { title: "LİNKLER", link: "/linkler", enabled: false },
+  { title: "HAKKINDA", link: "/hakkinda", enabled: true },
 ];
 
 const Navigation = () => {
