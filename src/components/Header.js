@@ -1,8 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const timerRef = useRef(null);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const headerLinks = [
     { title: "HAFIZA", link: "/hafiza-arsivi", enabled: true },
     { title: "SÜREÇ", link: "/surec", enabled: true },
@@ -12,8 +17,59 @@ const Header = () => {
     { title: "GÖRSELLER", link: "/gorseller", enabled: true }
   ];
 
+  useEffect(() => {
+    if (isHomePage) {
+      // Anasayfada video oynarken 3 saniye sonra header'ı göster
+      const handleVideoPlay = () => {
+        // Timer'ı temizle
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+        
+        // 3 saniye sonra header'ı göster
+        timerRef.current = setTimeout(() => {
+          console.log('Header gösteriliyor!');
+          setIsVisible(true);
+        }, 3000);
+      };
+
+      const handleVideoPause = () => {
+        setIsVisible(false);
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+      };
+
+      // Video elementini bul ve event listener'ları ekle
+      const video = document.querySelector('video');
+      if (video) {
+        video.addEventListener('play', handleVideoPlay);
+        video.addEventListener('pause', handleVideoPause);
+        video.addEventListener('ended', handleVideoPause);
+        
+        // Eğer video zaten oynuyorsa timer'ı başlat
+        if (!video.paused) {
+          handleVideoPlay();
+        }
+
+        return () => {
+          video.removeEventListener('play', handleVideoPlay);
+          video.removeEventListener('pause', handleVideoPause);
+          video.removeEventListener('ended', handleVideoPause);
+          if (timerRef.current) {
+            clearTimeout(timerRef.current);
+          }
+        };
+      }
+    } else {
+      // Diğer sayfalarda her zaman görünür
+      setIsVisible(true);
+    }
+  }, [isHomePage]);
+
   return (
-    <header className="main-header">
+    <header className={`main-header ${isHomePage ? (isVisible ? 'header-visible' : 'header-hidden') : 'header-visible'}`}>
       <div className="header-container">
         <div className="header-content">
           <nav className="header-navigation">
