@@ -43,13 +43,14 @@
     url('images/GrainBackground.gif'),
     linear-gradient(
       135deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(92, 51, 23, 0.35) 25%,
-      rgba(139, 69, 19, 0.25) 50%,
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(139, 69, 19, 0.4) 20%,
+      rgba(184, 134, 11, 0.3) 40%,
+      rgba(92, 51, 23, 0.35) 60%,
+      rgba(0, 0, 0, 0.7) 100%
     );
 
-  background-size: 0.4% 0.4%, cover;
+  background-size: 0.2% 0.2%, cover;
   background-position: center;
   background-blend-mode: multiply;
   opacity: 0.85;

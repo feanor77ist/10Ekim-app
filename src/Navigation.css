@@ -97,9 +97,9 @@
     url('./images/navbar-bg3.png');
   background-repeat: repeat, no-repeat;
   background-position: center center, center center;
-  background-size: 50% 50%, cover; 
+  background-size: 20% 20%, cover; 
   background-blend-mode: overlay, multiply;
-  filter: saturate(1.1) contrast(0.95) brightness(0.7);
+  filter: saturate(1.2) contrast(1.1) brightness(0.85);
 
   display: flex;
   justify-content: center;
@@ -261,9 +261,14 @@
     padding: 0;
     justify-content: flex-start;
     align-items: flex-start;
-    background: url('./images/navbar-bg3.png') no-repeat center center;
-    background-size: cover;
-    filter: saturate(1.1) contrast(0.95) brightness(0.7);
+    background-image: 
+      url('./images/GrainBackground.gif'),
+      url('./images/navbar-bg3.png');
+    background-repeat: repeat, no-repeat;
+    background-position: center center, center center;
+    background-size: 15% 15%, cover;
+    background-blend-mode: overlay, multiply;
+    filter: saturate(1.2) contrast(1.1) brightness(0.85);
   }
 
    .navigation-bar ul {
