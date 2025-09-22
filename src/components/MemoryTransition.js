@@ -18,7 +18,7 @@ const MemoryTransition = ({ isVisible, onComplete, onReturnHome }) => {
       // Faz 2: Mesaj göster
       setPhase('message');
       
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Faz 3: Buton göster
       setPhase('button');

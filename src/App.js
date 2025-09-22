@@ -8,7 +8,6 @@ import videoSource from "./images/short2.mp4";
 import Navigation from './Navigation';
 import Header from './components/Header';
 import Video from './Video';
-import Poetry from './Poetry';
 import useVideoControls from './useVideoControls';
 import MyTypewriter from './TypeWriter';
 import Timeline from './pages/Timeline'; // Timeline bileşenini ekliyoruz
@@ -18,9 +17,13 @@ import Hakkinda from './pages/Hakkinda'; // Hakkında sayfası bileşeni
 import MemoryTransition from './components/MemoryTransition'; // Sinematik geçiş bileşeni
 
 function HomePage() {
-  const [showPoetry, setShowPoetry] = React.useState(false);
   const [showMemoryTransition, setShowMemoryTransition] = React.useState(false);
-  const { videoRef, audioRef, handleVideoLoad, handleVideoPlay, handleVideoPause, resetVideoState } = useVideoControls(setShowPoetry, setShowMemoryTransition);
+  const { videoRef, audioRef, handleVideoLoad, handleVideoPlay, handleVideoPause, resetVideoState } = useVideoControls(setShowMemoryTransition);
+
+  // Debug için
+  React.useEffect(() => {
+    console.log('showMemoryTransition state değişti:', showMemoryTransition);
+  }, [showMemoryTransition]);
 
   return (
     <div className="app-container">
@@ -40,7 +43,6 @@ function HomePage() {
         audioRef={audioRef}
         hideAudioButton={showMemoryTransition}
       />
-      <Poetry isVisible={showPoetry} />
       
       {/* Sinematik geçiş bileşeni */}
       <MemoryTransition 
