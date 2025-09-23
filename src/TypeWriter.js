@@ -7,8 +7,8 @@ const MyTypewriter = () => {
     <Typewriter
       options={{
         loop: true,
-        delay: 80, // Biraz daha yavaş ve zarif
-        deleteSpeed: 45, // Daha akıcı silme
+        delay: 60, // Daha hızlı yazım
+        deleteSpeed: 30, // Daha hızlı silme
         html: true,
         cursor: '<span class="custom-cursor">|</span>', // Özel cursor
         autoStart: true,
@@ -16,19 +16,34 @@ const MyTypewriter = () => {
       }}
       onInit={(typewriter) => {
         typewriter
-            .pauseFor(800)
+            // İlk blok: Hızlı başlangıç
+            .pauseFor(600)
             .typeString('ANKARA\'DAYMIŞ <span class="highlight-gradient">BARIŞ</span>')
-            .pauseFor(1800)       
+            .pauseFor(2000)       
+            
+            // Yavaş silme efekti
             .deleteChars(10)
-            .pauseFor(600)
+            .pauseFor(800)
             .typeString('<span> </span><span class="highlight-gradient">BARIŞ</span>')
-            .pauseFor(1200)
+            .pauseFor(1400)
+            
+            // Hızlı silme
             .deleteChars(6)
-            .pauseFor(600)
+            .pauseFor(400)
             .typeString('<span> </span><span class="highlight-gradient">MIYDI</span>BARIŞ ?')
-            .pauseFor(1500)
+            .pauseFor(1800)
+            
+            // Dramatik silme
+            .deleteAll()
+            .pauseFor(1000)
+            
+            // Yeni metin: Farklı timing
+            .typeString('<span class="highlight-gradient">10 EKİM</span> 2015 GÜNÜ NE OLDU?')
+            .pauseFor(2200)
+            
+            // Alt yazı: Yavaş ve zarif
             .typeString('<br><span class="typewriter-subtitle">hasret ve saygıyla...</span>')
-            .pauseFor(2500)
+            .pauseFor(3000)
             .start();
       }}
     />
