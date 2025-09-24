@@ -145,19 +145,9 @@
   display: inline-block; /* İçerik kadar alan kaplasın */
   align-self: flex-start; /* Flex yüksekliğine gerilmesin */
   
-  /* Daha sakin, profesyonel off-white gradient */
-  background: linear-gradient(
-    135deg,
-    #f6f7f9 0%,
-    #eef1f5 25%,
-    #e9edf2 50%,
-    #e5eaf0 75%,
-    #f7f9fc 100%
-  );
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Baskın beyaz renk */
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   
   /* Yumuşak shimmer animasyonu */
   animation: warmShimmer 8s ease-in-out infinite;
@@ -188,12 +178,11 @@
     inset 0 0 0 1px rgba(255,255,255,0.04), /* çok hafif çerçeve */
     inset 0 -20px 40px rgba(0,0,0,0.25),   /* altta hafif karartma */
     inset 0 20px 40px rgba(0,0,0,0.15);    /* üstte hafif karartma */
-  /* Geometrik olmayan organik silüet */
+  /* Dramatik sanatsal fırça darbesi */
   clip-path: polygon(
-    2% 6%, 8% 3%, 18% 4%, 28% 2%, 40% 4%, 50% 3%, 62% 5%, 72% 3%, 82% 4%, 92% 6%,
-    97% 12%, 98% 22%, 96% 32%, 98% 44%, 96% 56%, 98% 66%, 96% 76%, 98% 86%, 94% 92%,
-    86% 95%, 74% 98%, 62% 97%, 52% 98%, 40% 96%, 30% 98%, 18% 96%, 10% 94%, 5% 88%,
-    3% 78%, 4% 66%, 2% 56%, 4% 44%, 3% 34%, 4% 22%, 3% 14%
+    0% 25%, 8% 15%, 18% 8%, 28% 5%, 38% 12%, 48% 3%, 58% 8%, 68% 2%, 78% 10%, 88% 4%, 95% 15%, 100% 25%,
+    98% 35%, 92% 45%, 96% 55%, 90% 65%, 94% 75%, 88% 85%, 92% 92%, 85% 97%, 75% 100%, 65% 95%, 55% 98%,
+    45% 92%, 35% 96%, 25% 90%, 15% 94%, 8% 88%, 3% 78%, 6% 68%, 2% 58%, 5% 48%, 1% 38%, 4% 28%
   );
 }
 
@@ -221,12 +210,11 @@
   pointer-events: none;
   z-index: -1;
   animation: driftNoiseSoft 80s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
-  /* Aynı organik silüetle hizala */
+  /* Dramatik sanatsal fırça darbesi */
   clip-path: polygon(
-    2% 6%, 8% 3%, 18% 4%, 28% 2%, 40% 4%, 50% 3%, 62% 5%, 72% 3%, 82% 4%, 92% 6%,
-    97% 12%, 98% 22%, 96% 32%, 98% 44%, 96% 56%, 98% 66%, 96% 76%, 98% 86%, 94% 92%,
-    86% 95%, 74% 98%, 62% 97%, 52% 98%, 40% 96%, 30% 98%, 18% 96%, 10% 94%, 5% 88%,
-    3% 78%, 4% 66%, 2% 56%, 4% 44%, 3% 34%, 4% 22%, 3% 14%
+    0% 25%, 8% 15%, 18% 8%, 28% 5%, 38% 12%, 48% 3%, 58% 8%, 68% 2%, 78% 10%, 88% 4%, 95% 15%, 100% 25%,
+    98% 35%, 92% 45%, 96% 55%, 90% 65%, 94% 75%, 88% 85%, 92% 92%, 85% 97%, 75% 100%, 65% 95%, 55% 98%,
+    45% 92%, 35% 96%, 25% 90%, 15% 94%, 8% 88%, 3% 78%, 6% 68%, 2% 58%, 5% 48%, 1% 38%, 4% 28%
   );
 }
 
@@ -505,23 +493,10 @@
     display: inline-block;
     align-self: flex-start;
     
-     /* Mobilde daha sakin off-white gradient */
-    background: linear-gradient(
-       135deg,
-       #f6f7f9 0%,
-       #eef1f5 25%,
-       #e9edf2 50%,
-       #e5eaf0 75%,
-       #f7f9fc 100%
-    );
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+     /* Mobilde baskın beyaz renk */
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
      animation: warmShimmer 8s ease-in-out infinite;
-    
-     /* Minimal gölge */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     
     /* Mobil hafif blur efekti */
     filter: blur(0.2px);
@@ -533,10 +508,9 @@
     opacity: 0.14;
     background-size: 0.3% 0.3%, cover, 220% 220%;
     clip-path: polygon(
-      3% 8%, 10% 5%, 22% 6%, 32% 4%, 44% 6%, 54% 5%, 66% 6%, 76% 4%, 86% 6%, 94% 8%,
-      97% 16%, 98% 26%, 96% 36%, 98% 46%, 96% 58%, 98% 68%, 96% 78%, 98% 88%, 92% 94%,
-      84% 96%, 72% 98%, 60% 98%, 48% 98%, 38% 96%, 26% 98%, 16% 96%, 8% 92%, 5% 86%,
-      4% 74%, 5% 64%, 3% 54%, 5% 44%, 4% 32%, 5% 22%, 4% 16%
+      0% 28%, 10% 18%, 20% 10%, 30% 8%, 40% 15%, 50% 5%, 60% 12%, 70% 4%, 80% 15%, 90% 8%, 98% 18%, 100% 28%,
+      95% 38%, 88% 48%, 92% 58%, 85% 68%, 90% 78%, 82% 88%, 86% 94%, 78% 98%, 68% 100%, 58% 96%, 48% 99%,
+      38% 93%, 28% 97%, 18% 91%, 12% 95%, 5% 88%, 2% 78%, 8% 68%, 3% 58%, 8% 48%, 2% 38%, 6% 28%
     );
   }
 
@@ -546,10 +520,9 @@
     opacity: 0.06;
     background-size: cover, 0.34% 0.34%;
     clip-path: polygon(
-      3% 8%, 10% 5%, 22% 6%, 32% 4%, 44% 6%, 54% 5%, 66% 6%, 76% 4%, 86% 6%, 94% 8%,
-      97% 16%, 98% 26%, 96% 36%, 98% 46%, 96% 58%, 98% 68%, 96% 78%, 98% 88%, 92% 94%,
-      84% 96%, 72% 98%, 60% 98%, 48% 98%, 38% 96%, 26% 98%, 16% 96%, 8% 92%, 5% 86%,
-      4% 74%, 5% 64%, 3% 54%, 5% 44%, 4% 32%, 5% 22%, 4% 16%
+      0% 28%, 10% 18%, 20% 10%, 30% 8%, 40% 15%, 50% 5%, 60% 12%, 70% 4%, 80% 15%, 90% 8%, 98% 18%, 100% 28%,
+      95% 38%, 88% 48%, 92% 58%, 85% 68%, 90% 78%, 82% 88%, 86% 94%, 78% 98%, 68% 100%, 58% 96%, 48% 99%,
+      38% 93%, 28% 97%, 18% 91%, 12% 95%, 5% 88%, 2% 78%, 8% 68%, 3% 58%, 8% 48%, 2% 38%, 6% 28%
     );
   }
 

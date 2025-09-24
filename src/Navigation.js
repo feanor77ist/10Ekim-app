@@ -17,7 +17,7 @@ const menuItems = [
   { title: "SORUMLULAR", link: "/sorumlular", enabled: false },
   { title: "HABERLER", link: "/haberler", enabled: true },
   { title: "GÖRSELLER", link: "/gorseller", enabled: true },
-  { title: "AÇIKLAMALAR", link: "/aciklamalar", enabled: false },
+  { title: "BASIN AÇIKLAMALARI", link: "/aciklamalar", enabled: true },
   { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
   { title: "LİNKLER", link: "/linkler", enabled: false },
   { title: "HAKKINDA", link: "/hakkinda", enabled: true },

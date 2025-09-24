@@ -5,7 +5,8 @@ const Hakkinda = () => {
   return (
     <div className="hakkinda-container">
       <div className="hakkinda-header">
-        <h1>10 Ekim Ankara Katliamı Davası Avukat Komisyonu</h1>
+        <h1>Mahkeme Kararlarında Yer Almayan</h1>
+        <h1>Her Şey Hafızalarımızda...</h1>
       </div>
 
       <div className="hakkinda-content">
