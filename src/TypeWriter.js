@@ -38,7 +38,7 @@ const MyTypewriter = () => {
             .pauseFor(1000)
             
             // Yeni metin: Farklı timing
-            .typeString('<span class="highlight-gradient">10 EKİM</span> 2015\'DE NE OLDU?')
+            .typeString('<span class="highlight-gradient">10 Ekim</span> 2015\'te ne oldu?')
             .pauseFor(2200)
             
             // Alt yazı: Yavaş ve zarif

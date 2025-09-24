@@ -60,16 +60,12 @@ const MemoryTransition = ({ isVisible, onComplete, onReturnHome }) => {
         <div className="transition-content">
           <div className="memory-message">
             <h1 className="main-title">
-              10 Ekim'i
+              <span className="highlight-text">Mahkeme kararlarında</span>
               <br />
-              <span className="highlight">Hatırla</span>
+              <span className="regular-text">yer almayan her şey</span>
+              <br />
+              <span className="highlight-text">hafızalarımızda</span>
             </h1>
-            
-            <p className="subtitle">
-              104 canımızı kaybettik
-              <br />
-              Hafızalarını yaşatalım
-            </p>
           </div>
           
           {/* Çıkış ikonu */}

@@ -6,15 +6,10 @@ const Hakkinda = () => {
     <div className="hakkinda-container">
       <div className="hakkinda-header">
         <h1>10 Ekim Ankara Katliamı Davası Avukat Komisyonu</h1>
-        <p className="subtitle">Hafıza, Adalet ve Demokrasi Mücadelesi</p>
       </div>
 
       <div className="hakkinda-content">
         <div className="intro-section">
-          <div className="date-highlight">
-            <span className="date">10 Ekim 2015</span>
-            <span className="event">Ankara katliamı</span>
-          </div>
           
           <div className="main-text">
             <p>
@@ -27,7 +22,6 @@ const Hakkinda = () => {
         </div>
 
         <div className="mission-section">
-          <h2>Misyonumuz</h2>
           <p>
             Türkiye'nin en büyük kitle katliamlarından biri olarak toplumsal hafızada önemli izler bırakan, 
             öncesi ve sonrasıyla Türkiye'de toplumsal ve siyasal yaşamın önemli kırılma noktalarından biri 
@@ -42,7 +36,6 @@ const Hakkinda = () => {
         </div>
 
         <div className="justice-section">
-          <h2>Adalet Mücadelesi</h2>
           <p>
             Yargı süreci, hayatını kaybedenlerin yakınları, yaralılar, emek ve demokrasi güçlerinin 
             ısrarlı ve inatçı mücadelesi ile yıllardır takip edilmekte olup, bu açıdan önemli bir 
@@ -58,7 +51,6 @@ const Hakkinda = () => {
         </div>
 
         <div className="importance-section">
-          <h2>Neden Önemli?</h2>
           <p>
             10 Ekim Ankara katliamının unutturulmaması, katliamın aydınlatılması ve gerçek faillerin 
             ortaya çıkarılması için verilen adalet mücadelesi, her şeyden önce 10 Ekim ailelerine ve 
@@ -74,7 +66,6 @@ const Hakkinda = () => {
         </div>
 
         <div className="digital-archive-section">
-          <h2>Dijital Arşiv ve Toplumsal Hafıza</h2>
           <p>
             Bu meyanda 10 Ekim Ankara Katliamı ve yargılama süreciyle ilgili her türlü bilgi ve belgelerin, 
             sadece dava dosyalarında kalmamasının ve dijital olarak kamuoyuna sunulmasının, adalet ve 
@@ -123,7 +114,6 @@ const Hakkinda = () => {
         </div>
 
         <div className="future-section">
-          <h2>Gelecek Hedefleri</h2>
           <p>
             Şimdilik yargılama sürecine ilişkin temel bilgi ve belgeler ile katliamla ilgili ulaşılabilen 
             haberlerin arşivinden oluşan bir içeriğin yer aldığı web sitesinin içeriğini süreç içerisinde 

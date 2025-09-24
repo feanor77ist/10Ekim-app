@@ -145,6 +145,12 @@ const Header = () => {
     >
       <div className="header-container">
         <div className="header-content">
+          {/* Sol taraf - Başlık */}
+          <div className="header-left">
+            <span className="header-title">10 EKİM DAVASI</span>
+          </div>
+          
+          {/* Sağ taraf - Navigation */}
           <nav className="header-navigation">
             <ul className="header-nav-list">
               {headerLinks.map((item, index) => (
