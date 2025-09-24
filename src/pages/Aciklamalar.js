@@ -395,12 +395,6 @@ const Aciklamalar = () => {
                 >
                   Görüntüle
                 </button>
-                <button 
-                  className="download-btn"
-                  onClick={() => downloadDocument(document.filename)}
-                >
-                  İndir
-                </button>
               </div>
             </div>
           </div>

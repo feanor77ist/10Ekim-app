@@ -79,12 +79,6 @@ const Kararlar = () => {
                 >
                   Görüntüle
                 </button>
-                <button 
-                  className="download-btn"
-                  onClick={() => downloadPdf(pdf.filename)}
-                >
-                  İndir
-                </button>
               </div>
             </div>
           </div>

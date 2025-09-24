@@ -16,7 +16,7 @@ const Header = () => {
     { title: "KARARLAR", link: "/kararlar", enabled: true },
     { title: "BELGELER & RAPORLAR", link: "/belgeler-raporlar", enabled: true },
     { title: "HABERLER", link: "/haberler", enabled: true },
-    { title: "GÖRSELLER", link: "/gorseller", enabled: true }
+    { title: "GÖRSELLER", link: "https://www.youtube.com/@10ekimankarakatliamavukatk96", enabled: true, external: true }
   ];
 
 
@@ -156,12 +156,23 @@ const Header = () => {
               {headerLinks.map((item, index) => (
                 <li key={index} className="header-nav-item">
                   {item.enabled ? (
-                    <Link 
-                      to={item.link} 
-                      className="header-nav-link"
-                    >
-                      {item.title}
-                    </Link>
+                    item.external ? (
+                      <a 
+                        href={item.link} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="header-nav-link"
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      <Link 
+                        to={item.link} 
+                        className="header-nav-link"
+                      >
+                        {item.title}
+                      </Link>
+                    )
                   ) : (
                     <span className="header-nav-link disabled">
                       {item.title}

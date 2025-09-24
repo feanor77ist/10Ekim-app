@@ -8,42 +8,42 @@ const BelgelerRaporlar = () => {
   const pdfFiles = [
     {
       id: 1,
-      title: "Araştırma Raporu",
+      title: "EGM Mülkiye Müfetişleri Araştırma Raporu",
       filename: "1-Araştırma Raporu.pdf",
       description: "10 Ekim Ankara Gar Katliamı ile ilgili detaylı araştırma raporu. Tarih: 24.02.2017",
       category: "Araştırma"
     },
     {
       id: 2,
-      title: "Araştırma Raporu Ekleri",
+      title: "EGM Mülkiye Müfetişleri Araştırma Raporu Ekleri",
       filename: "2-Araştırma Raporu Ekleri .pdf",
-      description: "Araştırma raporuna ait ek belgeler ve dokümanlar. Tarih: 26.10.2016",
+      description: "Araştırma raporuna ait ek belgeler ve dokümanlar.",
       category: "Araştırma"
     },
     {
       id: 3,
-      title: "Disiplin Raporu",
+      title: "EGM Mülkiye Müfetişleri Disiplin Raporu",
       filename: "Disiplin Raporu .pdf",
       description: "Olayla ilgili disiplin soruşturması raporu. Tarih: 26.02.2016",
       category: "Disiplin"
     },
     {
       id: 4,
-      title: "İnceleme Raporu",
+      title: "EGM Mülkiye Müfetişleri İnceleme Raporu",
       filename: "İnceleme Raporu .pdf",
       description: "Olayın detaylı inceleme raporu ve bulguları. Tarih: 13.10.2015",
       category: "İnceleme"
     },
     {
       id: 5,
-      title: "İnceleme Raporu (2016)",
+      title: "EGM Mülkiye Müfetişleri İnceleme Raporu (2016)",
       filename: "İnceleme Raporu.pdf",
       description: "İnceleme raporunun 2016 tarihli versiyonu. Tarih: 26.02.2016",
       category: "İnceleme"
     },
     {
       id: 6,
-      title: "Mülkiye Müfettişleri Ön İnceleme Raporu",
+      title: "EGM Mülkiye Müfettişleri Ön İnceleme Raporu",
       filename: "MÜLKİYE MÜFETTİŞLERİ ÖN İNCELEME RAPORU.pdf",
       description: "Mülkiye müfettişleri tarafından hazırlanan ön inceleme raporu. Tarih: 25.02.2016",
       category: "Müfettişlik"
@@ -201,12 +201,6 @@ const BelgelerRaporlar = () => {
                   onClick={() => handlePdfClick(pdf)}
                 >
                   Görüntüle
-                </button>
-                <button 
-                  className="download-btn"
-                  onClick={() => downloadPdf(pdf.filename)}
-                >
-                  İndir
                 </button>
               </div>
             </div>

@@ -3,6 +3,7 @@ import mainpageIcon from './images/logo2.png';
 import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
 import twitterIcon from './images/tw.jpg';
 import instagramIcon from './images/ig_icon.png';
+import youtubeIcon from './images/youtube-icon.svg';
 import blackRibbon from './images/black-ribbon.png';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
@@ -16,7 +17,7 @@ const menuItems = [
   { title: "DİLEKÇELER", link: "/dilekceler", enabled: false },
   { title: "SORUMLULAR", link: "/sorumlular", enabled: false },
   { title: "HABERLER", link: "/haberler", enabled: true },
-  { title: "GÖRSELLER", link: "/gorseller", enabled: true },
+  { title: "GÖRSELLER & VİDEOLAR", link: "https://www.youtube.com/@10ekimankarakatliamavukatk96", enabled: true, external: true },
   { title: "BASIN AÇIKLAMALARI", link: "/aciklamalar", enabled: true },
   { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
   { title: "LİNKLER", link: "/linkler", enabled: false },
@@ -117,12 +118,23 @@ const Navigation = () => {
           {menuItems.map((item, index) => (
             <li key={index} className={!item.enabled ? 'disabled' : ''}>
               {item.enabled ? (
-                <Link
-                  to={item.link}
-                  onClick={() => setIsNavVisible(false)} // menüyü kapat
-                >
-                  {item.title}
-                </Link>
+                item.external ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsNavVisible(false)} // menüyü kapat
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.link}
+                    onClick={() => setIsNavVisible(false)} // menüyü kapat
+                  >
+                    {item.title}
+                  </Link>
+                )
               ) : (
                 <span className="disabled-link">
                   {item.title}
@@ -150,6 +162,15 @@ const Navigation = () => {
               data-tooltip="Instagram"
             >
               <img src={instagramIcon} alt="Instagram" className="social-icon" />
+            </a>
+            <a 
+              href="https://www.youtube.com/@10ekimankarakatliamavukatk96" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link youtube"
+              data-tooltip="YouTube"
+            >
+              <img src={youtubeIcon} alt="YouTube" className="social-icon" />
             </a>
           </div>
         </ul>
