@@ -91,26 +91,12 @@
   border: 2px solid rgba(212, 175, 55, 0.3);
 }
 
-/* Custom fullscreen button (mobile-safe) */
-.ma-fs-btn {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 1200;
-  background: rgba(0,0,0,0.55);
-  color: #d4af37;
-  border: 1px solid rgba(212,175,55,0.5);
-  border-radius: 8px;
-  padding: 8px 10px;
-  cursor: pointer;
-  backdrop-filter: blur(2px);
-}
-
-.ma-fs-btn:active { transform: scale(0.98); }
-
-@media (min-width: 769px) {
-  .ma-fs-btn { display: none; }
-}
+/* Ensure pannellum's builtin fullscreen control is visible and gyroscope hidden on mobile */
+.pannellum-container .pnlm-fullscreen-toggle-button,
+.pannellum-container .pnlm-fullscreen-toggle { display: block !important; }
+.pannellum-container .pnlm-controls { z-index: 1100; }
+.pannellum-container .pnlm-orientation-button,
+.pannellum-container .pnlm-orientation-toggle-button { display: none !important; }
 
 @media (max-width: 768px) {
   .pannellum-container {
