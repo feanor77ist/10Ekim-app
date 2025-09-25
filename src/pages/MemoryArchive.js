@@ -360,6 +360,22 @@ const MemoryArchive = () => {
             setPanoramaReady(true);
           }}
         />
+        {/* Mobile fallback fullscreen button */}
+        <button
+          className="ma-fs-btn"
+          onClick={() => {
+            const el = document.getElementById('memory-archive-panorama');
+            if (!el) return;
+            if (document.fullscreenElement) {
+              document.exitFullscreen && document.exitFullscreen();
+            } else {
+              el.requestFullscreen && el.requestFullscreen();
+            }
+          }}
+          aria-label="Tam ekran"
+        >
+          ⤢ Tam Ekran
+        </button>
       </div>
 
       {/* Search under panorama */}
