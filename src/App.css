@@ -155,13 +155,12 @@
   /* Güçlü shimmer animasyonu */
   animation: titleGlow 3s ease-in-out infinite alternate;
   
-  /* Güçlü gölge ile okunabilirlik */
+  /* Daha az gölge ile okunabilirlik */
   font-weight: 400;
   text-shadow: 
-    0 2px 6px rgba(0, 0, 0, 0.85),
-    0 0 18px rgba(0, 0, 0, 0.6),
-    0 0 1px rgba(255, 255, 255, 0.25);
-  -webkit-text-stroke: 0.5px rgba(0,0,0,0.55);
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 0 8px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
 }
 
 /* Typewriter yazılarının arkasına iyileştirilmiş sinematik arka plan */
@@ -338,9 +337,9 @@
   /* Gradient glow animasyonu */
   animation: titleGlow 2.5s ease-in-out infinite alternate;
   text-shadow: 
-    0 2px 5px rgba(0, 0, 0, 0.85),
-    0 0 12px rgba(0, 0, 0, 0.55);
-  -webkit-text-stroke: 0.4px rgba(0,0,0,0.55);
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 0 8px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
 }
 
 .highlight-gradient::before {
@@ -563,8 +562,8 @@
     color: transparent;
     animation: titleGlow 3s ease-in-out infinite alternate;
     
-    /* Mobil hafif blur efekti */
-    filter: blur(0.2px);
+  /* Mobil blur efekti kaldırıldı */
+  filter: none;
   }
 
   .typewriter-text::before {
