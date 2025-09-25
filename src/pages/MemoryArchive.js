@@ -381,6 +381,12 @@ const MemoryArchive = () => {
             if (isFs) {
               (doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen)?.call(doc);
             } else {
+              // First try to click pannellum's own fullscreen toggle button (more reliable on mobile)
+              const nativeBtn = el.parentElement && el.parentElement.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle');
+              if (nativeBtn) {
+                nativeBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+                return;
+              }
               (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen)?.call(el);
             }
           }}
