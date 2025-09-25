@@ -29,6 +29,14 @@ const MemoryArchive = () => {
         const container = panoEl && panoEl.parentElement;
         const controls = container && container.querySelector('.pnlm-controls');
         if (!controls) return;
+        // If an orientation/gyro button is present on mobile, repurpose it as fullscreen
+        const orient = controls.querySelector('.pnlm-orientation-button, .pnlm-orientation-toggle-button');
+        if (orient && !orient.dataset.maRewired) {
+          orient.dataset.maRewired = '1';
+          orient.className = 'pnlm-control ma-fs-proxy';
+          orient.title = 'Tam ekran';
+          orient.innerHTML = '&#x26F6;';
+        }
         let fsBtn = controls.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle, .ma-fs-proxy');
         if (!fsBtn) {
           fsBtn = document.createElement('div');
