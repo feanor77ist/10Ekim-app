@@ -358,6 +358,38 @@ const MemoryArchive = () => {
           }}
           onPanoramaLoaded={() => {
             setPanoramaReady(true);
+            // Ensure fullscreen control exists on all devices
+            try {
+              const panoEl = document.getElementById('memory-archive-panorama');
+              const container = panoEl && panoEl.parentElement;
+              const controls = container && container.querySelector('.pnlm-controls');
+              if (!controls) return;
+              let fsBtn = controls.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle');
+              if (!fsBtn) {
+                fsBtn = document.createElement('div');
+                fsBtn.className = 'pnlm-control pnlm-fullscreen-toggle-button';
+                fsBtn.title = 'Tam ekran';
+                fsBtn.textContent = '⛶';
+                controls.appendChild(fsBtn);
+              }
+              if (!fsBtn.dataset.bound) {
+                fsBtn.dataset.bound = '1';
+                fsBtn.addEventListener('click', () => {
+                  try {
+                    const v = ReactPannellum.getViewer && ReactPannellum.getViewer();
+                    if (v && typeof v.toggleFullscreen === 'function') { v.toggleFullscreen(); return; }
+                  } catch (_) {}
+                  const doc = document;
+                  const root = panoEl;
+                  const isFs = doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+                  if (isFs) {
+                    (doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen)?.call(doc);
+                  } else {
+                    (root.requestFullscreen || root.webkitRequestFullscreen || root.msRequestFullscreen)?.call(root);
+                  }
+                });
+              }
+            } catch (_) {}
           }}
         />
         {/* No custom fullscreen button; rely on Pannellum's own control (visible via CSS) */}
