@@ -360,40 +360,7 @@ const MemoryArchive = () => {
             setPanoramaReady(true);
           }}
         />
-        {/* Mobile fallback fullscreen button */}
-        <button
-          className="ma-fs-btn"
-          onClick={() => {
-            // Prefer pannellum viewer API when available
-            try {
-              const v = ReactPannellum.getViewer && ReactPannellum.getViewer();
-              if (v && typeof v.toggleFullscreen === 'function') {
-                v.toggleFullscreen();
-                return;
-              }
-            } catch (_) {}
-
-            // DOM Fullscreen fallbacks (iOS / Android vendors)
-            const el = document.getElementById('memory-archive-panorama') || document.querySelector('.pannellum-container');
-            if (!el) return;
-            const doc = document;
-            const isFs = doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
-            if (isFs) {
-              (doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen)?.call(doc);
-            } else {
-              // First try to click pannellum's own fullscreen toggle button (more reliable on mobile)
-              const nativeBtn = el.parentElement && el.parentElement.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle');
-              if (nativeBtn) {
-                nativeBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-                return;
-              }
-              (el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen)?.call(el);
-            }
-          }}
-          aria-label="Tam ekran"
-        >
-          ⤢ Tam Ekran
-        </button>
+        {/* No custom fullscreen button; rely on Pannellum's own control (visible via CSS) */}
       </div>
 
       {/* Search under panorama */}
