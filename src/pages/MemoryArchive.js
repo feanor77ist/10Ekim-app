@@ -18,6 +18,49 @@ const MemoryArchive = () => {
     setIsModalOpen(true);
   };
 
+  // Ensure a fullscreen button exists in the pannellum controls (iOS safe)
+  useEffect(() => {
+    if (!panoramaReady) return;
+    let tries = 0;
+    const attach = () => {
+      tries += 1;
+      try {
+        const panoEl = document.getElementById('memory-archive-panorama');
+        const container = panoEl && panoEl.parentElement;
+        const controls = container && container.querySelector('.pnlm-controls');
+        if (!controls) return;
+        let fsBtn = controls.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle, .ma-fs-proxy');
+        if (!fsBtn) {
+          fsBtn = document.createElement('div');
+          fsBtn.className = 'pnlm-control ma-fs-proxy';
+          fsBtn.title = 'Tam ekran';
+          fsBtn.innerHTML = '&#x26F6;';
+          controls.appendChild(fsBtn);
+        }
+        if (!fsBtn.dataset.bound) {
+          fsBtn.dataset.bound = '1';
+          fsBtn.addEventListener('click', () => {
+            try {
+              const v = ReactPannellum.getViewer && ReactPannellum.getViewer();
+              if (v && typeof v.toggleFullscreen === 'function') { v.toggleFullscreen(); return; }
+            } catch (_) {}
+            const doc = document;
+            const isFs = doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+            const root = panoEl;
+            if (isFs) {
+              (doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen)?.call(doc);
+            } else {
+              (root.requestFullscreen || root.webkitRequestFullscreen || root.msRequestFullscreen)?.call(root);
+            }
+          });
+        }
+      } catch (_) {}
+    };
+    attach();
+    const id = setInterval(() => { attach(); if (tries > 10) clearInterval(id); }, 250);
+    return () => clearInterval(id);
+  }, [panoramaReady]);
+
   // Track fullscreen changes so we can portal tooltips/modals into FS root
   useEffect(() => {
     const handleFsChange = () => {
