@@ -1,114 +1,121 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import ReactDOM from 'react-dom';
 import ReactPannellum from 'react-pannellum';
 import './MemoryArchive.css';
 
 const MemoryArchive = () => {
   const [selectedHotspot, setSelectedHotspot] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [victims, setVictims] = useState([]);
+  const [panoramaReady, setPanoramaReady] = useState(false);
+  const [selectedVictim, setSelectedVictim] = useState(null);
+  const [fullscreenRoot, setFullscreenRoot] = useState(null);
+  const [showHelp, setShowHelp] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const HELP_KEY = 'memory_help_v2';
+  const openVictim = (v) => {
+    setSelectedVictim(v);
+    setIsModalOpen(true);
+  };
 
-  // Hafıza kategorileri ve içerikleri
-  const memoryData = {
-    legal: {
-      title: "Hukuki Süreç",
+  // Track fullscreen changes so we can portal tooltips/modals into FS root
+  useEffect(() => {
+    const handleFsChange = () => {
+      setFullscreenRoot(document.fullscreenElement || null);
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    handleFsChange();
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
+  }, []);
+
+  // Help HUD visibility persisted
+  useEffect(() => {
+    let dismissed = null;
+    try { dismissed = localStorage.getItem(HELP_KEY); } catch (_) {}
+    if (dismissed === '1') setShowHelp(false);
+  }, []);
+
+  const dismissHelp = () => {
+    setShowHelp(false);
+    try { localStorage.setItem(HELP_KEY, '1'); } catch (_) {}
+  };
+
+  // Auto-dismiss help on first interaction or after delay, only if not dismissed before
+  useEffect(() => {
+    if (!showHelp) return;
+    const container = document.getElementById('memory-archive-panorama');
+    const onFirstInteract = () => {
+      dismissHelp();
+      container && container.removeEventListener('mousedown', onFirstInteract);
+      container && container.removeEventListener('touchstart', onFirstInteract);
+      window.removeEventListener('keydown', onFirstInteract);
+    };
+    container && container.addEventListener('mousedown', onFirstInteract, { once: true });
+    container && container.addEventListener('touchstart', onFirstInteract, { once: true, passive: true });
+    window.addEventListener('keydown', onFirstInteract, { once: true });
+    const t = setTimeout(dismissHelp, 7000);
+    return () => {
+      clearTimeout(t);
+      container && container.removeEventListener('mousedown', onFirstInteract);
+      container && container.removeEventListener('touchstart', onFirstInteract);
+      window.removeEventListener('keydown', onFirstInteract);
+    };
+  }, [showHelp]);
+
+  // Hafıza kategorileri → Navbar ile uyumlu: Süreç, Kararlar, Belgeler & Raporlar, Basın Açıklamaları
+  const [memoryData, setMemoryData] = useState({
+    surec: { title: "Süreç", icon: "🧭", items: [] },
+    kararlar: {
+      title: "Kararlar",
       icon: "⚖️",
       items: [
-        {
-          id: "ankara4",
-          title: "Ankara 4. Ağır Ceza Mahkemesi",
-          date: "7 Kasım 2016 - 3 Ağustos 2018",
-          content: "Davanın açılması ile yargılama süreci 7 Kasım 2016'da başlamıştır. Toplam 10 grup duruşma ve 54 celse yapılmıştır. 19 tutuklu sanık yönünden 3 Ağustos 2018 günü karar verilmiştir.",
-          type: "legal"
-        },
-        {
-          id: "yargitay",
-          title: "Yargıtay Süreci",
-          date: "29 Haziran 2022",
-          content: "Yargıtay 3. Ceza Dairesi'nin kararı ile dosyada kısmi bozma kararı verilmiştir. Sanıklar hakkında kasten öldürmeye teşebbüs etme suçu yönünden mahkumiyetlerine yönelik bozma kararı.",
-          type: "legal"
-        }
+        { id: "k1", title: "ANKARA 4 AĞIR CEZA MAH 2016 232 GEREKÇELİ KARAR", date: "", content: "Karar metni", url: "/kararlar/ANKARA 4 AĞIR CEZA MAH 2016 232 GEREKÇELİ KARAR.pdf", type: "legal" },
+        { id: "k2", title: "ANKARA 4 AĞIR CEZA MAH 2018 287 GEREKÇELİ KARAR", date: "", content: "Karar metni", url: "/kararlar/ANKARA 4 AĞIR CEZA MAH 2018 287 GEREKÇELİ KARAR.pdf", type: "legal" },
+        { id: "k3", title: "ANKARA BÖLGE ADLİYE MAHKEMESİ GEREKÇELİ KARAR", date: "", content: "Karar metni", url: "/kararlar/ANKARA BÖLGE ADLİYE MAHKEMESİ GEREKÇELİ KARAR.pdf", type: "legal" },
+        { id: "k4", title: "İDDİANAME", date: "", content: "İddianame", url: "/kararlar/İDDİANAME.pdf", type: "legal" }
       ]
     },
-    documents: {
-      title: "Belgeler & Deliller",
-      icon: "📋",
+    belgeler: {
+      title: "Belgeler & Raporlar",
+      icon: "📄",
       items: [
-        {
-          id: "missing-folders",
-          title: "Kayıp 9 Klasör",
-          date: "2019",
-          content: "Katliamdan 4 yıl sonra ortaya çıkarılan 9 kayıp klasörde canlı bomba aracına eskortluk yapan sanık Yakub Şahin ve örgütün nakliyecisi Hüseyin Tunç ile ilgili çok önemli belgeler bulunmaktadır.",
-          type: "document"
-        },
-        {
-          id: "fertilizer-investigation",
-          title: "Gübre Satın Alma Soruşturması",
-          date: "30 Eylül 2015",
-          content: "Katliamdan 10 gün önce Yakub Şahin ve Hüseyin Tunç'un bomba yapımında kullanmak üzere 2 ton Amonyum Nitrat gübre satın almaya çalışması ve gübre satıcısının ihbarı.",
-          type: "document"
-        }
+        { id: "b1", title: "Araştırma Raporu", date: "", content: "PDF", url: "/belgeler-raporlar/1-Araştırma Raporu.pdf", type: "document" },
+        { id: "b2", title: "Araştırma Raporu Ekleri", date: "", content: "PDF", url: "/belgeler-raporlar/2-Araştırma Raporu Ekleri .pdf", type: "document" },
+        { id: "b3", title: "Disiplin Raporu", date: "", content: "PDF", url: "/belgeler-raporlar/Disiplin Raporu .pdf", type: "document" },
+        { id: "b4", title: "İnceleme Raporu (1)", date: "", content: "PDF", url: "/belgeler-raporlar/İnceleme Raporu .pdf", type: "document" },
+        { id: "b5", title: "İnceleme Raporu (2)", date: "", content: "PDF", url: "/belgeler-raporlar/İnceleme Raporu.pdf", type: "document" },
+        { id: "b6", title: "Mülkiye Müfettişleri Ön İnceleme Raporu", date: "", content: "PDF", url: "/belgeler-raporlar/MÜLKİYE MÜFETTİŞLERİ ÖN İNCELEME RAPORU.pdf", type: "document" }
       ]
     },
-    testimonies: {
-      title: "Tanıklıklar",
-      icon: "👥",
+    aciklamalar: {
+      title: "Basın Açıklamaları",
+      icon: "📰",
       items: [
-        {
-          id: "fertilizer-seller",
-          title: "Gübre Satıcısının Tanıklığı",
-          date: "1 Ekim 2015",
-          content: "Gübre satıcısı, şüpheli kişilerin gübrenin 'son zamanlarda artan terör saldırılarında kullanılabileceği' şüphesini belirterek Nizip Emniyeti'ne ihbarda bulunmuştur.",
-          type: "testimony"
-        },
-        {
-          id: "massacre-witnesses",
-          title: "Katliam Tanıkları",
-          date: "10 Ekim 2015",
-          content: "On binlerce insan sabahın ilk saatlerinde Ankara Garı'nda toplanmış, kortejlerini oluşturmaya başlamışlardı. Binlerce kişi katliama tanıklık etti.",
-          type: "testimony"
-        }
-      ]
-    },
-    statistics: {
-      title: "Veriler",
-      icon: "📊",
-      items: [
-        {
-          id: "casualties",
-          title: "Kayıplar",
-          date: "10 Ekim 2015",
-          content: "104 kişi hayatını kaybetti, 500'den fazla kişi yaralandı. Bu sayılar sadece fiziksel kayıpları ifade eder, psikolojik ve toplumsal etkiler çok daha geniştir.",
-          type: "data"
-        },
-        {
-          id: "sentences",
-          title: "Mahkumiyetler",
-          date: "1 Temmuz 2024",
-          content: "10 sanığa 101 kez Kasten Nitelikli Öldürme Suçundan ağırlaştırılmış müebbet cezası verilmiştir. 379 kez Kasten Nitelikli Öldürmeye Teşebbüs suçundan cezalandırma.",
-          type: "data"
-        }
-      ]
-    },
-    political: {
-      title: "Politik Boyut",
-      icon: "🎯",
-      items: [
-        {
-          id: "election-impact",
-          title: "Seçimlere Etkisi",
-          date: "Kasım 2015",
-          content: "Haziran seçimlerinin intikamı alınmış, 'kaos istiyorsunuz madem buyurun kaos' denilmiş, katliamın arkasından anketler yapılmış, AKP'nin tek başına iktidar olmasının yolları bu katliamla kurulmuştur.",
-          type: "political"
-        },
-        {
-          id: "peace-rally",
-          title: "Barış Mitingi Ruhu",
-          date: "10 Ekim 2015",
-          content: "Ülkenin dört bir yanından gelenler bir barış mitingi için Ankara'da buluşmuştu. Bu barışçıl ruh ve demokrasi mücadelesi katliamla hedef alınmıştır.",
-          type: "political"
-        }
+        { id: "a1", title: "10.10.2024 - 9. Yıl Anma Açıklama", date: "10.10.2024", content: "PDF", url: "/basın açıklamaları/10.10.2024-9.YIL ANMA açıklama.pdf", type: "press" },
+        { id: "a2", title: "24.04.2024 - Tefrik Mütalaa Açıklama", date: "24.04.2024", content: "PDF", url: "/basın açıklamaları/24.04.2024- Tefrik Mütalaa açıklama.pdf", type: "press" },
+        { id: "a3", title: "21.05.2024 - AYM Kabul Edilmezlik Açıklama", date: "21.05.2024", content: "PDF", url: "/basın açıklamaları/21.05.2024-AYM Kabul edilmezlik Açıklama.pdf", type: "press" },
+        { id: "a4", title: "13.09.2024 - Tefrik Gerekçeli Karar Açıklaması", date: "13.09.2024", content: "PDF", url: "/basın açıklamaları/13.09.2024-Tefrik Gerekçeli karar açıklaması.pdf", type: "press" },
+        { id: "a5", title: "10.10.2022 - 7. Yıl Anma Açıklama", date: "10.10.2022", content: "PDF", url: "/basın açıklamaları/10.10.2022-7.Yıl Anma Açıklama.pdf", type: "press" }
       ]
     }
-  };
+  });
+
+  // Süreç verilerini timeline_events.json'dan çek
+  useEffect(() => {
+    fetch('/timeline_events.json')
+      .then((r) => r.json())
+      .then((data) => {
+        const events = (Array.isArray(data) ? data : []).map((ev, idx) => ({
+          id: `s_${idx}`,
+          title: ev.title || ev.name || 'Olay',
+          date: ev.date || ev.when || '',
+          content: ev.description || ev.detail || '',
+          type: 'process'
+        }));
+        setMemoryData((prev) => ({ ...prev, surec: { ...prev.surec, items: events } }));
+      })
+      .catch(() => {});
+  }, []);
 
   // Hotspotları daha sonra addHotSpot API'si ile ekleyeceğiz
 
@@ -120,7 +127,201 @@ const MemoryArchive = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedHotspot(null);
+    setSelectedVictim(null);
   };
+
+  // Load memories.json once
+  useEffect(() => {
+    fetch('/memories.json')
+      .then((r) => r.json())
+      .then((data) => setVictims(Array.isArray(data) ? data : []))
+      .catch(() => setVictims([]));
+  }, []);
+
+  // Hide victim pins when a victim modal is open
+  useEffect(() => {
+    const pins = Array.from(document.querySelectorAll('.victim-pin'));
+    if (isModalOpen && selectedVictim) {
+      pins.forEach((el) => { el.style.visibility = 'hidden'; });
+    } else {
+      pins.forEach((el) => { el.style.visibility = 'visible'; });
+    }
+    return () => {
+      pins.forEach((el) => { el.style.visibility = 'visible'; });
+    };
+  }, [isModalOpen, selectedVictim]);
+
+  // Simple, deterministic ring positions (responsive)
+  const victimPositions = useMemo(() => {
+    const count = victims.length;
+    if (!count) return [];
+    const positions = [];
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const rings = isMobile ? 5 : 4;
+    const perRing = Math.ceil(count / rings);
+    const ringPitch = isMobile ? [-18, -9, 0, 9, 18] : [-12, -4, 4, 12];
+    for (let r = 0; r < rings; r += 1) {
+      for (let i = 0; i < perRing && positions.length < count; i += 1) {
+        const yaw = (i / perRing) * 360 + r * (isMobile ? 10 : 15) + (Math.random() * (isMobile ? 16 : 12) - (isMobile ? 8 : 6));
+        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 10 : 8) - (isMobile ? 5 : 4));
+        positions.push({ yaw, pitch });
+      }
+    }
+    return positions;
+  }, [victims]);
+
+  // Render victim pins (filtered by search)
+  useEffect(() => {
+    if (!panoramaReady || !victims.length) return;
+    try {
+      const filtered = searchQuery
+        ? victims.filter((m) => (m.name || '').toLowerCase().includes(searchQuery.toLowerCase()))
+        : victims;
+
+      // Clear previously added hotspots generously
+      for (let i = 0; i < 500; i += 1) {
+        try { ReactPannellum.removeHotSpot(`victim_${i}`, 'memoryScene'); } catch (_) {}
+      }
+
+      // Compute positions for the filtered subset so spacing stays nice
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const rings = isMobile ? 5 : 4;
+      const perRing = Math.ceil(filtered.length / rings) || 1;
+      const ringPitch = isMobile ? [-18, -9, 0, 9, 18] : [-12, -4, 4, 12];
+      const posForIndex = (i) => {
+        const r = Math.floor(i / perRing);
+        const idxInRing = i % perRing;
+        const yaw = (idxInRing / perRing) * 360 + r * (isMobile ? 10 : 15) + (Math.random() * (isMobile ? 16 : 12) - (isMobile ? 8 : 6));
+        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 10 : 8) - (isMobile ? 5 : 4));
+        return { yaw, pitch };
+      };
+
+      filtered.forEach((v, idx) => {
+        const pos = posForIndex(idx);
+        const id = `victim_${idx}`;
+        ReactPannellum.addHotSpot({
+          id,
+          pitch: pos.pitch,
+          yaw: pos.yaw,
+          cssClass: 'victim-pin',
+          createTooltipFunc: (hotSpotDiv) => {
+            // Base position and interactions
+            hotSpotDiv.style.transform = 'translate(-50%, -50%)';
+            hotSpotDiv.style.pointerEvents = 'auto';
+            hotSpotDiv.style.zIndex = '2000';
+            // Pin (avatar circle only)
+            const pin = document.createElement('div');
+            const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+            const size = isMobile ? 30 : 42;
+            pin.style.width = `${size}px`;
+            pin.style.height = `${size}px`;
+            pin.style.borderRadius = '50%';
+            pin.style.border = '2px solid #fff';
+            pin.style.boxShadow = '0 2px 8px rgba(0,0,0,0.35)';
+            pin.style.backgroundColor = '#b71c1c';
+            pin.style.backgroundSize = 'cover';
+            pin.style.backgroundPosition = 'center';
+            pin.style.zIndex = '1000';
+            if (v.image) {
+              pin.style.backgroundImage = `url(${v.image})`;
+            } else {
+              pin.style.display = 'flex';
+              pin.style.alignItems = 'center';
+              pin.style.justifyContent = 'center';
+              pin.style.color = '#fff';
+              pin.style.fontWeight = '700';
+              pin.style.fontSize = '14px';
+              pin.textContent = (v.name || '?').charAt(0).toUpperCase();
+            }
+            // Tooltip: render at body level to avoid stacking issues
+            let tooltip = null;
+            const ensureTooltip = () => {
+              if (tooltip) return tooltip;
+              tooltip = document.createElement('div');
+              tooltip.style.position = 'fixed';
+              tooltip.style.background = 'rgba(0,0,0,0.85)';
+              tooltip.style.color = '#fff';
+              tooltip.style.padding = '6px 8px';
+              tooltip.style.borderRadius = '8px';
+              tooltip.style.fontSize = '12px';
+              tooltip.style.whiteSpace = 'nowrap';
+              tooltip.style.pointerEvents = 'none';
+              tooltip.style.zIndex = '100000';
+              tooltip.style.display = 'none';
+              tooltip.textContent = v.name;
+              const arrow = document.createElement('div');
+              arrow.style.position = 'absolute';
+              arrow.style.left = '50%';
+              arrow.style.transform = 'translateX(-50%)';
+              arrow.style.width = '0';
+              arrow.style.height = '0';
+              arrow.style.borderLeft = '6px solid transparent';
+              arrow.style.borderRight = '6px solid transparent';
+              arrow.style.borderTop = '6px solid rgba(0,0,0,0.85)';
+              arrow.dataset.arrow = '1';
+              tooltip.appendChild(arrow);
+              const root = document.fullscreenElement || document.body;
+              root.appendChild(tooltip);
+              return tooltip;
+            };
+
+            const positionTooltip = () => {
+              if (!tooltip) return;
+              const rect = hotSpotDiv.getBoundingClientRect();
+              const top = rect.top - 10;
+              const left = rect.left + rect.width / 2;
+              tooltip.style.top = `${top}px`;
+              tooltip.style.left = `${left}px`;
+              tooltip.style.transform = 'translate(-50%, -100%)';
+              const arrow = tooltip.querySelector('[data-arrow="1"]');
+              if (arrow) { arrow.style.bottom = '-5px'; }
+            };
+
+            hotSpotDiv.appendChild(pin);
+
+            let showTimer = null; let hideTimer = null; let longTimer = null; let longPressed = false;
+            const show = (delay = 200) => {
+              clearTimeout(hideTimer); clearTimeout(showTimer);
+              showTimer = setTimeout(() => { ensureTooltip(); positionTooltip(); tooltip.style.display = 'block'; }, delay);
+            };
+            const hide = (delay = 120) => {
+              clearTimeout(hideTimer); clearTimeout(showTimer);
+              hideTimer = setTimeout(() => { if (tooltip) tooltip.style.display = 'none'; }, delay);
+            };
+            hotSpotDiv.addEventListener('mouseenter', () => show(200));
+            hotSpotDiv.addEventListener('mouseleave', () => hide(120));
+            hotSpotDiv.addEventListener('mousemove', () => positionTooltip());
+            hotSpotDiv.addEventListener('touchstart', () => {
+              longPressed = false; clearTimeout(longTimer);
+              longTimer = setTimeout(() => { longPressed = true; ensureTooltip(); positionTooltip(); tooltip.style.display = 'block'; }, 350);
+            }, { passive: true });
+            hotSpotDiv.addEventListener('touchend', () => {
+              clearTimeout(longTimer);
+              if (longPressed) hide(600);
+            }, { passive: true });
+            hotSpotDiv.addEventListener('click', (e) => {
+              if (longPressed) { e.stopPropagation(); longPressed = false; }
+            });
+          },
+          clickHandlerFunc: () => {
+            openVictim(v);
+          }
+        }, 'memoryScene');
+      });
+
+      // Only re-center when user actually searched something
+      if (searchQuery && searchQuery.trim().length > 0 && filtered.length > 0) {
+        const firstPos = posForIndex(0);
+        try {
+          // Adjust view without changing zoom (hfov)
+          if (typeof ReactPannellum.setYaw === 'function') ReactPannellum.setYaw(firstPos.yaw, 'memoryScene');
+          if (typeof ReactPannellum.setPitch === 'function') ReactPannellum.setPitch(firstPos.pitch, 'memoryScene');
+        } catch (_) {}
+      }
+    } catch (e) {
+      // no-op baseline
+    }
+  }, [panoramaReady, victims, victimPositions, searchQuery]);
 
   return (
     <div className="memory-archive">
@@ -136,24 +337,55 @@ const MemoryArchive = () => {
           imageSource="https://pannellum.org/images/alma.jpg"
           style={{
             width: "100%",
-            height: "600px",
+            height: "75vh",
             background: "#000000"
           }}
           config={{
             autoLoad: true,
-            autoRotate: -2,
+            autoRotate: 0,
             showZoomCtrl: true,
             showFullscreenCtrl: true,
             mouseZoom: true,
+            keyboardZoom: false,
+            friction: 0.15,
+            momentum: true,
             doubleClickZoom: true,
+            touchZoom: true,
+            touchPan: true,
             pitch: 10,
             yaw: 180,
             hfov: 110
           }}
           onPanoramaLoaded={() => {
-            console.log('Panorama yüklendi!');
+            setPanoramaReady(true);
           }}
         />
+      </div>
+
+      {/* Search under panorama */}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', margin: '8px 0 16px' }}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="İsim ara..."
+          style={{
+            width: 'min(680px, 92vw)',
+            padding: '10px 14px',
+            borderRadius: '10px',
+            border: '1px solid rgba(212, 175, 55, 0.4)',
+            background: 'rgba(0,0,0,0.5)',
+            color: '#f5f5f5',
+            outline: 'none',
+          }}
+        />
+        <div style={{ color: '#d4af37', opacity: 0.9, fontWeight: 600 }}>
+          {(() => {
+            const q = (searchQuery || '').trim().toLowerCase();
+            const count = q ? victims.filter((m) => (m.name || '').toLowerCase().includes(q)).length : victims.length;
+            return `${count}/${victims.length}`;
+          })()}
+        </div>
       </div>
 
       <div className="category-navigation">
@@ -168,6 +400,23 @@ const MemoryArchive = () => {
           </button>
         ))}
       </div>
+
+      {/* Help HUD */}
+      {showHelp ? (
+        <div className="help-hud">
+          <div className="help-title">Nasıl gezinebilirsiniz?</div>
+          <ul>
+            <li><b>Gezinme</b>: Fareyle basılı tutup sürükleyin. TouchPad / mobilde parmağınızla sürükleyin.</li>
+            <li><b>Yakınlaştırma</b>: Fare tekeri / çift tıklama; TouchPad / mobilde iki parmakla “pinch”.</li>
+            <li><b>Detay</b>: Bir pin’e tıklayın. Hover’da isim görünür.</li>
+            <li><b>Kapatma</b>: Modalı kapatmak için ESC’ye basın veya boş alana tıklayın.</li>
+            <li><b>Tam ekran</b>: Tam ekran için butona tıklayın; tekrar tıklayın çıkın.</li>
+          </ul>
+          <button className="help-dismiss" onClick={dismissHelp}>Anladım</button>
+        </div>
+      ) : (
+        <button className="help-fab" onClick={() => setShowHelp(true)}>?</button>
+      )}
 
       {/* Modal */}
       {isModalOpen && selectedHotspot && (
@@ -189,11 +438,55 @@ const MemoryArchive = () => {
                     <span className="item-date">{item.date}</span>
                   </div>
                   <p className="item-content">{item.content}</p>
+                  {item.url && (
+                    <a className="victim-link" href={item.url} target="_blank" rel="noreferrer">İndir / Görüntüle</a>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </div>
+      )}
+
+      {/* Victim modal - portal to fullscreen root if present */}
+      {isModalOpen && selectedVictim && (
+        ReactDOM.createPortal(
+          (
+            <div className="modal-overlay" onClick={closeModal}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                  <h2>
+                    <span className="modal-icon">🕊️</span>
+                    {selectedVictim.name}
+                  </h2>
+                  <button className="close-btn" onClick={closeModal}>×</button>
+                </div>
+                <div className="modal-body victim-modal">
+                  {selectedVictim.image && (
+                    <img
+                      className="victim-photo"
+                      src={selectedVictim.image}
+                      alt={selectedVictim.name}
+                      loading="lazy"
+                    />
+                  )}
+                  <p className="victim-bio">{selectedVictim.bio}</p>
+                  {selectedVictim.source && (
+                    <a
+                      className="victim-link"
+                      href={selectedVictim.source}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Kaynak
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ),
+          fullscreenRoot || document.body
+        )
       )}
     </div>
   );

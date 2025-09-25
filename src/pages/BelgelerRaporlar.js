@@ -49,6 +49,45 @@ const BelgelerRaporlar = () => {
       category: "Müfettişlik"
     }
   ];
+  
+  // Yeni eklenen PDF'ler
+  pdfFiles.push(
+    {
+      id: 7,
+      title: "10 Ekim Raporu (Avukatlar)",
+      filename: "10-EKİM-RAPORU (avukatlar).pdf",
+      description: "10 Ekim davasına ilişkin avukatlar raporu.",
+      category: "Rapor"
+    },
+    {
+      id: 8,
+      title: "Hukuki Mütalaa (Dr. Barış Işık)",
+      filename: "HUKUKİ MÜTALAA Dr. Barış IŞIK.pdf",
+      description: "10 Ekim dosyasına ilişkin hukuki mütalaa (Dr. Barış Işık).",
+      category: "Mütalaa"
+    },
+    {
+      id: 9,
+      title: "TTB 10 Ekim Raporu",
+      filename: "TTB 10 ekim rapor.pdf",
+      description: "Türk Tabipleri Birliği tarafından hazırlanan 10 Ekim raporu.",
+      category: "Rapor"
+    },
+    {
+      id: 10,
+      title: "ÖHD Raporu",
+      filename: "ÖHD RAPOR.pdf",
+      description: "Özgür Hukukçular Derneği tarafından hazırlanan rapor.",
+      category: "Rapor"
+    },
+    {
+      id: 11,
+      title: "İnsanlığa Karşı Suç Hukuki Mütalaa (Dr. Murat Önok)",
+      filename: "İNSANLIĞA KARŞI SUÇ HUKUKİ MÜTALAA DR. MURAT ÖNOK.pdf",
+      description: "İnsanlığa karşı suç kapsamında hukuki mütalaa (Dr. Murat Önok).",
+      category: "Mütalaa"
+    }
+  );
 
   const getCategoryDisplayName = (category) => {
     switch (category) {

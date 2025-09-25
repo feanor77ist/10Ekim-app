@@ -76,6 +76,11 @@
   text-indent: 20px;
 }
 
+/* Highlighted sentence color */
+.process-description strong {
+  color: #f0f0e8;
+}
+
 .process-description p:last-child {
   margin-bottom: 0;
 }
