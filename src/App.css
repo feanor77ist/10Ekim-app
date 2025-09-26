@@ -137,7 +137,7 @@
   margin-left: 300px;
   margin-top: 200px;
   font-size: 38px;
-  font-family: 'Merriweather', 'Georgia', serif;
+  font-family: 'Protest Revolution', cursive;
   font-weight: 400;
   letter-spacing: 0.005em;
   position: relative; /* Arka plan katmanı için konumlandırma */
@@ -145,30 +145,29 @@
   display: inline-block; /* İçerik kadar alan kaplasın */
   align-self: flex-start; /* Flex yüksekliğine gerilmesin */
   
-  /* Gradient text efekti - Haberler sayfası stili */
-  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #e8e8e8 70%, #d0d0d0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  /* Basit beyaz renk - gradient yerine */
+  color: #ffffff;
   
   /* Güçlü shimmer animasyonu */
   animation: titleGlow 3s ease-in-out infinite alternate;
   
-  /* Daha az gölge ile okunabilirlik */
-  font-weight: 400;
+  /* Güçlendirilmiş gölge ile okunabilirlik */
+  font-weight: 500;
   text-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.7),
-    0 0 8px rgba(0, 0, 0, 0.4);
-  -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
+    0 2px 8px rgba(0, 0, 0, 0.9),
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.5px rgba(0,0,0,0.7);
 }
 
-/* Typewriter yazılarının arkasına iyileştirilmiş sinematik arka plan */
+/* Typewriter yazılarının arkasına mobil ile aynı arka plan */
 .typewriter-text::before {
   content: '';
   position: absolute;
-  inset: -35px -60px; /* Daha geniş blur alanı */
+  inset: -35px -60px; /* Mobil ile aynı geniş alan */
   border-radius: 14px;
+  opacity: 0.7; /* Mobil ile aynı opacity */
   background-image:
     url('images/GrainBackground.gif'),
     radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%),
@@ -176,7 +175,6 @@
   background-size: 0.25% 0.25%, cover, 200% 200%;
   background-position: center, center, 0% 50%;
   background-blend-mode: normal, multiply, overlay;
-  opacity: 0.7; /* Daha güçlü kontrast */
   filter: blur(7px) contrast(1.15) saturate(1.0);
   -webkit-backdrop-filter: blur(4px) saturate(0.95);
   backdrop-filter: blur(4px) saturate(0.95);
@@ -184,12 +182,12 @@
   z-index: -1;
   animation: subtleLightSweepSoft 40s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
   box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.15), /* daha belirgin çerçeve */
-    inset 0 -30px 60px rgba(0,0,0,0.7),   /* altta güçlü karartma */
-    inset 0 30px 60px rgba(0,0,0,0.5),    /* üstte güçlü karartma */
-    0 0 35px rgba(0,0,0,0.9),             /* dış gölge */
-    0 8px 25px rgba(0,0,0,0.4),          /* yumuşak gölge */
-    0 15px 35px rgba(0,0,0,0.3);          /* daha yumuşak gölge */
+    inset 0 0 0 2px rgba(255,255,255,0.15),
+    inset 0 -30px 60px rgba(0,0,0,0.7),
+    inset 0 30px 60px rgba(0,0,0,0.5),
+    0 0 35px rgba(0,0,0,0.9),
+    0 8px 25px rgba(0,0,0,0.4),
+    0 15px 35px rgba(0,0,0,0.3);
   /* Gerçek fırça darbesi efekti */
   border-radius: 0;
   transform: rotate(-1deg) scale(1.02) skewX(2deg);
@@ -203,7 +201,7 @@
   100% { background-position: center, center, 0% 50%; }
 }
 
-/* Ek, hafif drift eden film grain ve vignette */
+/* Ek, hafif drift eden film grain ve vignette - mobil ile aynı */
 .typewriter-text::after {
   content: '';
   position: absolute;
@@ -235,21 +233,21 @@
   100% { background-position: center, 0% 0%; }
 }
 
-/* Beyaz tonları titleGlow animasyonu */
+/* Basit parıltı animasyonu */
 @keyframes titleGlow {
   0% {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #e8e8e8 70%, #d0d0d0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: brightness(1) saturate(1);
+    text-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 1px 4px rgba(0, 0, 0, 0.8),
+      0 0 16px rgba(0, 0, 0, 0.6),
+      0 0 24px rgba(0, 0, 0, 0.4);
   }
   100% {
-    background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 30%, #f5f5f5 70%, #e0e0e0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: brightness(1.1) saturate(1.1);
+    text-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 1px 4px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 0 30px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -319,14 +317,10 @@
   position: relative;
   padding: 8px 18px;
   /* Gradient text efekti - Haberler sayfası stili */
-  /* Kırmızı fırça üzerinde ayrışan sıcak altın tonlar */
-  background: linear-gradient(135deg, #fff3c4 0%, #ffe59a 35%, #ffd27d 60%, #ffbf69 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  /* Vurgulu kelimeler için altın rengi */
+  color: #d4af37;
   font-weight: 700;
-  font-family: 'Merriweather', 'Georgia', serif;
+  font-family: 'Protest Revolution', cursive;
   font-size: inherit;
   line-height: inherit;
   z-index: 1;
@@ -337,9 +331,11 @@
   /* Gradient glow animasyonu */
   animation: titleGlow 2.5s ease-in-out infinite alternate;
   text-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.7),
-    0 0 8px rgba(0, 0, 0, 0.4);
-  -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
+    0 2px 8px rgba(0, 0, 0, 0.9),
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(212, 175, 55, 0.6),
+    0 0 24px rgba(212, 175, 55, 0.4);
+  -webkit-text-stroke: 0.5px rgba(0,0,0,0.7);
 }
 
 .highlight-gradient::before {
@@ -376,7 +372,7 @@
 /* Tema uyumlu alt yazı stili */
 .typewriter-subtitle {
   font-style: italic;
-  font-family: 'Merriweather', 'Georgia', serif;
+  font-family: 'Protest Revolution', cursive;
   font-size: 0.45em;
   font-weight: 300;
   color: rgba(232, 232, 224, 0.88);
@@ -392,11 +388,7 @@
     text-align: center !important;
     display: block !important;
     width: 100% !important;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #e8e8e8 70%, #d0d0d0 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    color: transparent !important;
+    color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 400 !important;
     margin-top: 15px !important;
@@ -537,29 +529,25 @@
     margin-top: 25vh;
     margin-left: 20px;
     width: calc(100% - 40px);
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
   }
 
   .typewriter-text {
     margin: 0;
     font-size: 24px;
-    text-align: left;
+    text-align: center;
     line-height: 1.3;
-    font-family: 'Merriweather', 'Georgia', serif;
+    font-family: 'Protest Revolution', cursive;
     font-weight: 400;
     letter-spacing: 0.01em;
     position: relative;
     z-index: 0;
     display: inline-block;
-    align-self: flex-start;
+    align-self: center;
     
-     /* Mobilde gradient text efekti */
-    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 30%, #e8e8e8 70%, #d0d0d0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+     /* Mobilde basit beyaz renk */
+    color: #ffffff;
     animation: titleGlow 3s ease-in-out infinite alternate;
     
   /* Mobil blur efekti kaldırıldı */

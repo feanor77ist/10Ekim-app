@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import mainpageIcon from './images/logo2.png';
+import mainpageIcon from './images/logo-rev.png';
 import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
 import twitterIcon from './images/tw.jpg';
 import instagramIcon from './images/ig_icon.png';

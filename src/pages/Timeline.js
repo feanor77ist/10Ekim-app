@@ -64,8 +64,8 @@ const Timeline = () => {
               10 Ekim 2015 günü ülkenin dört bir yanından gelenler bir barış mitingi için Ankara'da buluşmuştu. 
               On binlerce insan, sabahın daha ilk saatlerinde Ankara Garı'nda toplanmış, kortejlerini oluşturmaya 
               başlamışlardı ki iki canlı bomba, miting alanında olan olmayan milyonlarca insanın yaşamını bir daha 
-              asla eskisi gibi olmayacak biçimde değiştirdi. Katliamın arkasından ölenlerle birlikte 104 kişinin 
-              hayatını kaybetti, Beş yüzden fazla kişi yaralandı, binlerce kişi tanıklık etti.
+              asla eskisi gibi olmayacak biçimde değiştirdi. Katliamın arkasından ölenlerle birlikte 103 kişi 
+              hayatını kaybetti, beş yüzden fazla kişi yaralandı, binlerce kişi tanıklık etti.
             </p>
             <p>
               10 Ekim 2015'in sonuçları, sadece katliamda ölenler ve yaralananlarla sınırlı değildir. 2015 yılı 

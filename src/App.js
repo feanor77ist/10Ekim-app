@@ -18,6 +18,8 @@ import Kararlar from './pages/Kararlar'; // Kararlar sayfası bileşeni
 import BelgelerRaporlar from './pages/BelgelerRaporlar'; // Belgeler & Raporlar sayfası bileşeni
 import Aciklamalar from './pages/Aciklamalar'; // Açıklamalar sayfası bileşeni
 import MemoryTransition from './components/MemoryTransition'; // Sinematik geçiş bileşeni
+import AnniversaryWritings from './pages/AnniversaryWritings'; // 10. yıl anma yazıları
+import AnniversaryNotification from './components/AnniversaryNotification'; // Yazı bildirimi
 
 function HomePage() {
   const [showMemoryTransition, setShowMemoryTransition] = React.useState(false);
@@ -54,6 +56,9 @@ function HomePage() {
         onReturnHome={resetVideoState}
       />
       
+      {/* 10. yıl anma yazıları bildirimi */}
+      <AnniversaryNotification />
+      
     </div>
   );
 }
@@ -73,6 +78,7 @@ function App() {
         <Route path="/aciklamalar" element={<Aciklamalar />} />
         <Route path="/gorseller" element={<div>Görseller Sayfası</div>} />
         <Route path="/yitirdiklerimiz" element={<div>Yitirdiklerimiz Sayfası</div>} />
+        <Route path="/yazilar" element={<AnniversaryWritings />} />
         {/* Diğer sayfaları buraya ekleyebilirsin */}
       </Routes>
     </Router>
