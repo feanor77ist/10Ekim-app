@@ -24,7 +24,7 @@ const MemoryTransition = ({ isVisible, onComplete, onReturnHome }) => {
         // Mobil - üstte 2, altta 2 konum (daha rahat yerleşim)
         { x: 10, y: 15 },  // Sol üst - daha içeride
         { x: 65, y: 15 },  // Sağ üst - daha az sıkışmış  
-        { x: 15, y: 70 },  // Sol alt - daha içeride
+        { x: 10, y: 70 },  // Sol alt - daha içeride
         { x: 60, y: 70 },  // Sağ alt - daha az sıkışmış
       ];
     } else {
