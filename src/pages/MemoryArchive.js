@@ -385,7 +385,7 @@ const MemoryArchive = () => {
         <ReactPannellum
           id="memory-archive-panorama"
           sceneId="memoryScene"
-          imageSource="https://pannellum.org/images/alma.jpg"
+          imageSource="https://pannellum.org/images/bma-0.jpg"
           style={{
             width: "100%",
             height: "75vh",
