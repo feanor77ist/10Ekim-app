@@ -99,9 +99,27 @@ const AnniversaryWritings = () => {
     <div className="anniversary-writings">
       <div className="anniversary-header">
         <h1>10 Ekim'in 10.yılında 10 kavram</h1>
-        <p className="anniversary-subtitle">
-          29 Eylül - 10 Ekim 2025 tarihleri arasında her gün yayınlanan yazılar
-        </p>
+        <div className="anniversary-subtitle">
+          <div className="concept-text">Alternatif bir karar denemesi</div>
+        </div>
+      </div>
+
+      <div className="concepts-section">
+        
+        <div className="concepts-right">
+          <div className="concept-list">
+            <div className="concept-item">dava</div>
+            <div className="concept-item">barış</div>
+            <div className="concept-item">katliam</div>
+            <div className="concept-item">sorumluluk</div>
+            <div className="concept-item">eylem</div>
+            <div className="concept-item">politika</div>
+            <div className="concept-item">emek</div>
+            <div className="concept-item">yas</div>
+            <div className="concept-item">mücadele</div>
+            <div className="concept-item">zaman</div>
+          </div>
+        </div>
       </div>
 
       <div className="writings-grid">

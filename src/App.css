@@ -529,14 +529,15 @@
     margin-top: 25vh;
     margin-left: 20px;
     width: calc(100% - 40px);
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: flex-start;
   }
 
   .typewriter-text {
     margin: 0;
+    margin-left: 60px;
     font-size: 24px;
-    text-align: center;
+    text-align: left;
     line-height: 1.3;
     font-family: 'Protest Revolution', cursive;
     font-weight: 400;
@@ -544,7 +545,7 @@
     position: relative;
     z-index: 0;
     display: inline-block;
-    align-self: center;
+    align-self: flex-start;
     
      /* Mobilde basit beyaz renk */
     color: #ffffff;

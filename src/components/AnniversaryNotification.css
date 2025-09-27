@@ -185,12 +185,14 @@
 /* Mobil Responsive */
 @media (max-width: 768px) {
   .anniversary-notification {
-    bottom: 15px;
+    bottom: 20px;
     left: 20px;
-    right: 20px;
-    max-width: 350px;
-    max-height: 200px;
-    margin: 0 auto;
+    right: auto;
+    max-width: 320px;
+    max-height: none;
+    margin: 0;
+    width: calc(100% - 40px);
+    height: auto;
   }
   
   .notification-header {
@@ -219,6 +221,7 @@
   
   .notification-body {
     padding: 12px 15px;
+    overflow: visible;
   }
   
   .writing-preview {
@@ -248,24 +251,31 @@
   .notification-actions {
     flex-direction: column;
     gap: 8px;
+    margin-top: 10px;
+    width: 100%;
   }
   
   .btn-read-more,
   .btn-all-writings {
     flex: none;
     padding: 8px 12px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 480px) {
   .anniversary-notification {
-    bottom: 10px;
+    bottom: 15px;
     left: 15px;
-    right: 15px;
+    right: auto;
     max-width: 300px;
-    max-height: 180px;
-    margin: 0 auto;
+    max-height: none;
+    margin: 0;
+    width: calc(100% - 30px);
+    height: auto;
   }
   
   .notification-header {
@@ -322,11 +332,16 @@
   
   .notification-actions {
     gap: 6px;
+    margin-top: 8px;
+    width: 100%;
   }
   
   .btn-read-more,
   .btn-all-writings {
     padding: 6px 10px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
