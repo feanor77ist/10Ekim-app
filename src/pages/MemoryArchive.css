@@ -96,7 +96,10 @@
 .pannellum-container .pnlm-fullscreen-toggle { display: block !important; }
 .pannellum-container .pnlm-controls { z-index: 1100; }
 .pannellum-container .pnlm-orientation-button,
-.pannellum-container .pnlm-orientation-toggle-button { display: none !important; }
+.pannellum-container .pnlm-orientation-toggle-button { 
+  display: none !important; 
+  visibility: hidden !important;
+}
 
 /* Proxy fullscreen control style (matches pannellum controls) */
 .pannellum-container .ma-fs-proxy {
@@ -112,6 +115,17 @@
   margin-top: 6px;
   font-size: 16px;
   cursor: pointer;
+}
+
+/* Ensure fullscreen button is visible on mobile */
+@media (max-width: 768px) {
+  .pannellum-container .pnlm-fullscreen-toggle-button,
+  .pannellum-container .pnlm-fullscreen-toggle,
+  .pannellum-container .ma-fs-proxy {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }
 
 @media (max-width: 768px) {

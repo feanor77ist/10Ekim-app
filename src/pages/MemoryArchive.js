@@ -29,13 +29,10 @@ const MemoryArchive = () => {
         const container = panoEl && panoEl.parentElement;
         const controls = container && container.querySelector('.pnlm-controls');
         if (!controls) return;
-        // If an orientation/gyro button is present on mobile, repurpose it as fullscreen
+        // Hide orientation button on mobile
         const orient = controls.querySelector('.pnlm-orientation-button, .pnlm-orientation-toggle-button');
-        if (orient && !orient.dataset.maRewired) {
-          orient.dataset.maRewired = '1';
-          orient.className = 'pnlm-control ma-fs-proxy';
-          orient.title = 'Tam ekran';
-          orient.innerHTML = '&#x26F6;';
+        if (orient) {
+          orient.style.display = 'none';
         }
         let fsBtn = controls.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle, .ma-fs-proxy');
         if (!fsBtn) {
@@ -409,12 +406,19 @@ const MemoryArchive = () => {
           }}
           onPanoramaLoaded={() => {
             setPanoramaReady(true);
-            // Ensure fullscreen control exists on all devices
+            // Ensure fullscreen control exists on all devices and hide orientation button
             try {
               const panoEl = document.getElementById('memory-archive-panorama');
               const container = panoEl && panoEl.parentElement;
               const controls = container && container.querySelector('.pnlm-controls');
               if (!controls) return;
+              
+              // Hide orientation button on mobile
+              const orient = controls.querySelector('.pnlm-orientation-button, .pnlm-orientation-toggle-button');
+              if (orient) {
+                orient.style.display = 'none';
+              }
+              
               let fsBtn = controls.querySelector('.pnlm-fullscreen-toggle-button, .pnlm-fullscreen-toggle');
               if (!fsBtn) {
                 fsBtn = document.createElement('div');
