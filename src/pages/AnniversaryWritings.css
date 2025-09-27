@@ -591,11 +591,72 @@
   line-height: 1.8;
   color: #ddd;
   text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #d4af37, #b8941f);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  background: linear-gradient(135deg, #b8941f, #d4af37);
 }
 
 .writing-detail-text p {
   margin-bottom: 1.5rem;
   text-indent: 1.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.writing-detail-text img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
+.writing-detail-text table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.writing-detail-text pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .writing-detail-text h1,
@@ -685,5 +746,36 @@
   
   .writing-detail-body {
     padding: 2rem 1.5rem;
+    overflow-x: hidden;
+  }
+  
+  .writing-detail-text {
+    font-size: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .writing-detail-text p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+  
+  .writing-detail-text img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .writing-detail-text table {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .writing-detail-text pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
   }
 }

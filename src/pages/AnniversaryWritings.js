@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AnniversaryWritings.css';
 
 const AnniversaryWritings = () => {
   const [writings, setWritings] = useState([]);
   const [selectedWriting, setSelectedWriting] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const backToTopRef = useRef(null);
 
   useEffect(() => {
     fetch('/anniversary_writings.json')
@@ -20,6 +22,20 @@ const AnniversaryWritings = () => {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (selectedWriting) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setShowBackToTop(scrollTop > 300);
+      }
+    };
+
+    if (selectedWriting) {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [selectedWriting]);
 
   const openWriting = (writing) => {
     setSelectedWriting(writing);
@@ -88,6 +104,13 @@ const AnniversaryWritings = () => {
               className="writing-detail-text"
               dangerouslySetInnerHTML={{ __html: selectedWriting.content }}
             />
+            <button 
+              ref={backToTopRef}
+              className={`back-to-top-btn ${showBackToTop ? 'visible' : ''}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              Başa Dön
+            </button>
           </div>
         </div>
       </div>
