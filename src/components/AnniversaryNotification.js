@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './AnniversaryNotification.css';
 
 const AnniversaryNotification = () => {
@@ -7,7 +6,6 @@ const AnniversaryNotification = () => {
   const [currentWriting, setCurrentWriting] = useState(null);
   const [showAnimation, setShowAnimation] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     // Yazıları yükle
@@ -58,7 +56,7 @@ const AnniversaryNotification = () => {
   }, []);
 
   const handleReadMore = () => {
-    navigate('/yazilar');
+    window.open('https://medium.com/@10ekimlegal', '_blank');
   };
 
   const handleClose = () => {
