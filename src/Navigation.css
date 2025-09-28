@@ -293,6 +293,8 @@
     height: 50px;
     top: 5px;
     left: 10px;
+    position: fixed !important;
+    z-index: 1002 !important;
   }
 
   .mainpage-icon-link {
@@ -300,13 +302,46 @@
     height: 50px;
     top: 5px;
     left: 10px;
+    position: fixed !important;
+    z-index: 1002 !important;
   }
-
 
   .menu-icon {
     width: 45px;
     height: 45px;
     top: 5px;
     right: 10px;
+    position: fixed !important;
+    z-index: 1002 !important;
+  }
+}
+
+/* Huawei P30 Lite ve benzeri cihazlar için özel koruma */
+@media screen and (max-width: 480px) and (max-height: 2400px) and (min-height: 2000px) {
+  .mainpage-icon {
+    width: 45px !important;
+    height: 45px !important;
+    top: 8px !important;
+    left: 8px !important;
+    position: fixed !important;
+    z-index: 1002 !important;
+  }
+
+  .mainpage-icon-link {
+    width: 45px !important;
+    height: 45px !important;
+    top: 8px !important;
+    left: 8px !important;
+    position: fixed !important;
+    z-index: 1002 !important;
+  }
+
+  .menu-icon {
+    width: 45px !important;
+    height: 45px !important;
+    top: 8px !important;
+    right: 8px !important;
+    position: fixed !important;
+    z-index: 1002 !important;
   }
 }

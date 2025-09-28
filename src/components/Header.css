@@ -393,27 +393,53 @@
   }
 }
 
-/* Çok küçük ekranlar için ek optimizasyon */
+/* Çok küçük ekranlar için ek optimizasyon - 480px ile aynı görünüm */
 @media screen and (max-width: 360px) {
+  .main-header {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 10%,
+      rgba(0, 0, 0, 0.01) 20%,
+      rgba(92, 51, 23, 0.05) 30%,
+      rgba(139, 69, 19, 0.1) 40%,
+      rgba(139, 69, 19, 0.25) 50%,
+      rgba(139, 69, 19, 0.1) 60%,
+      rgba(92, 51, 23, 0.05) 70%,
+      rgba(0, 0, 0, 0.01) 80%,
+      transparent 90%,
+      transparent 100%
+    );
+  }
+  
   .header-container {
-    padding: 0 4px;
+    padding: 0 6px;
   }
   
   .header-content {
-    min-height: 55px;
-    padding: 8px 0;
+    min-height: 50px;
+    padding: 6px 0;
   }
   
   .header-nav-list {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 4px;
+    width: 100%;
+    max-width: 100%;
   }
   
   .header-nav-link {
-    padding: 8px 8px;
-    font-size: 11px;
-    min-height: 36px;
-    line-height: 1.1;
+    padding: 8px 6px;
+    font-size: 10px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.0;
+    word-break: break-word;
   }
   
   /* Mobilde sıralama: 1-3-5 sağa, 2-4-6 sola */

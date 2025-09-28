@@ -529,14 +529,18 @@
     margin-top: 25vh;
     margin-left: 20px;
     width: calc(100% - 40px);
+    max-width: calc(100vw - 40px);
     text-align: left;
     align-items: flex-start;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .typewriter-text {
     margin: 0;
-    margin-left: 60px;
-    font-size: 24px;
+    margin-left: 20px;
+    margin-right: 0;
+    font-size: 22px;
     text-align: left;
     line-height: 1.3;
     font-family: 'Protest Revolution', cursive;
@@ -546,6 +550,10 @@
     z-index: 0;
     display: inline-block;
     align-self: flex-start;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
     
      /* Mobilde basit beyaz renk */
     color: #ffffff;
@@ -630,6 +638,103 @@
     -webkit-mask-image: radial-gradient(ellipse 150% 120% at 40% 50%, black 15%, transparent 45%);
     /* Mobil için daha az blur */
     filter: blur(3px) contrast(1.1) saturate(1.0);
+  }
+}
+
+/* Huawei P30 Lite ve benzeri cihazlar için özel düzenlemeler */
+@media screen and (max-width: 480px) and (max-height: 2400px) and (min-height: 2000px) {
+  .typewriter-container {
+    margin-left: 10px !important;
+    width: calc(100% - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    overflow: hidden !important;
+  }
+
+  .typewriter-text {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+
+  .typewriter-text::before {
+    inset: -20px -30px !important;
+    filter: blur(2px) contrast(1.05) saturate(1.0) !important;
+  }
+
+  .typewriter-text::after {
+    inset: -15px -25px !important;
+  }
+
+  /* Menu ve ses butonlarını koruma */
+  .menu-icon {
+    position: fixed !important;
+    top: 8px !important;
+    right: 8px !important;
+    z-index: 1002 !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .audio-control {
+    position: fixed !important;
+    bottom: 8px !important;
+    right: 8px !important;
+    z-index: 9999 !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  /* Ana sayfa ikonunu da koruma */
+  .mainpage-icon {
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    z-index: 1002 !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .mainpage-icon-link {
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    z-index: 1002 !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
+
+/* Çok küçük ekranlar için ek güvenlik - 480px ile aynı margin */
+@media screen and (max-width: 360px) {
+  .typewriter-container {
+    margin-left: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: calc(100vw - 40px) !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  .typewriter-text {
+    font-size: 16px !important;
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+
+  .typewriter-text::before {
+    inset: -15px -20px !important;
+  }
+
+  .typewriter-text::after {
+    inset: -10px -15px !important;
   }
 }
 
@@ -804,5 +909,42 @@
   .typewriter-text .typewriter-subtitle,
   .typewriter-text span.typewriter-subtitle {
     font-size: 0.6em !important;
+  }
+}
+
+/* Genel mobil cihazlar için ek güvenlik */
+@media screen and (max-width: 768px) {
+  .typewriter-container {
+    /* Container'ın diğer elementleri etkilememesi için */
+    position: relative;
+    z-index: 1;
+    contain: layout style;
+  }
+
+  .typewriter-text {
+    /* Metnin taşmaması için */
+    contain: layout style;
+    max-width: calc(100vw - 80px);
+    box-sizing: border-box;
+  }
+
+  /* Fixed positioned elementleri koruma */
+  .menu-icon,
+  .mainpage-icon,
+  .mainpage-icon-link,
+  .audio-control {
+    contain: layout style;
+    will-change: transform;
+  }
+}
+
+/* Landscape modda ek düzenlemeler */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .typewriter-container {
+    margin-top: 15vh;
+  }
+
+  .typewriter-text {
+    font-size: 18px;
   }
 }
