@@ -296,7 +296,7 @@ const MemoryArchive = () => {
             // Pin (simple dot with larger touch area on mobile)
             const pin = document.createElement('div');
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const size = isMobile ? 16 : 16; // Mobilde biraz daha büyük
+            const size = isMobile ? 14 : 16;
             const touchSize = isMobile ? 32 : 24; // Touch alanı daha geniş
             pin.style.width = `${size}px`;
             pin.style.height = `${size}px`;
