@@ -145,6 +145,13 @@ const MemoryArchive = () => {
         { id: "a4", title: "13.09.2024 - Tefrik Gerekçeli Karar Açıklaması", date: "13.09.2024", content: "PDF", url: "/basın açıklamaları/13.09.2024-Tefrik Gerekçeli karar açıklaması.pdf", type: "press" },
         { id: "a5", title: "10.10.2022 - 7. Yıl Anma Açıklama", date: "10.10.2022", content: "PDF", url: "/basın açıklamaları/10.10.2022-7.Yıl Anma Açıklama.pdf", type: "press" }
       ]
+    },
+    barisportreleri: {
+      title: "Barış Portreleri",
+      icon: "👥",
+      items: [
+        { id: "bp1", title: "Barış Portreleri", date: "", content: "PDF", url: "https://platform24.org/wp-content/uploads/2024/02/P24_Hafiza_Kitapligi_Baris_Portreleri.pdf", type: "document", external: true }
+      ]
     }
   });
 

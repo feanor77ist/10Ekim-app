@@ -46,10 +46,9 @@ const AnniversaryWritings = () => {
   };
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    return `${day} ${getMonthName(month)}`;
+    // ISO formatındaki tarihi doğru şekilde parse et
+    const [year, month, day] = dateString.split('-').map(Number);
+    return `${day} ${getMonthName(month)} ${year}`;
   };
 
   const getMonthName = (month) => {
@@ -152,35 +151,23 @@ const AnniversaryWritings = () => {
             className={`writing-card ${writing.featured ? 'featured' : ''}`}
             onClick={() => openWriting(writing)}
           >
-            <div className="writing-image-container">
-              {writing.image && (
-                <img 
-                  src={writing.image} 
-                  alt={writing.title}
-                  className="writing-image"
-                />
-              )}
-              <div className="writing-date">
-                {formatDate(writing.date)}
-              </div>
-            </div>
+            {writing.coverImage && (
+              <img 
+                src={writing.coverImage} 
+                alt={writing.title}
+                className="writing-cover-image"
+              />
+            )}
             
-            <div className="writing-content">
-              <h3 className="writing-title">{writing.title}</h3>
-              <div className="writing-meta">
-                <p className="writing-author">{writing.author}</p>
-                <p className="writing-illustrator">Çizer: {writing.illustrator}</p>
-              </div>
-              
-              {writing.content && (
-                <div className="writing-preview">
-                  {writing.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 150)}...
-                </div>
-              )}
+            <div className="writing-date-badge">
+              {formatDate(writing.date)}
             </div>
             
             <div className="writing-overlay">
-              <span className="read-more">Oku</span>
+              <div className="writing-overlay-content">
+                <span className="writing-title-overlay">{writing.title}</span>
+                <span className="read-more">Oku</span>
+              </div>
             </div>
           </div>
         ))}

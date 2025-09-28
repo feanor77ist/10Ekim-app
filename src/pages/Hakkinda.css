@@ -38,10 +38,10 @@
   margin: 0 auto;
 }
 
-/* Tüm içerikte paragraflar arası boşluğu küçült */
+/* Tüm içerikte paragraflar arası boşluk */
 .hakkinda-content p {
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .intro-section {

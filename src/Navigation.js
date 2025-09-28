@@ -4,7 +4,6 @@ import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
 import twitterIcon from './images/tw.jpg';
 import instagramIcon from './images/ig_icon.png';
 import youtubeIcon from './images/youtube-icon.svg';
-import blackRibbon from './images/black-ribbon.png';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +19,7 @@ const menuItems = [
   { title: "GÖRSELLER & VİDEOLAR", link: "https://www.youtube.com/@10ekimankarakatliamavukatk96", enabled: true, external: true },
   { title: "BASIN AÇIKLAMALARI", link: "/aciklamalar", enabled: true },
   { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
-  { title: "LİNKLER", link: "/linkler", enabled: false },
+  { title: "10 EKİM - 10 KAVRAM", link: "/yazilar", enabled: true },
   { title: "HAKKINDA", link: "/hakkinda", enabled: true },
 ];
 
@@ -100,7 +99,6 @@ const Navigation = () => {
       {/* Anasayfa yönlendirme ikonu */}
       <a href="/" className="mainpage-icon-link">
         <img src={mainpageIcon} alt="Anasayfa" className="mainpage-icon" />
-        <img src={blackRibbon} alt="Anma" className="black-ribbon" />
       </a>
 
       {/* Menü açma ikonu */}

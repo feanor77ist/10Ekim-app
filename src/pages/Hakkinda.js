@@ -10,19 +10,16 @@ const Hakkinda = () => {
       </div>
 
       <div className="hakkinda-content">
-        <div className="intro-section">
-          
-          <div className="main-text">
-            <p>
-              Bundan yaklaşık 10 yıl önce 10 Ekim 2015 günü gerçekleştirilmek istenen barış mitinginin 
-              başlangıç noktası olan Ankara Garında IŞİD'li iki canlı bombanın kendisini patlatmasıyla 
-              <strong> 103 kişi hayatını kaybetmiş</strong>, <strong>500'den fazla insan yaralanmış</strong>, 
-              binlerce kişi katliama tanıklık etmiştir.
-            </p>
-          </div>
+        <div>
+          <p>
+            Bundan yaklaşık 10 yıl önce 10 Ekim 2015 günü gerçekleştirilmek istenen barış mitinginin 
+            başlangıç noktası olan Ankara Garında IŞİD'li iki canlı bombanın kendisini patlatmasıyla 
+            <strong> 103 kişi hayatını kaybetmiş</strong>, <strong>500'den fazla insan yaralanmış</strong>, 
+            binlerce kişi katliama tanıklık etmiştir.
+          </p>
         </div>
 
-        <div className="mission-section">
+        <div>
           <p>
             Türkiye'nin en büyük kitle katliamlarından biri olarak toplumsal hafızada önemli izler bırakan, 
             öncesi ve sonrasıyla Türkiye'de toplumsal ve siyasal yaşamın önemli kırılma noktalarından biri 
@@ -36,7 +33,7 @@ const Hakkinda = () => {
           </p>
         </div>
 
-        <div className="justice-section">
+        <div>
           <p>
             Yargı süreci, hayatını kaybedenlerin yakınları, yaralılar, emek ve demokrasi güçlerinin 
             ısrarlı ve inatçı mücadelesi ile yıllardır takip edilmekte olup, bu açıdan önemli bir 
@@ -51,7 +48,7 @@ const Hakkinda = () => {
           </p>
         </div>
 
-        <div className="importance-section">
+        <div>
           <p>
             10 Ekim Ankara katliamının unutturulmaması, katliamın aydınlatılması ve gerçek faillerin 
             ortaya çıkarılması için verilen adalet mücadelesi, her şeyden önce 10 Ekim ailelerine ve 
@@ -66,7 +63,7 @@ const Hakkinda = () => {
           </p>
         </div>
 
-        <div className="digital-archive-section">
+        <div>
           <p>
             Bu meyanda 10 Ekim Ankara Katliamı ve yargılama süreciyle ilgili her türlü bilgi ve belgelerin, 
             sadece dava dosyalarında kalmamasının ve dijital olarak kamuoyuna sunulmasının, adalet ve 
@@ -114,13 +111,15 @@ const Hakkinda = () => {
           </div>
         </div>
 
-        <div className="future-section">
+        <div>
           <p>
             Şimdilik yargılama sürecine ilişkin temel bilgi ve belgeler ile katliamla ilgili ulaşılabilen 
             haberlerin arşivinden oluşan bir içeriğin yer aldığı web sitesinin içeriğini süreç içerisinde 
             anlamına uygun biçimde genişletmeye çalışacağız.
           </p>
-          
+        </div>
+
+        <div>
           <p>
             Bu çalışmamızın adalet mücadelemizi güçlendirmesini, katliamla ilgili gerçekleri öğrenmek 
             isteyenlere ve özellikle genç hukukçulara faydalı olmasını umuyoruz.
