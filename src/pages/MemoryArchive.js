@@ -293,10 +293,11 @@ const MemoryArchive = () => {
             hotSpotDiv.style.transform = 'translate(-50%, -50%)';
             hotSpotDiv.style.pointerEvents = 'auto';
             hotSpotDiv.style.zIndex = '2000';
-            // Pin (simple dot)
+            // Pin (simple dot with larger touch area on mobile)
             const pin = document.createElement('div');
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const size = isMobile ? 12 : 16;
+            const size = isMobile ? 16 : 16; // Mobilde biraz daha büyük
+            const touchSize = isMobile ? 32 : 24; // Touch alanı daha geniş
             pin.style.width = `${size}px`;
             pin.style.height = `${size}px`;
             pin.style.borderRadius = '50%';
@@ -306,6 +307,13 @@ const MemoryArchive = () => {
             pin.style.zIndex = '1000';
             pin.style.animation = 'pulse 2s infinite';
             pin.style.cursor = 'pointer';
+            
+            // Mobilde daha geniş touch alanı için invisible padding
+            if (isMobile) {
+              pin.style.position = 'relative';
+              pin.style.padding = `${(touchSize - size) / 2}px`;
+              pin.style.margin = `-${(touchSize - size) / 2}px`;
+            }
             // Tooltip: render at body level to avoid stacking issues
             let tooltip = null;
             const ensureTooltip = () => {
