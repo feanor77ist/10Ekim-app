@@ -14,6 +14,12 @@ const MemoryArchive = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const HELP_KEY = 'memory_help_v2';
   const openVictim = (v) => {
+    // Tüm tooltip'leri gizle
+    const tooltips = Array.from(document.querySelectorAll('[style*="position: fixed"][style*="z-index: 100000"]'));
+    tooltips.forEach(tooltip => {
+      tooltip.style.display = 'none';
+    });
+    
     setSelectedVictim(v);
     setIsModalOpen(true);
   };
@@ -214,6 +220,19 @@ const MemoryArchive = () => {
     };
   }, [isModalOpen, selectedVictim]);
 
+  // Hide all tooltips when modal opens
+  useEffect(() => {
+    if (isModalOpen && selectedVictim) {
+      // Tüm tooltip'leri gizle
+      const tooltips = Array.from(document.querySelectorAll('[style*="position: fixed"][style*="z-index: 100000"]'));
+      tooltips.forEach(tooltip => {
+        if (tooltip.style.display !== 'none') {
+          tooltip.style.display = 'none';
+        }
+      });
+    }
+  }, [isModalOpen, selectedVictim]);
+
   // Simple, deterministic ring positions (responsive)
   const victimPositions = useMemo(() => {
     const count = victims.length;
@@ -274,32 +293,19 @@ const MemoryArchive = () => {
             hotSpotDiv.style.transform = 'translate(-50%, -50%)';
             hotSpotDiv.style.pointerEvents = 'auto';
             hotSpotDiv.style.zIndex = '2000';
-            // Pin (avatar circle only)
+            // Pin (simple dot)
             const pin = document.createElement('div');
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const size = isMobile ? 36 : 50;
+            const size = isMobile ? 12 : 16;
             pin.style.width = `${size}px`;
             pin.style.height = `${size}px`;
             pin.style.borderRadius = '50%';
-            pin.style.border = '3px solid #fff';
-            pin.style.boxShadow = '0 0 0 2px #d4af37, 0 4px 12px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.4)';
-            pin.style.backgroundColor = '#b71c1c';
-            pin.style.backgroundSize = 'cover';
-            pin.style.backgroundPosition = 'center';
+            pin.style.border = '2px solid #fff';
+            pin.style.boxShadow = '0 0 0 1px #d4af37, 0 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.6)';
+            pin.style.backgroundColor = '#d4af37';
             pin.style.zIndex = '1000';
             pin.style.animation = 'pulse 2s infinite';
             pin.style.cursor = 'pointer';
-            if (v.image) {
-              pin.style.backgroundImage = `url(${v.image})`;
-            } else {
-              pin.style.display = 'flex';
-              pin.style.alignItems = 'center';
-              pin.style.justifyContent = 'center';
-              pin.style.color = '#fff';
-              pin.style.fontWeight = '700';
-              pin.style.fontSize = '14px';
-              pin.textContent = (v.name || '?').charAt(0).toUpperCase();
-            }
             // Tooltip: render at body level to avoid stacking issues
             let tooltip = null;
             const ensureTooltip = () => {
