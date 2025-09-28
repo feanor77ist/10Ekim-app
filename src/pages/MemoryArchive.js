@@ -220,13 +220,14 @@ const MemoryArchive = () => {
     if (!count) return [];
     const positions = [];
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const rings = isMobile ? 5 : 4;
+    const rings = isMobile ? 6 : 4; // Mobilde daha fazla ring
     const perRing = Math.ceil(count / rings);
-    const ringPitch = isMobile ? [-18, -9, 0, 9, 18] : [-12, -4, 4, 12];
+    const ringPitch = isMobile ? [-25, -15, -5, 5, 15, 25] : [-12, -4, 4, 12]; // Mobilde daha geniş pitch aralığı
     for (let r = 0; r < rings; r += 1) {
       for (let i = 0; i < perRing && positions.length < count; i += 1) {
-        const yaw = (i / perRing) * 360 + r * (isMobile ? 10 : 15) + (Math.random() * (isMobile ? 16 : 12) - (isMobile ? 8 : 6));
-        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 10 : 8) - (isMobile ? 5 : 4));
+        // Mobilde daha geniş yaw dağılımı ve daha az rastgelelik
+        const yaw = (i / perRing) * 360 + r * (isMobile ? 20 : 15) + (Math.random() * (isMobile ? 8 : 12) - (isMobile ? 4 : 6));
+        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 6 : 8) - (isMobile ? 3 : 4));
         positions.push({ yaw, pitch });
       }
     }
@@ -248,14 +249,15 @@ const MemoryArchive = () => {
 
       // Compute positions for the filtered subset so spacing stays nice
       const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-      const rings = isMobile ? 5 : 4;
+      const rings = isMobile ? 6 : 4; // Mobilde daha fazla ring
       const perRing = Math.ceil(filtered.length / rings) || 1;
-      const ringPitch = isMobile ? [-18, -9, 0, 9, 18] : [-12, -4, 4, 12];
+      const ringPitch = isMobile ? [-25, -15, -5, 5, 15, 25] : [-12, -4, 4, 12]; // Mobilde daha geniş pitch aralığı
       const posForIndex = (i) => {
         const r = Math.floor(i / perRing);
         const idxInRing = i % perRing;
-        const yaw = (idxInRing / perRing) * 360 + r * (isMobile ? 10 : 15) + (Math.random() * (isMobile ? 16 : 12) - (isMobile ? 8 : 6));
-        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 10 : 8) - (isMobile ? 5 : 4));
+        // Mobilde daha geniş yaw dağılımı ve daha az rastgelelik
+        const yaw = (idxInRing / perRing) * 360 + r * (isMobile ? 20 : 15) + (Math.random() * (isMobile ? 8 : 12) - (isMobile ? 4 : 6));
+        const pitch = ringPitch[r] + (Math.random() * (isMobile ? 6 : 8) - (isMobile ? 3 : 4));
         return { yaw, pitch };
       };
 
@@ -275,16 +277,18 @@ const MemoryArchive = () => {
             // Pin (avatar circle only)
             const pin = document.createElement('div');
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const size = isMobile ? 30 : 42;
+            const size = isMobile ? 36 : 50;
             pin.style.width = `${size}px`;
             pin.style.height = `${size}px`;
             pin.style.borderRadius = '50%';
-            pin.style.border = '2px solid #fff';
-            pin.style.boxShadow = '0 2px 8px rgba(0,0,0,0.35)';
+            pin.style.border = '3px solid #fff';
+            pin.style.boxShadow = '0 0 0 2px #d4af37, 0 4px 12px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.4)';
             pin.style.backgroundColor = '#b71c1c';
             pin.style.backgroundSize = 'cover';
             pin.style.backgroundPosition = 'center';
             pin.style.zIndex = '1000';
+            pin.style.animation = 'pulse 2s infinite';
+            pin.style.cursor = 'pointer';
             if (v.image) {
               pin.style.backgroundImage = `url(${v.image})`;
             } else {
@@ -302,25 +306,48 @@ const MemoryArchive = () => {
               if (tooltip) return tooltip;
               tooltip = document.createElement('div');
               tooltip.style.position = 'fixed';
-              tooltip.style.background = 'rgba(0,0,0,0.85)';
+              tooltip.style.background = 'rgba(0,0,0,0.9)';
               tooltip.style.color = '#fff';
-              tooltip.style.padding = '6px 8px';
-              tooltip.style.borderRadius = '8px';
-              tooltip.style.fontSize = '12px';
-              tooltip.style.whiteSpace = 'nowrap';
+              tooltip.style.padding = '12px';
+              tooltip.style.borderRadius = '12px';
+              tooltip.style.fontSize = '14px';
+              tooltip.style.fontWeight = '600';
               tooltip.style.pointerEvents = 'none';
               tooltip.style.zIndex = '100000';
               tooltip.style.display = 'none';
-              tooltip.textContent = v.name;
+              tooltip.style.border = '2px solid #d4af37';
+              tooltip.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+              tooltip.style.maxWidth = '200px';
+              tooltip.style.textAlign = 'center';
+              
+              // Resim preview'ı ekle
+              if (v.image) {
+                const img = document.createElement('img');
+                img.src = v.image;
+                img.style.width = '60px';
+                img.style.height = '60px';
+                img.style.borderRadius = '50%';
+                img.style.objectFit = 'cover';
+                img.style.marginBottom = '8px';
+                img.style.border = '2px solid #fff';
+                tooltip.appendChild(img);
+              }
+              
+              // İsim ekle
+              const nameDiv = document.createElement('div');
+              nameDiv.textContent = v.name;
+              nameDiv.style.whiteSpace = 'nowrap';
+              tooltip.appendChild(nameDiv);
+              
               const arrow = document.createElement('div');
               arrow.style.position = 'absolute';
               arrow.style.left = '50%';
               arrow.style.transform = 'translateX(-50%)';
               arrow.style.width = '0';
               arrow.style.height = '0';
-              arrow.style.borderLeft = '6px solid transparent';
-              arrow.style.borderRight = '6px solid transparent';
-              arrow.style.borderTop = '6px solid rgba(0,0,0,0.85)';
+              arrow.style.borderLeft = '8px solid transparent';
+              arrow.style.borderRight = '8px solid transparent';
+              arrow.style.borderTop = '8px solid #d4af37';
               arrow.dataset.arrow = '1';
               tooltip.appendChild(arrow);
               const root = document.fullscreenElement || document.body;
@@ -356,11 +383,18 @@ const MemoryArchive = () => {
             hotSpotDiv.addEventListener('mousemove', () => positionTooltip());
             hotSpotDiv.addEventListener('touchstart', () => {
               longPressed = false; clearTimeout(longTimer);
-              longTimer = setTimeout(() => { longPressed = true; ensureTooltip(); positionTooltip(); tooltip.style.display = 'block'; }, 350);
+              longTimer = setTimeout(() => { 
+                longPressed = true; 
+                ensureTooltip(); 
+                positionTooltip(); 
+                tooltip.style.display = 'block'; 
+              }, 300);
             }, { passive: true });
             hotSpotDiv.addEventListener('touchend', () => {
               clearTimeout(longTimer);
-              if (longPressed) hide(600);
+              if (longPressed) {
+                hide(1000); // Preview'ı daha uzun göster
+              }
             }, { passive: true });
             hotSpotDiv.addEventListener('click', (e) => {
               if (longPressed) { e.stopPropagation(); longPressed = false; }
@@ -397,7 +431,7 @@ const MemoryArchive = () => {
         <ReactPannellum
           id="memory-archive-panorama"
           sceneId="memoryScene"
-          imageSource="https://pannellum.org/images/bma-0.jpg"
+          imageSource={require('../images/360kolaj.png')}
           style={{
             width: "100%",
             height: "75vh",

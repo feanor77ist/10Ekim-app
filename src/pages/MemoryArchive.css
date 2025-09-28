@@ -6,6 +6,22 @@
   padding: 2rem 0;
 }
 
+/* Pulse animation for victim pins */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px #d4af37, 0 4px 12px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px #d4af37, 0 6px 16px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px #d4af37, 0 4px 12px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+  }
+}
+
 /* Help HUD */
 .help-hud {
   position: fixed;
