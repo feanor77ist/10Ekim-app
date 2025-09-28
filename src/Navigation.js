@@ -121,7 +121,6 @@ const Navigation = () => {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setIsNavVisible(false)} // menüyü kapat
                   >
                     {item.title}
                   </a>
