@@ -59,6 +59,14 @@ const MemoryArchive = () => {
             }
           });
         }
+        // Force visibility on mobile devices
+        if (window.innerWidth <= 768) {
+          fsBtn.style.display = 'flex';
+          fsBtn.style.visibility = 'visible';
+          fsBtn.style.opacity = '1';
+          fsBtn.style.position = 'relative';
+          fsBtn.style.zIndex = '1200';
+        }
       } catch (_) {}
     };
     attach();

@@ -31,24 +31,6 @@
   text-align: center;
 }
 
-/* 10 Kavram Bölümü */
-.concepts-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  max-width: 1000px;
-  margin: 1.5rem auto;
-  padding: 0 2rem;
-  gap: 2rem;
-}
-
-.concepts-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
 .concept-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.8rem;
@@ -62,89 +44,6 @@
   font-size: 1.5rem;
   color: #d4af37;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.concepts-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.concept-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  max-width: 600px;
-  position: relative;
-  min-height: 120px;
-}
-
-.concept-item {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #d4af37;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  line-height: 1.1;
-  padding: 0.3rem 0.6rem;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-/* Her kavram için farklı renk */
-.concept-item:nth-child(1) { 
-  transform: rotate(-2deg) translateY(-3px);
-  color: #d4af37; /* dava - altın */
-}
-.concept-item:nth-child(2) { 
-  transform: rotate(1deg) translateY(2px);
-  color: #87ceeb; /* barış - açık mavi */
-}
-.concept-item:nth-child(3) { 
-  transform: rotate(-1deg) translateY(-1px);
-  color: #dc143c; /* katliam - koyu kırmızı */
-}
-.concept-item:nth-child(4) { 
-  transform: rotate(2deg) translateY(3px);
-  color: #32cd32; /* sorumluluk - yeşil */
-}
-.concept-item:nth-child(5) { 
-  transform: rotate(-1.5deg) translateY(-2px);
-  color: #ff6347; /* eylem - domates rengi */
-}
-.concept-item:nth-child(6) { 
-  transform: rotate(0.5deg) translateY(1px);
-  color: #9370db; /* politika - mor */
-}
-.concept-item:nth-child(7) { 
-  transform: rotate(-0.5deg) translateY(-2px);
-  color: #ffa500; /* emek - turuncu */
-}
-.concept-item:nth-child(8) { 
-  transform: rotate(1.5deg) translateY(0px);
-  color: #ff69b4; /* yas - pembe */
-}
-.concept-item:nth-child(9) { 
-  transform: rotate(-2.5deg) translateY(-1px);
-  color: #00ced1; /* mücadele - turkuaz */
-}
-.concept-item:nth-child(10) { 
-  transform: rotate(0.8deg) translateY(2px);
-  color: #f0e68c; /* zaman - bej */
-}
-
-.concept-item:hover {
-  transform: scale(1.05) rotate(0deg) translateY(0px);
-  background: rgba(212, 175, 55, 0.2);
-  border-color: #d4af37;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 /* Grid Layout */
@@ -449,38 +348,12 @@
     font-size: 2rem;
   }
   
-  .concepts-section {
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem auto;
-    padding: 0 1rem;
-  }
-  
   .concept-text {
     font-size: 1.4rem;
   }
   
   .anniversary-subtitle .concept-text {
     font-size: 1.2rem;
-  }
-  
-  .concept-item {
-    font-size: 1.1rem;
-  }
-  
-  .concepts-right {
-    justify-content: center;
-  }
-  
-  .concept-list {
-    max-width: 100%;
-    gap: 0.5rem;
-    min-height: 80px;
-  }
-  
-  .concept-item {
-    font-size: 1rem;
-    padding: 0.2rem 0.4rem;
   }
   
   .writings-grid {

@@ -128,6 +128,40 @@
   }
 }
 
+/* Force fullscreen button visibility on all mobile devices */
+@media (max-width: 480px) {
+  .pannellum-container .pnlm-controls {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .pannellum-container .pnlm-fullscreen-toggle-button,
+  .pannellum-container .pnlm-fullscreen-toggle,
+  .pannellum-container .ma-fs-proxy {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1200 !important;
+  }
+  
+  /* Ensure the proxy button is always visible */
+  .pannellum-container .ma-fs-proxy {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #fff !important;
+    color: #000 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2) !important;
+    margin-top: 6px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .pannellum-container {
     margin: 0 0 1rem;
@@ -600,7 +634,46 @@
   }
 }
 
-/* Very small screens: adjust button sizing */
+/* Very small screens: adjust button sizing and victim modal layout */
+@media (max-width: 480px) {
+  /* Panorama container adjustments for very small screens */
+  .pannellum-container {
+    margin: 0 12px 1rem !important;
+    border-radius: 8px !important;
+    border-left: 2px solid rgba(212, 175, 55, 0.3) !important;
+    border-right: 2px solid rgba(212, 175, 55, 0.3) !important;
+  }
+  
+  /* Modal header adjustments for very small screens */
+  .modal-header {
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Victim modal mobile adjustments for very small screens */
+  .victim-modal {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    text-align: center !important;
+  }
+  
+  .victim-photo {
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .victim-bio {
+    text-align: left !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
 @media (max-width: 360px) {
   .memory-archive .category-btn { 
     font-size: 0.85rem !important;

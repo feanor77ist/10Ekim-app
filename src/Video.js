@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import videoSource from "./images/short2.mp4";
-import audioSource from "./images/main_video_voice.mp3";
+import audioSource from "./images/web sitesi ses (mp3cut.net).mp3";
 
 // Video bileşeni
 const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, audioRef, hideAudioButton }, ref) => {
@@ -92,6 +92,19 @@ const Video = React.forwardRef(({ src, onVideoLoad, onVideoEnd, onVideoPlay, aud
                     // Ses-video senkronizasyonu
                     const expectedAudioTime = video.currentTime * 2;
                     const timeDiff = Math.abs(audio.currentTime - expectedAudioTime);
+                    
+                    // Fade-out efekti: Son 3 saniyede sesi yavaşça azalt
+                    if (audio.currentTime >= 36) { // 39 saniyelik dosya için son 3 saniye
+                        const fadeStartTime = 36;
+                        const fadeDuration = 3; // 3 saniye fade
+                        const fadeProgress = (audio.currentTime - fadeStartTime) / fadeDuration;
+                        const fadeVolume = Math.max(0, 1 - fadeProgress); // 1'den 0'a düşür
+                        audio.volume = fadeVolume;
+                        console.log(`🎵 Fade-out: ${(fadeProgress * 100).toFixed(1)}% tamamlandı, volume: ${fadeVolume.toFixed(2)}`);
+                    } else {
+                        // Normal ses seviyesi
+                        audio.volume = 1.0;
+                    }
                     
                     // Sadece 0.5 saniyeden fazla fark varsa düzelt
                     if (timeDiff > 0.5) {
