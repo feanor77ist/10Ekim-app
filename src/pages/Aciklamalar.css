@@ -231,16 +231,18 @@
   flex-direction: column;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   border: 1px solid #333;
+  position: relative;
 }
 
 .document-modal-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid #333;
   background: #2a2a2a;
   border-radius: 15px 15px 0 0;
+  position: relative;
 }
 
 .document-modal-header h3 {
@@ -248,32 +250,37 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0;
-  flex: 1;
-  padding-right: 1rem;
+  text-align: center;
 }
 
-.close-btn {
+.aciklamalar-container .document-modal .close-btn {
   background: #ff6b6b;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
-.close-btn:hover {
+.aciklamalar-container .document-modal .close-btn:hover {
   background: #ff5252;
   transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
 }
 
-.close-btn svg {
-  width: 20px;
-  height: 20px;
+.aciklamalar-container .document-modal .close-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .document-viewer {
@@ -491,10 +498,23 @@
   
   .document-modal-header {
     padding: 1rem;
+    padding-top: 3rem;
   }
   
   .document-modal-header h3 {
     font-size: 1.1rem;
+  }
+  
+  .aciklamalar-container .document-modal .close-btn {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .aciklamalar-container .document-modal .close-btn svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -533,5 +553,33 @@
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 90px;
+  }
+  
+  .document-modal {
+    width: 98%;
+    height: 98%;
+  }
+  
+  .document-modal-header {
+    padding: 0.8rem;
+    padding-top: 2.5rem;
+    position: static;
+  }
+  
+  .document-modal-header h3 {
+    font-size: 1rem;
+  }
+  
+  .aciklamalar-container .document-modal .close-btn {
+    width: 26px;
+    height: 26px;
+    top: auto;
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  .aciklamalar-container .document-modal .close-btn svg {
+    width: 12px;
+    height: 12px;
   }
 }

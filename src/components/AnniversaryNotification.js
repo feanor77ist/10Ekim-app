@@ -118,7 +118,7 @@ const AnniversaryNotification = () => {
           <div className="notification-icon">📝</div>
           <div className="notification-title">
             <h3>10 Ekim'in 10.yılında 10 kavram</h3>
-            <p>Yeni yazı yayınlandı</p>
+            <p className="subtitle">Alternatif bir karar denemesi</p>
           </div>
           <button className="notification-close" onClick={handleClose}>×</button>
         </div>

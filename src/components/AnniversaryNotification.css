@@ -63,6 +63,10 @@
   font-weight: 500;
 }
 
+.notification-title .subtitle {
+  color: #999;
+}
+
 .notification-title p {
   color: #ccc;
   font-size: 0.85rem;
