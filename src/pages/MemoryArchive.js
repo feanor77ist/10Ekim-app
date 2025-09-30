@@ -447,7 +447,7 @@ const MemoryArchive = () => {
         <ReactPannellum
           id="memory-archive-panorama"
           sceneId="memoryScene"
-          imageSource={require('../images/360kolaj.png')}
+          imageSource={require('../images/360kolaj.webp')}
           style={{
             width: "100%",
             height: "75vh",

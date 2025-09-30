@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import mainpageIcon from './images/logo-rev.png';
-import menuIcon from './images/navbar-icon.png'; // senin oluşturduğun ikon
-import twitterIcon from './images/tw.jpg';
-import instagramIcon from './images/ig_icon.png';
+import mainpageIcon from './images/logo-rev.webp';
+import menuIcon from './images/navbar-icon.webp'; // senin oluşturduğun ikon
+import twitterIcon from './images/tw.webp';
+import instagramIcon from './images/ig_icon.webp';
 import youtubeIcon from './images/youtube-icon.svg';
 import './Navigation.css';
 import { Link } from 'react-router-dom';

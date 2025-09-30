@@ -77,7 +77,7 @@
 
   background-image: 
     url('./images/GrainBackground.gif'),
-    url('./images/navbar-bg3.png');
+    url('./images/navbar-bg3.webp');
   background-repeat: repeat, no-repeat;
   background-position: center center, center center;
   background-size: 20% 20%, cover; 
@@ -245,7 +245,7 @@
     align-items: flex-start;
     background-image: 
       url('./images/GrainBackground.gif'),
-      url('./images/navbar-bg3.png');
+      url('./images/navbar-bg3.webp');
     background-repeat: repeat, no-repeat;
     background-position: center center, center center;
     background-size: 15% 15%, cover;

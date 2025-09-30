@@ -342,7 +342,7 @@
   content: '';
   position: absolute;
   inset: -2px;
-  background-image: url('images/brush.png');
+  background-image: url('images/brush.webp');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 140% 220%;

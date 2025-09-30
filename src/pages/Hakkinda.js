@@ -72,43 +72,26 @@ const Hakkinda = () => {
           </p>
         </div>
 
-        <div className="portal-objectives">
+        <div>
           <h2>Portalımızın Amaçları</h2>
-          <div className="objectives-grid">
-            <div className="objective-item">
-              <div className="objective-icon">📚</div>
-              <h3>Bilgi Erişimi</h3>
-              <p>
-                Katliamın gerçeklerini öğrenmek isteyenlere tek bir noktadan ulaşabilecekleri 
-                derli toplu bilgilerin yer aldığı bir dijital mecra sunulması
-              </p>
-            </div>
-            
-            <div className="objective-item">
-              <div className="objective-icon">⚖️</div>
-              <h3>Hukuki Kaynak</h3>
-              <p>
-                Katliamın yargı sürecine ilişkin hukukçuların ve araştırmacıların 
-                ilk elden ulaşabilecekleri bir kaynak olması
-              </p>
-            </div>
-            
-            <div className="objective-item">
-              <div className="objective-icon">🌐</div>
-              <h3>Dijital Erişim</h3>
-              <p>
-                Katliamın gerçeklerinin dijital ortamlarda kolay ulaşılabilir hale getirilmesi
-              </p>
-            </div>
-            
-            <div className="objective-item">
-              <div className="objective-icon">🧠</div>
-              <h3>Toplumsal Hafıza</h3>
-              <p>
-                Böylece katliamın toplumun hafızasından silinmemesi amaçlanmaktadır
-              </p>
-            </div>
-          </div>
+          
+          <p>
+            <strong>Bilgi Erişimi:</strong> Katliamın gerçeklerini öğrenmek isteyenlere tek bir noktadan ulaşabilecekleri 
+            derli toplu bilgilerin yer aldığı bir dijital mecra sunulması
+          </p>
+          
+          <p>
+            <strong>Hukuki Kaynak:</strong> Katliamın yargı sürecine ilişkin hukukçuların ve araştırmacıların 
+            ilk elden ulaşabilecekleri bir kaynak olması
+          </p>
+          
+          <p>
+            <strong>Dijital Erişim:</strong> Katliamın gerçeklerinin dijital ortamlarda kolay ulaşılabilir hale getirilmesi
+          </p>
+          
+          <p>
+            <strong>Toplumsal Hafıza:</strong> Böylece katliamın toplumun hafızasından silinmemesi amaçlanmaktadır
+          </p>
         </div>
 
         <div>
