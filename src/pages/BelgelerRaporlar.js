@@ -1,93 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './BelgelerRaporlar.css';
 
 const BelgelerRaporlar = () => {
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [pdfFiles, setPdfFiles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const pdfFiles = [
-    {
-      id: 1,
-      title: "EGM Mülkiye Müfetişleri Araştırma Raporu",
-      filename: "1-Araştırma Raporu.pdf",
-      description: "10 Ekim Ankara Gar Katliamı ile ilgili detaylı araştırma raporu. Tarih: 24.02.2017",
-      category: "Araştırma"
-    },
-    {
-      id: 2,
-      title: "EGM Mülkiye Müfetişleri Araştırma Raporu Ekleri",
-      filename: "2-Araştırma Raporu Ekleri .pdf",
-      description: "Araştırma raporuna ait ek belgeler ve dokümanlar.",
-      category: "Araştırma"
-    },
-    {
-      id: 3,
-      title: "EGM Mülkiye Müfetişleri Disiplin Raporu",
-      filename: "Disiplin Raporu .pdf",
-      description: "Olayla ilgili disiplin soruşturması raporu. Tarih: 26.02.2016",
-      category: "Disiplin"
-    },
-    {
-      id: 4,
-      title: "EGM Mülkiye Müfetişleri İnceleme Raporu",
-      filename: "İnceleme Raporu .pdf",
-      description: "Olayın detaylı inceleme raporu ve bulguları. Tarih: 13.10.2015",
-      category: "İnceleme"
-    },
-    {
-      id: 5,
-      title: "EGM Mülkiye Müfetişleri İnceleme Raporu (2016)",
-      filename: "İnceleme Raporu.pdf",
-      description: "İnceleme raporunun 2016 tarihli versiyonu. Tarih: 26.02.2016",
-      category: "İnceleme"
-    },
-    {
-      id: 6,
-      title: "EGM Mülkiye Müfettişleri Ön İnceleme Raporu",
-      filename: "MÜLKİYE MÜFETTİŞLERİ ÖN İNCELEME RAPORU.pdf",
-      description: "Mülkiye müfettişleri tarafından hazırlanan ön inceleme raporu. Tarih: 25.02.2016",
-      category: "Müfettişlik"
-    }
-  ];
-  
-  // Yeni eklenen PDF'ler
-  pdfFiles.push(
-    {
-      id: 7,
-      title: "10 Ekim Raporu (Avukatlar)",
-      filename: "10-EKİM-RAPORU (avukatlar).pdf",
-      description: "10 Ekim davasına ilişkin avukatlar raporu.",
-      category: "Rapor"
-    },
-    {
-      id: 8,
-      title: "Hukuki Mütalaa (Dr. Barış Işık)",
-      filename: "HUKUKİ MÜTALAA Dr. Barış IŞIK.pdf",
-      description: "10 Ekim dosyasına ilişkin hukuki mütalaa (Dr. Barış Işık).",
-      category: "Mütalaa"
-    },
-    {
-      id: 9,
-      title: "TTB 10 Ekim Raporu",
-      filename: "TTB 10 ekim rapor.pdf",
-      description: "Türk Tabipleri Birliği tarafından hazırlanan 10 Ekim raporu.",
-      category: "Rapor"
-    },
-    {
-      id: 10,
-      title: "ÖHD Raporu",
-      filename: "ÖHD RAPOR.pdf",
-      description: "Özgür Hukukçular Derneği tarafından hazırlanan rapor.",
-      category: "Rapor"
-    },
-    {
-      id: 11,
-      title: "İnsanlığa Karşı Suç Hukuki Mütalaa (Dr. Murat Önok)",
-      filename: "İNSANLIĞA KARŞI SUÇ HUKUKİ MÜTALAA DR. MURAT ÖNOK.pdf",
-      description: "İnsanlığa karşı suç kapsamında hukuki mütalaa (Dr. Murat Önok).",
-      category: "Mütalaa"
-    }
-  );
+  // JSON veritabanından veri yükle
+  useEffect(() => {
+    fetch('/pdf_database.json')
+      .then(response => response.json())
+      .then(data => {
+        setPdfFiles(data.belgeler_raporlar);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('PDF veritabanı yüklenemedi:', error);
+        setLoading(false);
+      });
+  }, []);
 
   const getCategoryDisplayName = (category) => {
     switch (category) {
@@ -109,24 +41,22 @@ const BelgelerRaporlar = () => {
   const [pdfLoading, setPdfLoading] = useState(false);
 
   const handlePdfClick = (pdf) => {
-    setPdfLoading(true);
-    setSelectedPdf(pdf);
-    // PDF yüklendikten sonra loading'i kapat
-    setTimeout(() => setPdfLoading(false), 1000);
+    if (pdf.googleDriveLink && pdf.googleDriveLink !== null) {
+      // Google Drive linkine yönlendir
+      window.open(pdf.googleDriveLink, '_blank');
+    } else {
+      // Local PDF görüntüleme
+      setPdfLoading(true);
+      setSelectedPdf(pdf);
+      setTimeout(() => setPdfLoading(false), 1000);
+    }
   };
 
   const closePdfViewer = () => {
     setSelectedPdf(null);
   };
 
-  const downloadPdf = (filename) => {
-    const link = document.createElement('a');
-    link.href = `/belgeler-raporlar/${filename}`;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // downloadPdf kaldırıldı (artık yalnızca Görüntüle var)
 
   const handleCategoryFilter = (category) => {
     setActiveCategory(category);
@@ -195,6 +125,17 @@ const BelgelerRaporlar = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="belgeler-raporlar-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>PDF verileri yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="belgeler-raporlar-container">
       <div className="belgeler-raporlar-header">
@@ -239,6 +180,10 @@ const BelgelerRaporlar = () => {
             <div className="pdf-content">
               <h3 className="pdf-title">{pdf.title}</h3>
               <p className="pdf-description">{pdf.description}</p>
+              <div className="pdf-meta">
+                <span className="pdf-size">Boyut: {pdf.size}</span>
+                <span className="pdf-date">Tarih: {pdf.date}</span>
+              </div>
               <div className="pdf-actions">
                 <button 
                   className="view-btn"
@@ -272,21 +217,13 @@ const BelgelerRaporlar = () => {
                 </div>
               ) : (
                 <iframe
-                  src={`/belgeler-raporlar/${selectedPdf.filename}#toolbar=1&navpanes=1&scrollbar=1`}
+                  src={`${selectedPdf.localPath}#toolbar=1&navpanes=1&scrollbar=1`}
                   title={selectedPdf.title}
                   width="100%"
                   height="100%"
                   loading="lazy"
                 />
               )}
-            </div>
-            <div className="pdf-modal-footer">
-              <button 
-                className="download-btn"
-                onClick={() => downloadPdf(selectedPdf.filename)}
-              >
-                PDF'yi İndir
-              </button>
             </div>
           </div>
         </div>

@@ -6,6 +6,26 @@
   font-family: 'Arial', sans-serif;
 }
 
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: #f0f0e8;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
 /* PDF Loading Styles */
 .pdf-loading {
   display: flex;
@@ -176,6 +196,21 @@
   line-height: 1.5;
   margin-bottom: 1rem;
   flex: 1;
+}
+
+.pdf-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.pdf-size, .pdf-date {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  color: #d4af37;
+  font-weight: 500;
 }
 
 .pdf-actions {

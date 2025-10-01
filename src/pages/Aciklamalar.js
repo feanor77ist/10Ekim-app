@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Aciklamalar.css';
 
 const Aciklamalar = () => {
   const [selectedDocument, setSelectedDocument] = useState(null);
+  const [documents, setDocuments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const documents = [
+  // JSON veritabanından veri yükle
+  useEffect(() => {
+    fetch('/pdf_database.json')
+      .then(response => response.json())
+      .then(data => {
+        setDocuments(data.basin_aciklamalari);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('PDF veritabanı yüklenemedi:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  // Tarih sıralaması (azalan - en yeni önce)
+  // const staticDocuments = [
+  /*
     {
       id: 1,
       title: "Tefrik Karar Açıklaması",
@@ -230,7 +248,7 @@ const Aciklamalar = () => {
       description: "Kısıtlılık AYM kararı ile ilgili basın açıklaması.",
       category: "AYM"
     }
-  ];
+  */
 
   // Tarih sıralaması (azalan - en yeni önce)
   const sortedDocuments = documents.sort((a, b) => new Date(b.sortDate) - new Date(a.sortDate));
@@ -240,24 +258,22 @@ const Aciklamalar = () => {
   const [pdfLoading, setPdfLoading] = useState(false);
 
   const handleDocumentClick = (document) => {
-    setPdfLoading(true);
-    setSelectedDocument(document);
-    // PDF yüklendikten sonra loading'i kapat
-    setTimeout(() => setPdfLoading(false), 1000);
+    if (document.googleDriveLink && document.googleDriveLink !== null) {
+      // Google Drive linkine yönlendir
+      window.open(document.googleDriveLink, '_blank');
+    } else {
+      // Local PDF görüntüleme
+      setPdfLoading(true);
+      setSelectedDocument(document);
+      setTimeout(() => setPdfLoading(false), 1000);
+    }
   };
 
   const closeDocumentViewer = () => {
     setSelectedDocument(null);
   };
 
-  const downloadDocument = (filename) => {
-    const link = document.createElement('a');
-    link.href = `/basın açıklamaları/${filename}`;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // downloadDocument kaldırıldı (artık yalnızca Görüntüle var)
 
   const handleCategoryFilter = (category) => {
     setActiveCategory(category);
@@ -348,6 +364,17 @@ const Aciklamalar = () => {
     return category;
   };
 
+  if (loading) {
+    return (
+      <div className="aciklamalar-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>PDF verileri yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="aciklamalar-container">
       <div className="aciklamalar-header">
@@ -393,6 +420,9 @@ const Aciklamalar = () => {
               <h3 className="document-title">{document.title}</h3>
               <p className="document-date">Tarih: {document.date}</p>
               <p className="document-description">{document.description}</p>
+              <div className="document-meta">
+                <span className="document-size">Boyut: {document.size}</span>
+              </div>
               <div className="document-actions">
                 <button 
                   className="view-btn"
@@ -426,21 +456,13 @@ const Aciklamalar = () => {
                 </div>
               ) : (
                 <iframe
-                  src={`/basın açıklamaları/${selectedDocument.filename}#toolbar=1&navpanes=1&scrollbar=1`}
+                  src={`${selectedDocument.localPath}#toolbar=1&navpanes=1&scrollbar=1`}
                   title={selectedDocument.title}
                   width="100%"
                   height="100%"
                   loading="lazy"
                 />
               )}
-            </div>
-            <div className="document-modal-footer">
-              <button 
-                className="download-btn"
-                onClick={() => downloadDocument(selectedDocument.filename)}
-              >
-                Belgeyi İndir
-              </button>
             </div>
           </div>
         </div>

@@ -1,57 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Kararlar.css';
 
 const Kararlar = () => {
   const [selectedPdf, setSelectedPdf] = useState(null);
+  const [pdfFiles, setPdfFiles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const pdfFiles = [
-    {
-      id: 1,
-      title: "Ankara 4. Ağır Ceza Mahkemesi 2016/232 Gerekçeli Karar",
-      filename: "ANKARA 4 AĞIR CEZA MAH 2016 232 GEREKÇELİ KARAR.pdf",
-      description: "2016 yılında Ankara 4. Ağır Ceza Mahkemesi tarafından verilen gerekçeli karar."
-    },
-    {
-      id: 2,
-      title: "Ankara 4. Ağır Ceza Mahkemesi 2018/287 Gerekçeli Karar",
-      filename: "ANKARA 4 AĞIR CEZA MAH 2018 287 GEREKÇELİ KARAR.pdf",
-      description: "2018 yılında Ankara 4. Ağır Ceza Mahkemesi tarafından verilen gerekçeli karar."
-    },
-    {
-      id: 3,
-      title: "Ankara Bölge Adliye Mahkemesi Gerekçeli Karar",
-      filename: "ANKARA BÖLGE ADLİYE MAHKEMESİ GEREKÇELİ KARAR.pdf",
-      description: "Ankara Bölge Adliye Mahkemesi tarafından verilen gerekçeli karar."
-    },
-    {
-      id: 4,
-      title: "İddianame",
-      filename: "İDDİANAME.pdf",
-      description: "Dava sürecinde hazırlanan iddianame belgesi."
-    }
-  ];
+  // JSON veritabanından veri yükle
+  useEffect(() => {
+    fetch('/pdf_database.json')
+      .then(response => response.json())
+      .then(data => {
+        setPdfFiles(data.kararlar);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('PDF veritabanı yüklenemedi:', error);
+        setLoading(false);
+      });
+  }, []);
 
   const [pdfLoading, setPdfLoading] = useState(false);
 
   const handlePdfClick = (pdf) => {
-    setPdfLoading(true);
-    setSelectedPdf(pdf);
-    // PDF yüklendikten sonra loading'i kapat
-    setTimeout(() => setPdfLoading(false), 1000);
+    if (pdf.googleDriveLink && pdf.googleDriveLink !== null) {
+      // Google Drive linkine yönlendir
+      window.open(pdf.googleDriveLink, '_blank');
+    } else {
+      // Local PDF görüntüleme
+      setPdfLoading(true);
+      setSelectedPdf(pdf);
+      setTimeout(() => setPdfLoading(false), 1000);
+    }
   };
 
   const closePdfViewer = () => {
     setSelectedPdf(null);
   };
 
-  const downloadPdf = (filename) => {
-    const link = document.createElement('a');
-    link.href = `/kararlar/${filename}`;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // downloadPdf kaldırıldı (artık yalnızca Görüntüle var)
+
+  if (loading) {
+    return (
+      <div className="kararlar-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>PDF verileri yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="kararlar-container">
@@ -77,6 +75,10 @@ const Kararlar = () => {
             <div className="pdf-content">
               <h3 className="pdf-title">{pdf.title}</h3>
               <p className="pdf-description">{pdf.description}</p>
+              <div className="pdf-meta">
+                <span className="pdf-size">Boyut: {pdf.size}</span>
+                <span className="pdf-date">Tarih: {pdf.date}</span>
+              </div>
               <div className="pdf-actions">
                 <button 
                   className="view-btn"
@@ -110,21 +112,13 @@ const Kararlar = () => {
                 </div>
               ) : (
                 <iframe
-                  src={`/kararlar/${selectedPdf.filename}#toolbar=1&navpanes=1&scrollbar=1`}
+                  src={`${selectedPdf.localPath}#toolbar=1&navpanes=1&scrollbar=1`}
                   title={selectedPdf.title}
                   width="100%"
                   height="100%"
                   loading="lazy"
                 />
               )}
-            </div>
-            <div className="pdf-modal-footer">
-              <button 
-                className="download-btn"
-                onClick={() => downloadPdf(selectedPdf.filename)}
-              >
-                PDF'yi İndir
-              </button>
             </div>
           </div>
         </div>
