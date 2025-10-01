@@ -1,4 +1,5 @@
 // Cloudinary kurulum ve kullanım rehberi
+require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 
 // Cloudinary konfigürasyonu
