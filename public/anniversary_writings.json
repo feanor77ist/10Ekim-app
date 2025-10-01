@@ -20,8 +20,8 @@
     "content": "",
     "image": "/yazılar/instagram - dava.jpg",
     "coverImage": "",
-    "published": true,
-    "featured": true
+    "published": false,
+    "featured": false
   },
   {
     "id": 3,
@@ -32,8 +32,8 @@
     "content": "",
     "image": "/yazılar/instagram - baris.jpg",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 4,

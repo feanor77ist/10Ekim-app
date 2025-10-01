@@ -106,8 +106,13 @@ const BelgelerRaporlar = () => {
 
   const categories = [...new Set(pdfFiles.map(pdf => pdf.category))];
 
+  const [pdfLoading, setPdfLoading] = useState(false);
+
   const handlePdfClick = (pdf) => {
+    setPdfLoading(true);
     setSelectedPdf(pdf);
+    // PDF yüklendikten sonra loading'i kapat
+    setTimeout(() => setPdfLoading(false), 1000);
   };
 
   const closePdfViewer = () => {
@@ -260,12 +265,20 @@ const BelgelerRaporlar = () => {
               </button>
             </div>
             <div className="pdf-viewer">
-              <iframe
-                src={`/belgeler-raporlar/${selectedPdf.filename}#toolbar=1&navpanes=1&scrollbar=1`}
-                title={selectedPdf.title}
-                width="100%"
-                height="100%"
-              />
+              {pdfLoading ? (
+                <div className="pdf-loading">
+                  <div className="pdf-loading-spinner"></div>
+                  <p>PDF yükleniyor...</p>
+                </div>
+              ) : (
+                <iframe
+                  src={`/belgeler-raporlar/${selectedPdf.filename}#toolbar=1&navpanes=1&scrollbar=1`}
+                  title={selectedPdf.title}
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                />
+              )}
             </div>
             <div className="pdf-modal-footer">
               <button 
