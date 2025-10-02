@@ -32,8 +32,8 @@
     "content": "",
     "image": "/yazılar/instagram - baris.jpg",
     "coverImage": "",
-    "published": true,
-    "featured": true
+    "published": false,
+    "featured": false
   },
   {
     "id": 4,
@@ -42,10 +42,10 @@
     "author": "Gökçer Tahincioğlu",
     "illustrator": "Bilge Emir",
     "content": "",
-    "image": "",
+    "image": "/yazılar/katliam.png",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 5,
