@@ -54,10 +54,10 @@
     "author": "Fethiye Çetin",
     "illustrator": "Ilgın Özdoğan",
     "content": "",
-    "image": "",
+    "image": "yazılar/sorumluluk.webp",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 6,
