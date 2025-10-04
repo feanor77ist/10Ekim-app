@@ -64,12 +64,12 @@
     "date": "2025-10-04",
     "title": "Eylem",
     "author": "Ali Duran Topuz",
-    "illustrator": "Damla Umut",
+    "illustrator": "D. Umut Uzun",
     "content": "",
-    "image": "",
+    "image": "/yazılar/eylem.webp",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 7,
