@@ -78,10 +78,10 @@
     "author": "Aydın Çubukçu",
     "illustrator": "Zeynep Özatalay",
     "content": "",
-    "image": "",
+    "image": "yazılar/politika.webp",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 8,
