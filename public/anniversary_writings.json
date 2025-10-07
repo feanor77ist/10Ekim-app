@@ -102,10 +102,10 @@
     "author": "Gaye Boralıoğlu",
     "illustrator": "Hazal Günal",
     "content": "",
-    "image": "",
+    "image": "yazılar/yas.webp",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 10,
