@@ -124,12 +124,12 @@
     "date": "2025-10-09",
     "title": "Zaman",
     "author": "Süreyya Karacabey",
-    "illustrator": "Nisa Özdoğan",
+    "illustrator": "Nisan Özdoğan",
     "content": "",
-    "image": "",
+    "image": "yazılar/zaman.webp",
     "coverImage": "",
-    "published": false,
-    "featured": false
+    "published": true,
+    "featured": true
   },
   {
     "id": 12,
