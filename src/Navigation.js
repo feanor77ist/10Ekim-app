@@ -18,7 +18,7 @@ const menuItems = [
   { title: "HABERLER", link: "/haberler", enabled: true },
   { title: "GÖRSELLER & VİDEOLAR", link: "https://www.youtube.com/@10ekimankarakatliamavukatk96", enabled: true, external: true },
   { title: "BASIN AÇIKLAMALARI", link: "/aciklamalar", enabled: true },
-  { title: "DURUŞMALAR", link: "/durusmalar", enabled: false },
+  { title: "DAVANIN SAHİPLERİ KONUŞUYOR", link: "/sozler", enabled: true },
   { title: "10 EKİM'İN 10.YILINDA 10 KAVRAM", link: "https://medium.com/@10ekimlegal", enabled: true, external: true },
   { title: "HAKKINDA", link: "/hakkinda", enabled: true },
 ];

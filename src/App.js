@@ -20,6 +20,7 @@ import Aciklamalar from './pages/Aciklamalar'; // Açıklamalar sayfası bileşe
 import MemoryTransition from './components/MemoryTransition'; // Sinematik geçiş bileşeni
 import AnniversaryWritings from './pages/AnniversaryWritings'; // 10. yıl anma yazıları
 import AnniversaryNotification from './components/AnniversaryNotification'; // Yazı bildirimi
+import Sozler from './pages/Sozler'; // Davanın Sahipleri Konuşuyor sayfası
 
 function HomePage() {
   const [showMemoryTransition, setShowMemoryTransition] = React.useState(false);
@@ -76,6 +77,7 @@ function App() {
         <Route path="/belgeler-raporlar" element={<BelgelerRaporlar />} />
         <Route path="/haberler" element={<Haberler />} />
         <Route path="/aciklamalar" element={<Aciklamalar />} />
+        <Route path="/sozler" element={<Sozler />} />
         <Route path="/gorseller" element={<div>Görseller Sayfası</div>} />
         <Route path="/yitirdiklerimiz" element={<div>Yitirdiklerimiz Sayfası</div>} />
         <Route path="/yazilar" element={<AnniversaryWritings />} />
