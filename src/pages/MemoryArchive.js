@@ -293,26 +293,42 @@ const MemoryArchive = () => {
             hotSpotDiv.style.transform = 'translate(-50%, -50%)';
             hotSpotDiv.style.pointerEvents = 'auto';
             hotSpotDiv.style.zIndex = '2000';
-            // Pin (simple dot with larger touch area on mobile)
+            // Pin (kişi resmi ile)
             const pin = document.createElement('div');
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-            const size = isMobile ? 12 : 16; // Mobilde çok küçük
-            console.log('Mobile:', isMobile, 'Size:', size); // Debug
+            const size = isMobile ? 32 : 40; // Profil fotoğrafı için daha büyük
             
-            // Görsel pin
+            // Wrapper div
             pin.style.width = `${size}px`;
             pin.style.height = `${size}px`;
-            pin.style.borderRadius = '50%';
-            pin.style.border = '2px solid #fff';
-            pin.style.boxShadow = '0 0 0 1px #d4af37, 0 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.6)';
-            pin.style.backgroundColor = '#d4af37';
-            pin.style.zIndex = '1000';
-            pin.style.animation = 'pulse 2s infinite';
+            pin.style.position = 'relative';
             pin.style.cursor = 'pointer';
+            pin.style.zIndex = '1000';
+            
+            // Kişi resmi
+            if (v.image) {
+              const img = document.createElement('img');
+              img.src = v.image;
+              img.style.width = '100%';
+              img.style.height = '100%';
+              img.style.borderRadius = '50%';
+              img.style.objectFit = 'cover';
+              img.style.border = '2px solid #fff';
+              img.style.boxShadow = '0 0 0 2px #d4af37, 0 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.6)';
+              img.style.animation = 'pulse 2s infinite';
+              img.style.display = 'block';
+              pin.appendChild(img);
+            } else {
+              // Resim yoksa fallback: altın sarısı nokta
+              pin.style.borderRadius = '50%';
+              pin.style.border = '2px solid #fff';
+              pin.style.boxShadow = '0 0 0 2px #d4af37, 0 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.6)';
+              pin.style.backgroundColor = '#d4af37';
+              pin.style.animation = 'pulse 2s infinite';
+            }
             
             // Mobilde invisible touch area
             if (isMobile) {
-              pin.style.position = 'relative';
               pin.style.padding = '10px'; // 10px padding her yöne
               pin.style.margin = '-10px'; // Padding'i görsel olarak iptal et
             }

@@ -215,7 +215,7 @@ const MemoryTransition = ({ isVisible, onComplete, onReturnHome }) => {
             </div>
             
             <p className="instruction">
-              360° interaktif hafıza deneyimi
+              360° interaktif hafıza
             </p>
           </div>
         </div>

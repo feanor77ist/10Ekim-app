@@ -1,9 +1,16 @@
 import React from 'react';
 import './Hakkinda.css';
+import SEO from '../components/SEO';
 
 const Hakkinda = () => {
   return (
     <div className="hakkinda-container">
+      <SEO 
+        title="Hakkında - 10 Ekim Davası"
+        description="10 Ekim 2015 Ankara Gar Katliamı'nda 103 kişi hayatını kaybetti, 500'den fazla insan yaralandı. Adalet mücadelesinin öyküsü ve süreç hakkında detaylı bilgi."
+        keywords="10 Ekim hakkında, Ankara Gar Katliamı nedir, barış mitingi, IŞİD saldırısı, adalet mücadelesi"
+        url="https://10ekimdavasi.com/hakkinda"
+      />
       <div className="hakkinda-header">
         <h1>Mahkeme Kararlarında Yer Almayan</h1>
         <h1>Her Şey Hafızalarımızda...</h1>

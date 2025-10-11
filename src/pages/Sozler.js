@@ -2,15 +2,40 @@ import React, { useState, useEffect } from 'react';
 import './Sozler.css';
 
 const Sozler = () => {
-  const [documents, setDocuments] = useState([]);
+  const [documentsWithQuotes, setDocumentsWithQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // JSON veritabanından veri yükle
+  // JSON veritabanından veri yükle ve parse et
   useEffect(() => {
     fetch('/sozler.json')
       .then(response => response.json())
       .then(data => {
-        setDocuments(data.documents);
+        // Her dokümandaki paragrafları ayrıştır
+        const parsed = data.documents.map(doc => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(doc.content, 'text/html');
+          const paragraphs = htmlDoc.querySelectorAll('p');
+          
+          const quotes = [];
+          paragraphs.forEach((p, index) => {
+            const text = p.innerHTML.trim();
+            // Boş paragrafları ve başlık paragrafını atla
+            if (text && text.length > 20 && !text.startsWith('<strong>6-10 Şubat') && !text.startsWith('<strong>Tefrik dosyasının')) {
+              quotes.push({
+                id: `${doc.id}_${index}`,
+                text: text
+              });
+            }
+          });
+          
+          return {
+            id: doc.id,
+            title: doc.title,
+            quotes: quotes
+          };
+        });
+        
+        setDocumentsWithQuotes(parsed);
         setLoading(false);
       })
       .catch(error => {
@@ -41,16 +66,23 @@ const Sozler = () => {
       </div>
 
       <div className="sozler-content">
-        {documents.map((doc) => (
-          <div key={doc.id} className="sozler-document">
-            <div className="document-header">
+        {documentsWithQuotes.map((doc) => (
+          <div key={doc.id} className="document-section">
+            <div className="document-section-header">
               <h2>{doc.title}</h2>
             </div>
             
-            <div 
-              className="document-content"
-              dangerouslySetInnerHTML={{ __html: doc.content }}
-            />
+            <div className="quotes-list">
+              {doc.quotes.map((quote) => (
+                <div key={quote.id} className="quote-card">
+                  <div className="quote-icon">❝</div>
+                  <div 
+                    className="quote-text"
+                    dangerouslySetInnerHTML={{ __html: quote.text }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

@@ -105,7 +105,7 @@
 /* Menü içerik */
 .navigation-bar ul {
   list-style: none;
-  padding: 40px 32px 20px 32px; /* üst ve yan boşluk arttı */
+  padding: 20px 32px 20px 32px; /* üst boşluğu azalttım */
   margin: 0;
   width: 100%;
   text-align: left;
@@ -152,11 +152,13 @@
   color: #d8d0b8;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
   text-align: left;
   opacity: 0.8;
   font-weight: 300;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  line-height: 1;
 }
 
 /* Sosyal medya linkleri */
@@ -232,8 +234,8 @@
 
 
   .menu-icon {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     top: 8px;
     right: 12px;
   }
@@ -254,7 +256,7 @@
   }
 
    .navigation-bar ul {
-    padding: 72px 24px 24px 24px; /* üstten daha fazla boşluk */
+    padding: 40px 24px 24px 24px; /* mobile'da biraz daha aşağı */
     overflow-y: auto;
     max-height: 100vh;
   }
@@ -267,7 +269,9 @@
   .navigation-header {
     font-size: 16px;
     letter-spacing: 2px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    line-height: 1;
   }
 
   .social-links {
@@ -307,8 +311,8 @@
   }
 
   .menu-icon {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     top: 5px;
     right: 10px;
     position: fixed !important;

@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /api/
+Disallow: /static/js/
+Disallow: /static/css/
+
+# Sitemap
+Sitemap: https://10ekimdavasi.com/sitemap.xml

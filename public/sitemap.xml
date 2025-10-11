@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://10ekimdavasi.com/</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Hafıza Arşivi -->
+  <url>
+    <loc>https://10ekimdavasi.com/hafiza-arsivi</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Süreç / Timeline -->
+  <url>
+    <loc>https://10ekimdavasi.com/surec</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Hakkında -->
+  <url>
+    <loc>https://10ekimdavasi.com/hakkinda</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Kararlar -->
+  <url>
+    <loc>https://10ekimdavasi.com/kararlar</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Belgeler & Raporlar -->
+  <url>
+    <loc>https://10ekimdavasi.com/belgeler-raporlar</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Haberler -->
+  <url>
+    <loc>https://10ekimdavasi.com/haberler</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Açıklamalar -->
+  <url>
+    <loc>https://10ekimdavasi.com/aciklamalar</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Sözler (Davanın Sahipleri Konuşuyor) -->
+  <url>
+    <loc>https://10ekimdavasi.com/sozler</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Yazılar (Anma Yazıları) -->
+  <url>
+    <loc>https://10ekimdavasi.com/yazilar</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Görseller -->
+  <url>
+    <loc>https://10ekimdavasi.com/gorseller</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Yitirdiklerimiz -->
+  <url>
+    <loc>https://10ekimdavasi.com/yitirdiklerimiz</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>
+

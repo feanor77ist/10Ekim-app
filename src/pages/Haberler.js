@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Haberler.css';
+import SEO from '../components/SEO';
 
 const Haberler = () => {
   const [haberler, setHaberler] = useState([]);
@@ -170,6 +171,12 @@ const Haberler = () => {
 
   return (
     <div className="haberler-container">
+      <SEO 
+        title="Haber Arşivi - 10 Ekim Davası"
+        description="10 Ekim Ankara Gar Katliamı ile ilgili haberler, medya takibi ve gelişmeler. Yargı süreci, tanık ifadeleri ve adalet arayışına dair tüm haberler."
+        keywords="10 Ekim haberleri, Ankara Gar Katliamı haberleri, dava haberleri, yargı süreci, medya takibi"
+        url="https://10ekimdavasi.com/haberler"
+      />
       {/* Header */}
       <div className="haberler-header">
         <h1>Haber Arşivi</h1>

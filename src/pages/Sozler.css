@@ -2,13 +2,13 @@
   min-height: 100vh;
   background-color: #000000;
   color: #ffffff;
-  padding: 100px 20px 80px;
+  padding: 40px 20px 80px;
 }
 
 .sozler-header {
   text-align: center;
-  margin-bottom: 60px;
-  padding: 40px 20px;
+  margin-bottom: 40px;
+  padding: 20px 20px;
   border-bottom: 2px solid #8B0000;
 }
 
@@ -29,60 +29,80 @@
 }
 
 .sozler-content {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.sozler-document {
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  padding: 40px;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.2);
-  border-left: 4px solid #8B0000;
-  transition: all 0.3s ease;
+/* Her belge bölümü */
+.document-section {
+  margin-bottom: 80px;
 }
 
-.sozler-document:hover {
-  box-shadow: 0 6px 30px rgba(139, 0, 0, 0.3);
-  transform: translateY(-2px);
+.document-section-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #8B0000;
 }
 
-.document-header {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #333333;
-}
-
-.document-header h2 {
-  font-size: 1.8rem;
+.document-section-header h2 {
+  font-size: 2rem;
   color: #ffffff;
   font-weight: 600;
   margin: 0;
+  letter-spacing: 1px;
 }
 
-.document-content {
+/* Sözler listesi */
+.quotes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Her bir söz kartı */
+.quote-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  border-left: 4px solid #8B0000;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.quote-card:hover {
+  box-shadow: 0 6px 25px rgba(139, 0, 0, 0.4);
+  transform: translateX(5px);
+  border-left-color: #B22222;
+}
+
+/* Tırnak işareti */
+.quote-icon {
+  font-size: 2.5rem;
+  color: #8B0000;
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 15px;
+  font-family: Georgia, serif;
+}
+
+/* Söz metni */
+.quote-text {
   line-height: 1.8;
   font-size: 1.05rem;
   color: #e0e0e0;
-}
-
-.document-content p {
-  margin-bottom: 20px;
   text-align: justify;
 }
 
-.document-content p:last-child {
-  margin-bottom: 0;
-}
-
-.document-content strong {
+.quote-text strong {
   color: #ffffff;
   font-weight: 600;
   background: linear-gradient(to right, rgba(139, 0, 0, 0.3), transparent);
-  padding: 2px 4px;
-  border-radius: 3px;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .loading-container {
@@ -134,7 +154,7 @@
 /* Mobil responsive */
 @media (max-width: 768px) {
   .sozler-page {
-    padding: 80px 15px 60px;
+    padding: 30px 15px 60px;
   }
 
   .sozler-header h1 {
@@ -146,16 +166,36 @@
     font-size: 1rem;
   }
 
-  .sozler-document {
+  .sozler-content {
+    padding: 0 15px;
+  }
+
+  .document-section {
+    margin-bottom: 60px;
+  }
+
+  .document-section-header {
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+  }
+
+  .document-section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .quotes-list {
+    gap: 20px;
+  }
+
+  .quote-card {
     padding: 25px 20px;
-    margin-bottom: 30px;
   }
 
-  .document-header h2 {
-    font-size: 1.4rem;
+  .quote-icon {
+    font-size: 2rem;
   }
 
-  .document-content {
+  .quote-text {
     font-size: 1rem;
   }
 
@@ -174,11 +214,19 @@
     font-size: 0.9rem;
   }
 
-  .document-header h2 {
-    font-size: 1.2rem;
+  .document-section-header h2 {
+    font-size: 1.3rem;
   }
 
-  .document-content {
+  .quote-card {
+    padding: 20px;
+  }
+
+  .quote-icon {
+    font-size: 1.8rem;
+  }
+
+  .quote-text {
     font-size: 0.95rem;
   }
 }
