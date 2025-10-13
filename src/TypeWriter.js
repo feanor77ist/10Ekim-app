@@ -42,8 +42,24 @@ const MyTypewriter = () => {
               .typeString('<span class="highlight-gradient">10 Ekim</span> 2015&#39;te ne oldu?')
               .pauseFor(2200)
               
-              // Alt yazı: Yavaş ve zarif
-              .typeString('<br><span class="typewriter-subtitle">hasret ve saygıyla...</span>')
+              // Fade out ve aynı konumda subtitle
+              .callFunction(() => {
+                // CSS fade-out efekti başlat
+                const wrapper = document.querySelector('.Typewriter__wrapper');
+                if (wrapper) {
+                  wrapper.classList.add('fade-out-all');
+                }
+              })
+              .deleteAll()
+              .callFunction(() => {
+                // Fade-out efekti bitir
+                const wrapper = document.querySelector('.Typewriter__wrapper');
+                if (wrapper) {
+                  wrapper.classList.remove('fade-out-all');
+                }
+              })
+              .pauseFor(500)
+              .typeString('<span class="typewriter-subtitle">hasret ve saygıyla...</span>')
               .pauseFor(3000)
               .start();
         }}

@@ -20,12 +20,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Video kendi renklerini korusun, sadece hafif düzenleme */
+  /* Video daha da parlak */
   filter: 
-    brightness(0.9) 
-    contrast(1.1) 
-    saturate(1.0) 
-    blur(0.5px);
+    brightness(1.02) 
+    contrast(1.12) 
+    saturate(1.08) 
+    blur(0.4px);
   
   /* Yumuşak giriş animasyonu */
   animation: videoFadeIn 3s ease-out forwards;
@@ -67,15 +67,15 @@
   position: absolute;
   inset: 0;
   
-  /* Güçlü vignette ile daha dramatik arka plan */
+  /* Daha hafif vignette - köşeler daha az koyu */
   background: 
     radial-gradient(
       ellipse at center, 
-      transparent 5%, 
-      rgba(0,0,0,0.2) 25%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(0,0,0,0.8) 85%,
-      rgba(0,0,0,0.95) 100%
+      transparent 8%, 
+      rgba(0,0,0,0.15) 30%,
+      rgba(0,0,0,0.35) 65%,
+      rgba(0,0,0,0.65) 88%,
+      rgba(0,0,0,0.8) 100%
     );
   
   mix-blend-mode: multiply;
@@ -161,38 +161,38 @@
   -webkit-text-stroke: 0.5px rgba(0,0,0,0.7);
 }
 
-/* Typewriter yazılarının arkasına mobil ile aynı arka plan */
+/* Typewriter yazılarının arkasına daha hafif arka plan */
 .typewriter-text::before {
   content: '';
   position: absolute;
-  inset: -35px -60px; /* Mobil ile aynı geniş alan */
-  border-radius: 14px;
-  opacity: 0.7; /* Mobil ile aynı opacity */
+  inset: -25px -45px; /* Daha küçük alan */
+  border-radius: 12px;
+  opacity: 0.45; /* Çok daha şeffaf */
   background-image:
     url('images/GrainBackground.gif'),
-    radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%),
-    linear-gradient(120deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.6) 100%);
-  background-size: 0.25% 0.25%, cover, 200% 200%;
+    radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%),
+    linear-gradient(120deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.35) 100%);
+  background-size: 0.22% 0.22%, cover, 160% 160%;
   background-position: center, center, 0% 50%;
-  background-blend-mode: normal, multiply, overlay;
-  filter: blur(7px) contrast(1.15) saturate(1.0);
-  -webkit-backdrop-filter: blur(4px) saturate(0.95);
-  backdrop-filter: blur(4px) saturate(0.95);
+  background-blend-mode: normal, multiply, soft-light;
+  filter: blur(4px) contrast(1.08) saturate(1.05);
+  -webkit-backdrop-filter: blur(2px) saturate(1.02);
+  backdrop-filter: blur(2px) saturate(1.02);
   pointer-events: none;
   z-index: -1;
-  animation: subtleLightSweepSoft 40s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
+  animation: subtleLightSweepSoft 45s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
   box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.15),
-    inset 0 -30px 60px rgba(0,0,0,0.7),
-    inset 0 30px 60px rgba(0,0,0,0.5),
-    0 0 35px rgba(0,0,0,0.9),
-    0 8px 25px rgba(0,0,0,0.4),
-    0 15px 35px rgba(0,0,0,0.3);
-  /* Gerçek fırça darbesi efekti */
-  border-radius: 0;
-  transform: rotate(-1deg) scale(1.02) skewX(2deg);
-  mask-image: radial-gradient(ellipse 180% 140% at 45% 55%, black 10%, transparent 40%);
-  -webkit-mask-image: radial-gradient(ellipse 180% 140% at 45% 55%, black 10%, transparent 40%);
+    inset 0 0 0 1px rgba(255,255,255,0.1),
+    inset 0 -20px 40px rgba(0,0,0,0.4),
+    inset 0 20px 40px rgba(0,0,0,0.3),
+    0 0 25px rgba(0,0,0,0.6),
+    0 6px 18px rgba(0,0,0,0.3),
+    0 12px 25px rgba(0,0,0,0.2);
+  /* Daha yumuşak organik şekil */
+  border-radius: 6px;
+  transform: rotate(-0.7deg) scale(1.015) skewX(1.2deg);
+  mask-image: radial-gradient(ellipse 170% 130% at 48% 52%, black 15%, transparent 45%);
+  -webkit-mask-image: radial-gradient(ellipse 170% 130% at 48% 52%, black 15%, transparent 45%);
 }
 
 @keyframes subtleLightSweepSoft {
@@ -201,29 +201,28 @@
   100% { background-position: center, center, 0% 50%; }
 }
 
-/* Ek, hafif drift eden film grain ve vignette - mobil ile aynı */
+/* Çok hafif doku katmanı */
 .typewriter-text::after {
   content: '';
   position: absolute;
-  inset: -18px -28px;
-  border-radius: 14px;
+  inset: -15px -25px;
+  border-radius: 10px;
   background-image:
-    radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.65) 100%), /* dış vignette */
+    radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.3) 100%),
     url('images/GrainBackground.gif');
-  background-size: cover, 0.28% 0.28%;
+  background-size: cover, 0.3% 0.3%;
   background-position: center, 0% 0%;
-  background-blend-mode: multiply, normal;
-  opacity: 0.05; /* Daha sakin doku */
-  mix-blend-mode: normal;
-  filter: blur(0.2px);
+  background-blend-mode: soft-light, normal;
+  opacity: 0.03; /* Çok hafif doku */
+  mix-blend-mode: soft-light;
+  filter: blur(0.1px);
   pointer-events: none;
   z-index: -1;
-  animation: driftNoiseSoft 80s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
-  /* Daha yumuşak organik şekil */
+  animation: driftNoiseSoft 85s cubic-bezier(0.42, 0, 0.2, 1) infinite alternate;
+  /* Daha basit organik şekil */
   clip-path: polygon(
-    0% 15%, 10% 5%, 20% 2%, 30% 8%, 40% 1%, 50% 5%, 60% 2%, 70% 6%, 80% 3%, 90% 8%, 100% 12%,
-    98% 22%, 92% 32%, 96% 42%, 90% 52%, 94% 62%, 88% 72%, 92% 82%, 85% 87%, 75% 92%, 65% 88%, 55% 92%,
-    45% 86%, 35% 90%, 25% 84%, 15% 88%, 8% 82%, 3% 72%, 6% 62%, 2% 52%, 5% 42%, 1% 32%, 4% 22%
+    0% 20%, 15% 12%, 30% 8%, 50% 10%, 70% 6%, 85% 15%, 100% 22%,
+    92% 38%, 88% 55%, 90% 72%, 82% 85%, 70% 92%, 50% 95%, 30% 88%, 18% 75%, 8% 55%, 10% 38%
   );
 }
 
@@ -360,6 +359,22 @@
   animation: none;
 }
 
+/* Tümü birden fade out animasyonu */
+.fade-out-all {
+  animation: fadeOutAll 800ms ease-out forwards;
+}
+
+@keyframes fadeOutAll {
+  0% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
 @keyframes gentle-pulse {
   0%, 70% { 
     opacity: 1; 
@@ -378,7 +393,7 @@
   color: rgba(232, 232, 224, 0.88);
   letter-spacing: 0.3px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-  margin-top: 18px;
+  margin-top: 0;
   animation: none;
 }
 
@@ -391,7 +406,7 @@
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 400 !important;
-    margin-top: 15px !important;
+    margin-top: 0 !important;
     line-height: 1.4 !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
   }
@@ -433,17 +448,17 @@
 @keyframes videoFadeIn {
   0% { 
     filter: 
-      brightness(0.7) 
-      contrast(1.2) 
-      saturate(0.8) 
-      blur(1px);
+      brightness(0.85) 
+      contrast(1.18) 
+      saturate(0.9) 
+      blur(0.8px);
   }
   100% { 
     filter: 
-      brightness(0.9) 
-      contrast(1.1) 
-      saturate(1.0) 
-      blur(0.5px);
+      brightness(1.02) 
+      contrast(1.12) 
+      saturate(1.08) 
+      blur(0.4px);
   }
 }
 
@@ -486,6 +501,18 @@
 }
 
 @media screen and (max-width: 768px) {
+  /* Video overlay - çizgi sorununu önle */
+  .video-overlay {
+    /* Grain boyutunu büyüt */
+    background-size: 10% 10%, cover;
+    /* Hafif blur ekle */
+    filter: contrast(1.3) brightness(0.85) saturate(0.9) blur(0.5px);
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: auto;
+  }
+
   .poetry-container {
     width: 150px;
     font-size: 10px;
@@ -564,41 +591,40 @@
   }
 
   .typewriter-text::before {
-    inset: -35px -60px; /* Desktop gibi geniş alan */
-    border-radius: 14px;
-    opacity: 0.7; /* Desktop gibi koyu arka plan */
+    inset: -20px -35px; /* Daha küçük alan */
+    border-radius: 10px;
+    opacity: 0.4; /* Daha şeffaf */
     background-image:
       url('images/GrainBackground.gif'),
-      radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%),
-      linear-gradient(120deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.6) 100%);
-    background-size: 0.25% 0.25%, cover, 200% 200%;
+      radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(120deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.3) 100%);
+    background-size: 0.24% 0.24%, cover, 150% 150%;
     background-position: center, center, 0% 50%;
-    background-blend-mode: normal, multiply, overlay;
-    filter: blur(7px) contrast(1.15) saturate(1.0);
-    -webkit-backdrop-filter: blur(4px) saturate(0.95);
-    backdrop-filter: blur(4px) saturate(0.95);
+    background-blend-mode: normal, multiply, soft-light;
+    filter: blur(3px) contrast(1.06) saturate(1.03);
+    -webkit-backdrop-filter: blur(1.5px) saturate(1.01);
+    backdrop-filter: blur(1.5px) saturate(1.01);
     box-shadow:
-      inset 0 0 0 2px rgba(255,255,255,0.15),
-      inset 0 -30px 60px rgba(0,0,0,0.7),
-      inset 0 30px 60px rgba(0,0,0,0.5),
-      0 0 35px rgba(0,0,0,0.9),
-      0 8px 25px rgba(0,0,0,0.4),
-      0 15px 35px rgba(0,0,0,0.3);
-    border-radius: 0;
-    transform: rotate(-1deg) scale(1.02) skewX(2deg);
-    mask-image: radial-gradient(ellipse 180% 140% at 45% 55%, black 10%, transparent 40%);
-    -webkit-mask-image: radial-gradient(ellipse 180% 140% at 45% 55%, black 10%, transparent 40%);
+      inset 0 0 0 1px rgba(255,255,255,0.08),
+      inset 0 -18px 35px rgba(0,0,0,0.35),
+      inset 0 18px 35px rgba(0,0,0,0.25),
+      0 0 20px rgba(0,0,0,0.5),
+      0 5px 15px rgba(0,0,0,0.25),
+      0 10px 20px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    transform: rotate(-0.5deg) scale(1.01) skewX(0.8deg);
+    mask-image: radial-gradient(ellipse 160% 120% at 50% 50%, black 18%, transparent 48%);
+    -webkit-mask-image: radial-gradient(ellipse 160% 120% at 50% 50%, black 18%, transparent 48%);
   }
 
   .typewriter-text::after {
-    inset: -30px -45px;
-    border-radius: 12px;
-    opacity: 0.06;
-    background-size: cover, 0.34% 0.34%;
+    inset: -18px -28px;
+    border-radius: 8px;
+    opacity: 0.025; /* Çok daha hafif */
+    background-size: cover, 0.32% 0.32%;
     clip-path: polygon(
-      0% 28%, 10% 18%, 20% 10%, 30% 8%, 40% 15%, 50% 5%, 60% 12%, 70% 4%, 80% 15%, 90% 8%, 98% 18%, 100% 28%,
-      95% 38%, 88% 48%, 92% 58%, 85% 68%, 90% 78%, 82% 88%, 86% 94%, 78% 98%, 68% 100%, 58% 96%, 48% 99%,
-      38% 93%, 28% 97%, 18% 91%, 12% 95%, 5% 88%, 2% 78%, 8% 68%, 3% 58%, 8% 48%, 2% 38%, 6% 28%
+      0% 25%, 20% 15%, 40% 12%, 60% 10%, 80% 18%, 100% 28%,
+      90% 45%, 85% 65%, 88% 82%, 70% 90%, 50% 95%, 30% 88%, 15% 75%, 8% 55%, 12% 35%
     );
   }
 
@@ -631,13 +657,13 @@
 /* Mobil uyumluluk */
 @media (max-width: 768px) {
   .typewriter-text::before {
-    /* Mobil için de gerçek fırça darbesi efekti */
-    border-radius: 0;
-    transform: rotate(-0.5deg) scale(1.01) skewX(1deg);
-    mask-image: radial-gradient(ellipse 150% 120% at 40% 50%, black 15%, transparent 45%);
-    -webkit-mask-image: radial-gradient(ellipse 150% 120% at 40% 50%, black 15%, transparent 45%);
-    /* Mobil için daha az blur */
-    filter: blur(3px) contrast(1.1) saturate(1.0);
+    /* Mobil için daha yumuşak efekt */
+    border-radius: 4px;
+    transform: rotate(-0.3deg) scale(1.005) skewX(0.5deg);
+    mask-image: radial-gradient(ellipse 140% 110% at 50% 50%, black 22%, transparent 52%);
+    -webkit-mask-image: radial-gradient(ellipse 140% 110% at 50% 50%, black 22%, transparent 52%);
+    /* Mobil için minimal blur */
+    filter: blur(2px) contrast(1.04) saturate(1.02);
   }
 }
 
@@ -662,8 +688,9 @@
   }
 
   .typewriter-text::before {
-    inset: -20px -30px !important;
-    filter: blur(2px) contrast(1.05) saturate(1.0) !important;
+    inset: -15px -25px !important;
+    filter: blur(1.5px) contrast(1.03) saturate(1.02) !important;
+    opacity: 0.35 !important;
   }
 
   .typewriter-text::after {
@@ -730,7 +757,8 @@
   }
 
   .typewriter-text::before {
-    inset: -15px -20px !important;
+    inset: -12px -18px !important;
+    opacity: 0.3 !important;
   }
 
   .typewriter-text::after {
