@@ -160,9 +160,9 @@ const Haberler = () => {
 
   if (loading) {
     return (
-      <div className="haberler-container">
-        <div className="loading-spinner">
-          <div className="spinner"></div>
+      <div className="haberler-loading-overlay">
+        <div className="haberler-loading-box">
+          <div className="spinner" />
           <p>Haberler yükleniyor...</p>
         </div>
       </div>
